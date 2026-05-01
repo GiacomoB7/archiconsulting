@@ -1953,13 +1953,11 @@
     });
   });
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0p
+  function showAllReveals() {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+  }
+  if ('IntersectionObserver' in window) {
+    try {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry =
