@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Archiconsulting — Smetti di rincorrere clienti. Inizia a sceglierli.</title>
+<meta name="description" content="Il primo sistema di marketing per architetti italiani. Ti porta lead che il passaparola non ti porterà mai, e ti dà l'autorità per dire di no ai progetti sbagliati. In 6 mesi." />
+
+<!--
+  Sito pronto per la pubblicazione.
+
+  Tutti i placeholder sono chiusi:
+    - prezzo tool standalone: €39/mese (offerta lancio, da €99)
+    - call: gestita via mail a info@archiconsulting.it
+    - mail: info@archiconsulting.it (in nav, sezioni e footer)
+    - dati fiscali: CF + P.IVA nel footer
+
+  Testimonianze: 6 screenshot WhatsApp con nomi oscurati per GDPR.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== FUTURA (locale) ===== */
+  @font-face {
+    font-family: 'Futura';
+    src: url('fonts/Futura-Medium.ttf') format('truetype');
+    font-weight: 400 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Futura';
+    src: url('fonts/Futura-Bold.ttf') format('truetype');
+    font-weight: 600 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --bg: #0F0F12;
+    --bg-2: #16161A;
+    --bg-3: #1F1F25;
+    --bg-card: #1A1A1F;
+    --primary: #F5F0E6;
+    --accent: #E8B843;
+    --accent-hover: #f0c659;
+    --accent-soft: rgba(232, 184, 67, 0.12);
+    --text: #8A8A93;
+    --text-strong: #B5B5BD;
+    --border: rgba(245, 240, 230, 0.08);
+    --border-strong: rgba(245, 240, 230, 0.14);
+    --whats-bg: #ECE5DD;
+    --whats-bubble: #FFFFFF;
+    --max: 1320px;
+    --pad: 40px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Futura', 'Jost', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--primary);
+    line-height: 1.55;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  a { color: inherit; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 22px 0;
+    transition: background 0.3s, padding 0.3s, border 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(15, 15, 18, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: 'Futura', 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .logo .dot { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--text-strong);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-links a.cta-nav {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .nav-links a.cta-nav:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+  }
+  .menu-toggle {
+    display: none; background: none; border: none;
+    color: var(--primary); font-size: 26px; cursor: pointer;
+    line-height: 1;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(232, 184, 67, 0.3);
+  }
+  .btn-primary .arrow { transition: transform 0.25s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-large {
+    padding: 22px 40px;
+    font-size: 16px;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--border-strong);
+  }
+  .btn-secondary:hover {
+    border-color: var(--primary);
+    background: rgba(245, 240, 230, 0.04);
+  }
+  .link-arrow {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .link-arrow:hover { opacity: 0.7; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 92vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 140px 0 60px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/hero-architecture.png');
+    background-size: cover;
+    background-position: right center;
+    z-index: 0;
+    opacity: 0.45;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 25%, rgba(15,15,18,0.88) 55%, rgba(15,15,18,0.5) 100%),
+                linear-gradient(180deg, transparent 60%, var(--bg) 100%);
+  }
+  .hero .container {
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    padding: 10px 18px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: var(--accent-soft);
+  }
+  .hero-eyebrow .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-family: 'Futura', 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 6.5vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -2.5px;
+    margin-bottom: 28px;
+    max-width: 1100px;
+  }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
+  .hero h1 .accent-block { color: var(--accent); }
+  .hero h1 .line { display: block; }
+  .hero .sub {
+    font-size: clamp(17px, 1.35vw, 21px);
+    color: var(--text-strong);
+    margin-bottom: 44px;
+    max-width: 640px;
+    line-height: 1.55;
+    font-weight: 500;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+  .hero-trust {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    max-width: 720px;
+  }
+  .hero-trust-item {
+    flex: 1;
+    min-width: 180px;
+  }
+  .hero-trust-item .quote {
+    font-size: 14px;
+    color: var(--primary);
+    line-height: 1.5;
+    margin-bottom: 8px;
+    font-style: italic;
+    font-weight: 500;
+  }
+  .hero-trust-item .author {
+    font-size: 12px;
+    color: var(--text);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ===== SECTIONS GENERIC ===== */
+  section {
+    padding: 130px 0;
+    position: relative;
+  }
+  .section-num {
+    color: var(--accent);
+    font-family: 'Futura', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+  }
+  .section-num::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 4.5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px;
+    max-width: 920px;
+  }
+  .section-title .accent { color: var(--accent); font-style: italic; }
+  .section-intro {
+    font-size: 18px;
+    color: var(--text-strong);
+    max-width: 680px;
+    margin-bottom: 64px;
+    line-height: 1.65;
+  }
+
+  /* ===== PAS (problema/soluzione) ===== */
+  #pas {
+    background: var(--bg);
+  }
+  .pas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .pas-problems {
+    list-style: none;
+  }
+  .pas-problems li {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--primary);
+  }
+  .pas-problems li:last-child { border-bottom: none; }
+  .pas-problems li::before {
+    content: '✕';
+    color: #B33B3B;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+  .pas-solution {
+    background: var(--bg-2);
+    padding: 48px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    position: sticky;
+    top: 100px;
+  }
+  .pas-solution h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  .pas-solution h3 .accent { color: var(--accent); }
+  .pas-solution p {
+    font-size: 16px;
+    color: var(--text-strong);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .pas-solution .check-list {
+    list-style: none;
+    margin-top: 24px;
+  }
+  .pas-solution .check-list li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 15px;
+    color: var(--primary);
+  }
+  .pas-solution .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials {
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .testi-screen {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s;
+    position: relative;
+  }
+  .testi-screen:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.4);
+  }
+  .testi-amount {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .testi-screen-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .testi-screen-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .testi-screen figcaption {
+    padding: 22px 24px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--primary);
+    flex-grow: 1;
+  }
+  .testi-screen figcaption strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .testi-disclaimer {
+    margin-top: 48px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.8;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ===== ABOUT ===== */
+  #chi-sono {
+    background: var(--bg);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-photo {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.05);
+  }
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 60%; height: 1px;
+    background: var(--accent);
+  }
+  .about-photo::before {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 1px; height: 60%;
+    background: var(--accent);
+  }
+  .about-content h2 {
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+  }
+  .about-content p {
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 20px;
+    color: var(--primary);
+    opacity: 0.88;
+  }
+  .about-content .highlight { color: var(--accent); font-weight: 700; }
+
+  /* ===== WHO IS IT FOR ===== */
+  #per-chi {
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .per-chi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .per-chi-image {
+    aspect-ratio: 3/2;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+  }
+  .per-chi-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .per-chi-list {
+    list-style: none;
+    margin-top: 24px;
+    counter-reset: item;
+  }
+  .per-chi-list li {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .per-chi-list li:last-child { border-bottom: none; }
+  .per-chi-list li::before {
+    content: counter(item, decimal-leading-zero);
+    counter-increment: item;
+    color: var(--accent);
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  /* ===== AFFIANCAMENTO (steps) ===== */
+  #come-funziona {
+    background: var(--bg);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .step {
+    padding: 44px 28px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.25s;
+  }
+  .step:last-child { border-right: none; }
+  .step:hover { background: var(--bg-2); }
+  .step-number {
+    font-family: 'Futura', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 28px;
+  }
+  .step h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  .step p {
+    font-size: 15px;
+    color: var(--text-strong);
+    line-height: 1.65;
+  }
+  .step .duration {
+    display: inline-block;
+    margin-top: 22px;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--accent-soft);
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .affianc-cta {
+    margin-top: 56px;
+    padding: 32px;
+    background: var(--bg-2);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .affianc-cta-text {
+    flex: 1;
+    min-width: 280px;
+  }
+  .affianc-cta-text strong {
+    display: block;
+    font-family: 'Futura', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .affianc-cta-text span {
+    color: var(--text-strong);
+    font-size: 15px;
+  }
+
+  /* ===== TOOL ===== */
+  #tool {
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  #tool::before {
+    content: '';
+    position: absolute;
+    top: 0; right: -25%;
+    width: 70%; height: 100%;
+    background-image: url('images/blueprint-pattern.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  #tool .container { position: relative; z-index: 2; }
+
+  .tool-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+
+  /* ===== TOOL PACKAGE — card prodotto ===== */
+  .tool-package {
+    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-2) 100%);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 56px 56px 48px;
+    margin-top: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .tool-package::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+  .tool-package::after {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 80px; height: 1px;
+    background: var(--accent);
+  }
+  .tool-package + .tool-package {
+    margin-top: 96px;
+  }
+  .tool-package-header {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .package-num {
+    font-family: 'Futura', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: var(--accent-soft);
+    align-self: flex-start;
+    margin-bottom: 8px;
+  }
+  .package-name {
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: clamp(48px, 6.5vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -2.5px;
+    color: var(--primary);
+    margin: 0;
+  }
+  .package-tagline {
+    font-size: clamp(18px, 1.6vw, 24px);
+    color: var(--accent);
+    font-weight: 500;
+    line-height: 1.3;
+    font-style: italic;
+    max-width: 760px;
+  }
+  .tool-package-body {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+  .tool-package-body-reverse {
+    grid-template-columns: 1.1fr 1fr;
+  }
+  .tool-package-body-reverse .tool-info { order: 0; }
+  .tool-package-body-reverse .phone-mockup { order: 1; }
+  .tool-description {
+    font-size: 17px;
+    color: var(--text-strong);
+    margin-bottom: 28px;
+    line-height: 1.65;
+  }
+  /* Mockup di un report Scraper IG AI */
+  .report-mockup {
+    background: #1A1A1F;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    max-width: 460px;
+    margin: 0 auto;
+    font-family: 'Futura', 'Jost', sans-serif;
+  }
+  .report-header {
+    background: #25252B;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .report-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+  }
+  .dot-r { background: #FF5F56; }
+  .dot-y { background: #FFBD2E; }
+  .dot-g { background: #27C93F; }
+  .report-title {
+    color: var(--text);
+    font-size: 12px;
+    margin-left: 12px;
+    letter-spacing: 0.3px;
+    font-family: 'Courier New', monospace;
+  }
+  .report-body {
+    padding: 28px 26px;
+  }
+  .report-section-label {
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .report-niche {
+    font-family: 'Futura', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .report-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 22px 0 18px;
+  }
+  .report-idea {
+    display: grid;
+    grid-template-columns: 28px 1fr 38px;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .report-idea:last-of-type {
+    border-bottom: none;
+  }
+  .report-idea-faded {
+    opacity: 0.4;
+  }
+  .report-idea-num {
+    font-family: 'Futura', sans-serif;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .report-idea-text {
+    font-size: 13px;
+    color: var(--primary);
+    line-height: 1.35;
+    font-weight: 500;
+  }
+  .report-idea-score {
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent);
+    text-align: right;
+    letter-spacing: -0.5px;
+  }
+  .report-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 16px;
+    background: rgba(232, 184, 67, 0.06);
+    border-radius: 4px;
+    border: 1px solid rgba(232, 184, 67, 0.18);
+  }
+  .report-stat {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2px;
+  }
+  .report-stat-num {
+    font-family: 'Futura', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .report-stat-label {
+    font-size: 9px;
+    color: var(--text);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* Mockup di una storia IG generata (Storie IG Auto) */
+  .phone-mockup {
+    aspect-ratio: 9/16;
+    max-width: 320px;
+    margin: 0 auto;
+    background: var(--bg-3);
+    border: 8px solid #2A2A30;
+    border-radius: 36px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, #2F2F35 0%, #1A1A1F 100%);
+    padding: 42px 26px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #F2F2F2;
+    font-family: 'Futura', sans-serif;
+    position: relative;
+  }
+  .phone-screen::before {
+    content: '';
+    position: absolute;
+    top: 14px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 4px;
+    background: #444;
+    border-radius: 4px;
+  }
+  .story-progress {
+    position: absolute;
+    top: 28px;
+    left: 16px; right: 16px;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 2px;
+  }
+  .story-progress::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 35%;
+    background: white;
+    border-radius: 2px;
+  }
+  .story-title {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 24px;
+    color: #E8B843;
+    letter-spacing: -0.5px;
+  }
+  .story-body {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #F2F2F2;
+    margin-top: 14px;
+    font-weight: 500;
+  }
+  .story-body .k { color: #E8B843; font-weight: 700; }
+  .story-image-block {
+    margin: 14px 0;
+    height: 110px;
+    background: linear-gradient(135deg, #4a4a55 0%, #2a2a30 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  .story-bottom {
+    font-size: 11px;
+    color: #F2F2F2;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .story-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .story-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #555, #333);
+    flex-shrink: 0;
+  }
+  .story-meta-name {
+    font-size: 11px; font-weight: 700;
+    color: #F2F2F2;
+  }
+  .story-meta-tagline {
+    font-size: 8px; color: #999;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .tool-info h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+  .tool-tag {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .tool-info > p {
+    font-size: 16px;
+    color: var(--text-strong);
+    margin-bottom: 28px;
+    line-height: 1.65;
+  }
+  .tool-features {
+    list-style: none;
+  }
+  .tool-features li {
+    padding: 12px 0;
+    font-size: 15px;
+    color: var(--primary);
+    padding-left: 28px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .tool-features li:last-child { border-bottom: none; }
+  .tool-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .pricing-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--bg-card);
+  }
+  .pricing-block {
+    padding: 36px 32px;
+  }
+  .pricing-block.included {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
+    border-right: 1px solid var(--border);
+  }
+  .pricing-tag {
+    font-family: 'Futura', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .pricing-block.standalone .pricing-tag {
+    color: var(--text);
+  }
+  .pricing-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .pricing-tag-row .pricing-tag {
+    margin-bottom: 0;
+  }
+  .launch-badge {
+    display: inline-block;
+    background: #B33B3B;
+    color: white;
+    font-family: 'Futura', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 999px;
+    animation: badge-pulse 2.5s infinite;
+  }
+  @keyframes badge-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 59, 59, 0.6); }
+    50% { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(179, 59, 59, 0); }
+  }
+  .old-price {
+    display: block;
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: line-through;
+    font-weight: 500;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .pricing-value {
+    font-family: 'Futura', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
+  }
+  .pricing-block.included .pricing-value { color: var(--accent); }
+  .pricing-block.standalone .pricing-value { color: var(--primary); }
+  .pricing-value .period {
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-left: 4px;
+  }
+  .pricing-note {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+  .pricing-block .btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  /* ===== FAQ ===== */
+  #faq {
+    background: var(--bg);
+  }
+  .faq-list {
+    max-width: 880px;
+  }
+  details {
+    border-bottom: 1px solid var(--border);
+    padding: 26px 0;
+    cursor: pointer;
+  }
+  details summary {
+    font-family: 'Futura', sans-serif;
+    font-size: clamp(17px, 1.5vw, 21px);
+    font-weight: 700;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary);
+    gap: 24px;
+    letter-spacing: -0.3px;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: '+';
+    font-size: 30px;
+    color: var(--accent);
+    font-weight: 300;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p {
+    margin-top: 16px;
+    color: var(--text-strong);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 720px;
+  }
+
+  /* ===== CTA FINALE ===== */
+  .cta-final {
+    text-align: center;
+    padding: 160px 0;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, var(--accent-soft) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-final .container { position: relative; z-index: 2; }
+  .cta-final h2 {
+    font-family: 'Futura', sans-serif;
+    font-size: clamp(38px, 5.5vw, 76px);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 28px;
+    letter-spacing: -2px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-final h2 .accent { color: var(--accent); font-style: italic; }
+  .cta-final p {
+    font-size: 19px;
+    color: var(--text-strong);
+    margin-bottom: 44px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-final-meta {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .cta-final-meta-item {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .cta-final-meta-item::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .cta-mail-line {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+  .cta-mail-line strong {
+    color: var(--accent);
+    font-weight: 600;
+    user-select: all;
+  }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 16px;
+    left: 16px; right: 16px;
+    z-index: 90;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 16px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(232, 184, 67, 0.3);
+    letter-spacing: 0.5px;
+    transition: transform 0.2s;
+  }
+  .sticky-cta:hover { transform: translateY(-2px); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 80px 0 40px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  footer h4 {
+    font-family: 'Futura', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  footer p, footer a {
+    color: var(--primary);
+    opacity: 0.78;
+    font-size: 15px;
+    text-decoration: none;
+    line-height: 1.9;
+    display: block;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  footer a:hover { opacity: 1; color: var(--accent); }
+  footer .brand-tagline {
+    margin-top: 16px;
+    max-width: 360px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: var(--text);
+    font-size: 13px;
+  }
+  .footer-bottom a { color: var(--text); display: inline; opacity: 1; }
+  .footer-bottom a:hover { color: var(--accent); }
+
+  /* ===== REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 980px) {
+    :root { --pad: 22px; }
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--bg);
+      flex-direction: column;
+      padding: 24px;
+      gap: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open { display: flex; }
+    .menu-toggle { display: block; }
+    section { padding: 90px 0; }
+    .hero { padding: 110px 0 80px; min-height: auto; }
+    .hero-trust { gap: 24px; flex-direction: column; }
+    .pas-grid { grid-template-columns: 1fr; gap: 40px; }
+    .pas-solution { position: static; }
+    .testi-grid { grid-template-columns: 1fr; gap: 24px; }
+    .testi-screen-img { aspect-ratio: auto; max-height: 480px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-photo { max-width: 480px; }
+    .per-chi-grid { grid-template-columns: 1fr; gap: 48px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .step { border-right: 1px solid var(--border); }
+    .step:nth-child(2n) { border-right: none; }
+    .tool-showcase { grid-template-columns: 1fr; gap: 40px; }
+    .tool-package { padding: 32px 24px; }
+    .tool-package + .tool-package { margin-top: 56px; }
+    .tool-package-body,
+    .tool-package-body-reverse { grid-template-columns: 1fr; gap: 36px; }
+    .tool-package-header { margin-bottom: 36px; padding-bottom: 28px; }
+    .package-name { font-size: clamp(38px, 9vw, 56px); letter-spacing: -1.5px; }
+    .package-tagline { font-size: 17px; }
+    .pricing-row { grid-template-columns: 1fr; }
+    .pricing-block.included { border-right: none; border-bottom: 1px solid var(--border); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .sticky-cta { display: block; }
+    .cta-final { padding: 100px 0 140px; } /* spazio per sticky cta */
+  }
+  @media (max-width: 540px) {
+    .steps { grid-template-columns: 1fr; }
+    .step { border-right: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+    .affianc-cta { flex-direction: column; align-items: stretch; text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="topnav">
+  <div class="container">
+    <a href="#top" class="logo">ARCHICONSULTING<span class="dot">.</span></a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">≡</button>
+    <ul class="nav-links">
+      <li><a href="#testimonials">Risultati</a></li>
+      <li><a href="#chi-sono">Chi sono</a></li>
+      <li><a href="#come-funziona">Affiancamento</a></li>
+      <li><a href="#tool">Tool</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contatti" class="cta-nav">Scrivici</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="reveal visible">
+      <span class="hero-eyebrow"><span class="pulse"></span>Marketing per studi di architettura</span>
+    </div>
+    <h1 class="reveal visible reveal-d1">
+      <span class="line">Smetti di rincorrere clienti.</span>
+      <span class="line">Inizia a <span class="accent">sceglierli.</span></span>
+    </h1>
+    <p class="sub reveal visible reveal-d2">
+      Il primo sistema di marketing per architetti italiani: ti porta lead che il passaparola non ti porterà mai,
+      e ti dà l'autorità per dire di no ai progetti sbagliati. In 6 mesi.
+    </p>
+    <div class="hero-ctas reveal visible reveal-d2">
+      <a href="#contatti" class="btn btn-primary btn-large">
+        Scrivici per la call gratuita
+        <span class="arrow">→</span>
+      </a>
+      <a href="#testimonials" class="link-arrow">Guarda i risultati reali →</a>
+    </div>
+    <div class="hero-trust reveal visible reveal-d3">
+      <div class="hero-trust-item">
+        <p class="quote">"Lavoro da 9.000€ chiuso in 10 giorni dal primo follower."</p>
+        <p class="author">E.T. · Architetto, Cagliari</p>
+      </div>
+      <div class="hero-trust-item">
+        <p class="quote">"Preventivo da 5.800€ firmato. 2 nuove richieste in una settimana."</p>
+        <p class="author">S.F. · Architetto, Nord Italia</p>
+      </div>
+      <div class="hero-trust-item">
+        <p class="quote">"Un nuovo cliente ci ha conosciuto tramite Instagram."</p>
+        <p class="author">A.C. · Studio di architettura</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== PAS ===== -->
+<section id="pas">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">01 — Il problema</div>
+      <h2 class="section-title">Riconosci <span class="accent">questa scena?</span></h2>
+    </div>
+    <div class="pas-grid">
+      <div class="reveal">
+        <ul class="pas-problems">
+          <li>Hai progetti che meriterebbero la copertina di una rivista, ma su Instagram nessuno li vede.</li>
+          <li>Sai che dovresti pubblicare di più. Apri l'app, fissi lo schermo, chiudi.</li>
+          <li>Hai provato un'agenzia generalista. Ti hanno proposto le stesse cose di un dentista.</li>
+          <li>Ogni nuovo cliente arriva via passaparola. Stai dipendendo dalla fortuna.</li>
+          <li>I tuoi competitor mediocri hanno più follower di te. E più richieste.</li>
+        </ul>
+      </div>
+      <div class="pas-solution reveal reveal-d1">
+        <h3>La trasformazione che <span class="accent">vogliamo per te.</span></h3>
+        <p>Non un'agenzia di social media. Un sistema costruito per portarti dove devi essere: il punto di riferimento del tuo territorio. L'architetto che le persone cercano, non quello che insegue.</p>
+        <ul class="check-list">
+          <li>Da architetto invisibile a riferimento del territorio</li>
+          <li>Da rincorrere clienti a sceglierli</li>
+          <li>Da dipendere dal passaparola a generare lead ogni settimana</li>
+          <li>Da "dovrei postare" a "il sistema lo fa per me"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">02 — Trasformazioni reali</div>
+      <h2 class="section-title">Cosa cambia davvero <span class="accent">quando funziona.</span></h2>
+      <p class="section-intro">Non promesse, non case history inventate. Messaggi reali ricevuti dagli studi che hanno completato il percorso. Architetti che hanno smesso di rincorrere e iniziato a scegliere.</p>
+    </div>
+
+    <div class="testi-grid reveal reveal-d1">
+      <!-- SCREEN 1 — Lavoro 9.000€, cliente da Cagliari in 10 giorni -->
+      <figure class="testi-screen">
+        <div class="testi-amount">9.000€ firmato</div>
+        <div class="testi-screen-img">
+          <img src="images/feedback-9000.jpg" alt="Screenshot WhatsApp: lavoro da 9.000€ chiuso in 10 giorni" loading="lazy" />
+        </div>
+        <figcaption>Da follower Instagram a cliente pagante in <strong>10 giorni</strong>. Cliente da Cagliari, mai vista prima.</figcaption>
+      </figure>
+
+      <!-- SCREEN 2 — Preventivo 5.800€ firmato -->
+      <figure class="testi-screen">
+        <div class="testi-amount">5.800€ firmato</div>
+        <div class="testi-screen-img">
+          <img src="images/feedback-5800.jpg" alt="Screenshot WhatsApp: preventivo firmato 5.800€" loading="lazy" />
+        </div>
+        <figcaption>Preventivo firmato dopo la call. <strong>Niente più clienti che spariscono</strong> dopo il primo incontro.</figcaption>
+      </figure>
+
+      <!-- SCREEN 3 — Lead da Instagram -->
+      <figure class="testi-screen">
+        <div class="testi-amount">Lead da IG</div>
+        <div class="testi-screen-img">
+          <img src="images/feedback-leadig.jpg" alt="Screenshot WhatsApp: nuovo cliente conosciuto tramite Instagram" loading="lazy" />
+        </div>
+        <figcaption>Nuovi clienti che <strong>chiamano loro</strong>. Niente più chiamate a freddo né rincorse.</figcaption>
+      </figure>
+
+      <!-- SCREEN 4 — Affiancamento qualitativo -->
+      <figure class="testi-screen">
+        <div class="testi-amount">Affiancamento</div>
+        <div class="testi-screen-img">
+          <img src="images/feedback-affiancamento.jpg" alt="Screenshot WhatsApp: testimonianza qualitativa sull'affiancamento" loading="lazy" />
+        </div>
+        <figcaption>L'autorità per <strong>dire di no</strong> ai progetti che non portano valore. Per un architetto, non ha prezzo.</figcaption>
+      </figure>
+
+      <!-- SCREEN 5 — Studio di fattibilità ristrutturazione -->
+      <figure class="testi-screen">
+        <div class="testi-amount">Nuova richiesta</div>
+        <div class="testi-screen-img">
+          <img src="images/feedback-fattibilita.jpg" alt="Screenshot WhatsApp: studio di fattibilità ristrutturazione" loading="lazy" />
+        </div>
+        <figcaption>Lavori che entrano <strong>ogni settimana</strong>. Da pipeline vuota a calendario sopralluoghi pieno.</figcaption>
+      </figure>
+
+      <!-- SCREEN 6 — Cliente da una storia -->
+      <figure class="testi-screen">
+        <div class="testi-amount">Cliente da una storia</div>
+        <div class="testi-screen-img">
+          <img src="images/feedback-storia.jpg" alt="Screenshot WhatsApp: cliente arrivato da una storia Instagram" loading="lazy" />
+        </div>
+        <figcaption>Una singola storia &rarr; un cliente reale. <strong>Ogni post pubblicato lavora per te</strong>.</figcaption>
+      </figure>
+    </div>
+
+    <div class="testi-disclaimer reveal reveal-d2">
+      Screenshot autentici di WhatsApp ricevuti dai nostri studi clienti.<br>
+      I nomi sono stati oscurati per rispetto della privacy (GDPR).
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHI SONO ===== -->
+<section id="chi-sono">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="images/giacomo-portrait.jpg" alt="Giacomo Bonci, fondatore di Archiconsulting" />
+      </div>
+      <div class="about-content reveal reveal-d1">
+        <div class="section-num">03 &mdash; Chi sono</div>
+        <h2>Giacomo Bonci.<br>Lavoro <span class="highlight">solo</span> con architetti.</h2>
+        <p>Da anni affianco studi di architettura italiani. Ho visto sempre la stessa scena: <span class="highlight">progetti incredibili, comunicazione invisibile</span>. Architetti capaci di firmare opere da copertina, ma senza il tempo (o la voglia) di raccontarle.</p>
+        <p>Ho fondato <span class="highlight">Archiconsulting</span> per risolvere proprio questo: un sistema che genera ogni giorno i tuoi contenuti, calibrati sulla tua voce e sui tuoi progetti reali. Niente agenzie generaliste che ti propongono le stesse idee di un dentista.</p>
+        <p>Solo architetti. Solo il tuo mondo.</p>
+        <p style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text);">
+          <a href="https://instagram.com/giacomo_bonci_archiconsulting" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px;">@giacomo_bonci_archiconsulting</a>
+          &nbsp;&middot;&nbsp;
+          <a href="mailto:info@archiconsulting.it" style="color: var(--text-strong); text-decoration: none;">info@archiconsulting.it</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PER CHI E ===== -->
+<section id="per-chi">
+  <div class="container">
+    <div class="per-chi-grid">
+      <div class="reveal">
+        <div class="section-num">04 &mdash; Per chi &egrave;</div>
+        <h2 class="section-title">Pensato per chi <span class="accent">progetta</span>, non per chi posta.</h2>
+        <p style="color: var(--text-strong); font-size: 17px; line-height: 1.65; max-width: 540px;">
+          Se ti riconosci in almeno tre di queste situazioni, abbiamo qualcosa di cui parlare.
+        </p>
+        <ol class="per-chi-list">
+          <li>Hai uno studio di architettura o sei freelance in Italia.</li>
+          <li>Sai che dovresti pubblicare di pi&ugrave; su Instagram. Non lo fai.</li>
+          <li>Le agenzie social ti hanno proposto le stesse cose del ristorante sotto casa.</li>
+          <li>Vuoi che la tua comunicazione abbia il livello dei tuoi progetti.</li>
+          <li>Hai zero tempo. Niente call settimanali, niente brief continui.</li>
+        </ol>
+      </div>
+      <div class="per-chi-image reveal reveal-d1">
+        <img src="images/workspace-architect.png" alt="Spazio di lavoro di un architetto" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AFFIANCAMENTO ===== -->
+<section id="come-funziona">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">05 &mdash; Affiancamento</div>
+      <h2 class="section-title">Percorso semestrale. <span class="accent">Tool inclusi.</span></h2>
+      <p class="section-intro">L'affiancamento &egrave; un percorso di <strong style="color: var(--primary);">6 mesi</strong>: il tempo necessario per calibrare il brand, lanciare il sistema e vedere risultati misurabili. Tutti i nostri tool sono inclusi nel canone. Il costo &egrave; <strong style="color: var(--primary);">su misura</strong>, in base al problema specifico del tuo studio: lo definiamo insieme nella call iniziale.</p>
+    </div>
+    <div class="steps reveal reveal-d1">
+      <div class="step">
+        <div class="step-number">01 / DISCOVERY</div>
+        <h3>Capiamo se ha senso</h3>
+        <p>15 minuti gratuiti, in call. Tu mi racconti lo studio, io ti dico onestamente se possiamo aiutarti.</p>
+        <span class="duration">15 min</span>
+      </div>
+      <div class="step">
+        <div class="step-number">02 / SETUP</div>
+        <h3>Calibratura del brand</h3>
+        <p>Definiamo voce, colori, tono, primi argomenti. Ti chiediamo materiali, non tempo. Faccio io il lavoro pesante.</p>
+        <span class="duration">1-2 giorni</span>
+      </div>
+      <div class="step">
+        <div class="step-number">03 / PRODUCE</div>
+        <h3>Il sistema produce</h3>
+        <p>Ogni mattina i contenuti vengono generati e depositati in cartella OneDrive condivisa con te.</p>
+        <span class="duration">Ogni giorno</span>
+      </div>
+      <div class="step">
+        <div class="step-number">04 / TU PUBBLICHI</div>
+        <h3>Tu pubblichi (o deleghi)</h3>
+        <p>Apri la cartella, scegli, pubblichi. Tu hai sempre il controllo. 5-10 minuti al giorno.</p>
+        <span class="duration">5-10 min/g</span>
+      </div>
+    </div>
+    <div class="affianc-cta reveal reveal-d2">
+      <div class="affianc-cta-text">
+        <strong>Costo dell'affiancamento? Su misura.</strong>
+        <span>Dipende dal punto di partenza dello studio e dal problema da risolvere. Lo definiamo in call.</span>
+      </div>
+      <a href="#contatti" class="btn btn-primary">Scrivici per la call <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOL ===== -->
+<section id="tool">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">06 &mdash; I tool</div>
+      <h2 class="section-title">Due applicazioni che <span class="accent">lavorano per te.</span></h2>
+      <p class="section-intro">Tutti i nostri tool sono <strong style="color: var(--accent);">inclusi gratuitamente</strong> nel percorso semestrale di affiancamento. Per chi non fa l'affiancamento, sono disponibili anche standalone, con canone annuale.</p>
+    </div>
+
+    <!-- ===== PACCHETTO 01: SCRAPER IG AI ===== -->
+    <article class="tool-package reveal reveal-d1">
+      <header class="tool-package-header">
+        <div class="package-num">Pacchetto 01</div>
+        <h3 class="package-name">Scraper IG AI</h3>
+        <p class="package-tagline">L'AI che scrapa la tua nicchia e ti dice cosa pubblicare.</p>
+      </header>
+
+      <div class="tool-package-body">
+      <!-- Mockup di un report Scraper IG AI -->
+      <div class="report-mockup">
+        <div class="report-header">
+          <div class="report-dot dot-r"></div>
+          <div class="report-dot dot-y"></div>
+          <div class="report-dot dot-g"></div>
+          <span class="report-title">report.architetti-italiani.pdf</span>
+        </div>
+        <div class="report-body">
+          <div class="report-section-label">NICCHIA ANALIZZATA</div>
+          <div class="report-niche">architetti italiani</div>
+
+          <div class="report-divider"></div>
+
+          <div class="report-section-label">10 IDEE TOP</div>
+          <div class="report-idea">
+            <div class="report-idea-num">01</div>
+            <div class="report-idea-text">"Ristrutturazione: 3 errori che ti costano 8.000&euro;"</div>
+            <div class="report-idea-score">94</div>
+          </div>
+          <div class="report-idea">
+            <div class="report-idea-num">02</div>
+            <div class="report-idea-text">"Quanto costa davvero ristrutturare al mq?"</div>
+            <div class="report-idea-score">89</div>
+          </div>
+          <div class="report-idea">
+            <div class="report-idea-num">03</div>
+            <div class="report-idea-text">"Permesso di costruire vs SCIA: la differenza"</div>
+            <div class="report-idea-score">87</div>
+          </div>
+          <div class="report-idea report-idea-faded">
+            <div class="report-idea-num">04</div>
+            <div class="report-idea-text">"Bonus 2026: cosa cambia per la casa"</div>
+            <div class="report-idea-score">82</div>
+          </div>
+
+          <div class="report-divider"></div>
+
+          <div class="report-stats">
+            <div class="report-stat">
+              <span class="report-stat-num">347</span>
+              <span class="report-stat-label">Post analizzati</span>
+            </div>
+            <div class="report-stat">
+              <span class="report-stat-num">19:30</span>
+              <span class="report-stat-label">Orario top</span>
+            </div>
+            <div class="report-stat">
+              <span class="report-stat-num">42s</span>
+              <span class="report-stat-label">Reel ottimo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-info">
+        <p class="tool-description">Inserisci la tua nicchia (es. "architetti italiani") e il tuo profilo Instagram. In 5 minuti ricevi un report completo. Niente pi&ugrave; indovinare cosa pubblicare.</p>
+        <ul class="tool-features">
+          <li>10 idee concrete pronte da pubblicare per la tua nicchia</li>
+          <li>I format che stanno funzionando in questo momento (Reel, carosello, post)</li>
+          <li>Ganci ricorrenti che generano view e salvataggi</li>
+          <li>Durata ottimale dei Reel + orari di pubblicazione top</li>
+          <li>Caption template basati su quelli che convertono davvero</li>
+          <li>Report in PDF + JSON &mdash; tutto pronto in 5 minuti</li>
+          <li>Niente collegamento al tuo account IG &mdash; zero rischio ban</li>
+        </ul>
+      </div>
+      </div>
+
+    <!-- PRICING ROW Scraper IG AI -->
+    <div class="pricing-row">
+      <div class="pricing-block included">
+        <div class="pricing-tag">Con affiancamento &middot; 6 mesi</div>
+        <div class="pricing-value">Incluso</div>
+        <div class="pricing-note">Compreso nel percorso semestrale di affiancamento. Costo su preventivo.</div>
+        <a href="#contatti" class="btn btn-primary">Scrivici per la call <span class="arrow">&rarr;</span></a>
+      </div>
+      <div class="pricing-block standalone">
+        <div class="pricing-tag-row">
+          <span class="pricing-tag">Standalone</span>
+          <span class="launch-badge">Offerta lancio</span>
+        </div>
+        <div class="pricing-value">
+          <span class="old-price">&euro;99/anno</span>
+          &euro;39<span class="period">/anno</span>
+        </div>
+        <div class="pricing-note">+ IVA. Accesso illimitato per 12 mesi. Niente collegamento al tuo account IG. Prezzo destinato a salire.</div>
+        <a href="https://scraper.giacomobonci.com" target="_blank" rel="noopener" class="btn btn-secondary">Acquista il tool <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+    </article>
+
+    <!-- ===== PACCHETTO 02: STORIE IG AUTO ===== -->
+    <article class="tool-package reveal">
+      <header class="tool-package-header">
+        <div class="package-num">Pacchetto 02</div>
+        <h3 class="package-name">Storie IG Auto</h3>
+        <p class="package-tagline">Le tue storie Instagram, generate ogni mattina.</p>
+      </header>
+
+      <div class="tool-package-body tool-package-body-reverse">
+      <div class="tool-info">
+        <p class="tool-description">Il sistema produce 2 storie al giorno per il tuo studio, allineate al tuo brand, al tuo tono e ai tuoi progetti reali. Ti arrivano in cartella OneDrive condivisa: tu apri, scegli, pubblichi.</p>
+        <ul class="tool-features">
+          <li>2 storie al giorno (configurabili fino a 4)</li>
+          <li>Voce calibrata sui tuoi testi reali, non template generici</li>
+          <li>Brand kit personalizzato (colori, logo, font Futura)</li>
+          <li>Cartella OneDrive condivisa &mdash; niente app da imparare</li>
+          <li>Sistema "non mi piace" che impara dai tuoi gusti</li>
+          <li>Argomenti rinnovati automaticamente ogni 2 settimane</li>
+          <li>Setup gestito da noi &mdash; tu non tocchi un'impostazione</li>
+        </ul>
+      </div>
+      <!-- Mockup storia IG -->
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="story-progress"></div>
+          <div>
+            <div class="story-title">Ristrutturazione: come scegliere l'architetto</div>
+            <div class="story-body">Il <span class="k">90% dei clienti</span> sceglie il primo che chiama. &Egrave; il motivo per cui poi si pentono.<br><br>Senza un confronto serio, non puoi sapere se quel preventivo &egrave; in linea con il mercato.</div>
+            <div class="story-image-block">PROGETTO STUDIO</div>
+            <div class="story-bottom">Confronta sempre <span class="k">3 preventivi</span>. Il prezzo pi&ugrave; basso non &egrave; quasi mai la scelta giusta.</div>
+          </div>
+          <div class="story-footer">
+            <div class="story-avatar"></div>
+            <div>
+              <div class="story-meta-name">studio.bonci.archi</div>
+              <div class="story-meta-tagline">CONSULENTE PER ARCHITETTI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- PRICING ROW Storie IG Auto -->
+      <div class="pricing-row">
+        <div class="pricing-block included">
+          <div class="pricing-tag">Con affiancamento &middot; 6 mesi</div>
+          <div class="pricing-value">Incluso</div>
+          <div class="pricing-note">Compreso nel percorso semestrale di affiancamento. Setup gestito da noi.</div>
+          <a href="#contatti" class="btn btn-primary">Scrivici per la call <span class="arrow">&rarr;</span></a>
+        </div>
+        <div class="pricing-block standalone">
+          <div class="pricing-tag-row">
+            <span class="pricing-tag">Standalone</span>
+          </div>
+          <div class="pricing-value">
+            &euro;290<span class="period">/anno</span>
+          </div>
+          <div class="pricing-note">+ IVA. Setup brand una tantum gestito da noi (1-2 giorni). Acquisto su call: ti contattiamo per configurare il sistema sul tuo studio.</div>
+          <!-- DA SOSTITUIRE: quando avr&agrave; un dominio dedicato per il tool storie, sostituisci href con il link diretto. Per ora apre mail. -->
+          <a href="mailto:info@archiconsulting.it?subject=Storie%20IG%20Auto%20%E2%80%94%20Voglio%20attivarlo&body=Ciao%2C%0A%0Asono%20interessato%2Fa%20al%20tool%20Storie%20IG%20Auto%20standalone%20a%20290%E2%82%AC%2Fanno.%0A%0AParliamone%20in%20call%3F%0A%0AGrazie%2C" class="btn btn-secondary">Voglio attivarlo <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">07 &mdash; Domande frequenti</div>
+      <h2 class="section-title">Le obiezioni <span class="accent">tipiche.</span> Affrontate.</h2>
+    </div>
+    <div class="faq-list reveal reveal-d1">
+      <details>
+        <summary>Qual &egrave; la differenza tra affiancamento e tool standalone?</summary>
+        <p>L'<strong style="color: var(--accent);">affiancamento</strong> &egrave; un percorso semestrale: ti seguiamo per 6 mesi dalla calibratura del brand al lancio, generiamo noi i tuoi contenuti chiavi in mano, e tutti i nostri tool sono inclusi nel canone. &Egrave; la strada pi&ugrave; solida se vuoi risultati misurabili. Il <strong style="color: var(--accent);">tool standalone</strong> (Scraper IG AI) &egrave; self-service: paghi 39&euro;/anno, inserisci nicchia e profilo IG, e ricevi un report con 10 idee da pubblicare. Buono se sei gi&agrave; autonomo e ti basta lo strumento.</p>
+      </details>
+      <details>
+        <summary>Quanto costa l'affiancamento?</summary>
+        <p>Il costo &egrave; <strong style="color: var(--accent);">su misura</strong>: dipende dal punto di partenza del tuo studio e dal problema specifico da risolvere. Per questo definiamo l'investimento insieme nella call iniziale, dopo aver capito davvero cosa ti serve. Quello che &egrave; certo: percorso di 6 mesi, tool inclusi, niente sorprese in corso d'opera.</p>
+      </details>
+      <details>
+        <summary>I contenuti sembrano fatti dall'AI?</summary>
+        <p>No. La voce viene calibrata sui tuoi testi reali nelle prime fasi del setup. Il sistema parte dal tuo modo di scrivere, non da un template generico. La differenza si sente al primo post pubblicato.</p>
+      </details>
+      <details>
+        <summary>Devo approvare ogni post prima che esca?</summary>
+        <p>No. I contenuti finiscono nella tua cartella condivisa: tu pubblichi quelli che ti convincono. Se uno non ti piace, lo sposti in una cartella "dislike" e il sistema impara a evitare quel tipo di angolo.</p>
+      </details>
+      <details>
+        <summary>Funziona se ho davvero zero tempo?</summary>
+        <p>&Egrave; pensato esattamente per questo. Il tuo unico impegno regolare &egrave; aprire la cartella e pubblicare. 5-10 minuti al giorno. Fattibile mentre prendi il caff&egrave;.</p>
+      </details>
+      <details>
+        <summary>Qual &egrave; la differenza tra voi e un'agenzia social generalista?</summary>
+        <p>Le agenzie generaliste lavorano con dentisti, ristoranti, parrucchieri. Noi facciamo solo studi di architettura. Conosciamo i tuoi clienti, le tue obiezioni, il tuo cantiere. Non perdiamo tempo a "capire il settore".</p>
+      </details>
+      <details>
+        <summary>Dopo quanto vedo risultati?</summary>
+        <p>Su Instagram i risultati si vedono tra 2-6 mesi di pubblicazione costante. Per questo l'affiancamento &egrave; semestrale: in 6 mesi i nostri studi clienti hanno firmato in media oltre 30.000&euro; di nuovi progetti. Chi promette risultati prima ti sta mentendo.</p>
+      </details>
+      <details>
+        <summary>Posso disdire quando voglio?</summary>
+        <p>Il tool standalone &egrave; un canone annuale: paghi una volta per 12 mesi di accesso, alla scadenza scegli se rinnovare o no. Niente rinnovo automatico. Sull'affiancamento &egrave; un patto semestrale: se firmi per 6 mesi, sono 6 mesi. &Egrave; la durata che serve per portare risultati, e la dichiariamo in trasparenza.</p>
+      </details>
+      <details>
+        <summary>I contenuti sono solo storie o anche post feed?</summary>
+        <p>Per ora il sistema genera solo storie Instagram. Stiamo lavorando ai post feed e ai reel: se ti servono, parliamone in call e ti dico onestamente quando saranno pronti.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINALE ===== -->
+<section class="cta-final" id="contatti">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num" style="justify-content: center;">08 &mdash; Iniziamo</div>
+      <h2>Tra 6 mesi puoi essere <span class="accent">un altro architetto.</span></h2>
+      <p>Quello che le persone cercano, non quello che insegue. Scrivici una mail: ti rispondiamo entro 24 ore e fissiamo insieme la call gratuita di 15 minuti.</p>
+      <a href="mailto:info@archiconsulting.it?subject=Call%20conoscitiva%20%E2%80%94%20Archiconsulting&body=Ciao%2C%0A%0Asono%20un%20architetto%2Fa%20e%20vorrei%20capire%20come%20potreste%20aiutare%20il%20mio%20studio.%0A%0AParliamone%20in%20call%3F%0A%0AGrazie%2C" class="btn btn-primary btn-large">Scrivici a info@archiconsulting.it <span class="arrow">&rarr;</span></a>
+      <p class="cta-mail-line">Tasto non funziona? Copia <strong>info@archiconsulting.it</strong> nel tuo client mail.</p>
+      <div class="cta-final-meta">
+        <div class="cta-final-meta-item">Risposta in 24h</div>
+        <div class="cta-final-meta-item">Call 15 min</div>
+        <div class="cta-final-meta-item">No vendita forzata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<a href="#contatti" class="sticky-cta">Scrivici per la call gratuita &rarr;</a>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo" style="display:inline-block; margin-bottom: 8px;">ARCHICONSULTING<span class="dot">.</span></a>
+        <p class="brand-tagline">Marketing Instagram per studi di architettura italiani. Sistema di generazione automatica contenuti + affiancamento semestrale dedicato.</p>
+      </div>
+      <div>
+        <h4>Sito</h4>
+        <a href="#testimonials">Risultati</a>
+        <a href="#chi-sono">Chi sono</a>
+        <a href="#come-funziona">Affiancamento</a>
+        <a href="#tool">Tool</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Contatti</h4>
+        <a href="mailto:info@archiconsulting.it">info@archiconsulting.it</a>
+        <a href="https://instagram.com/giacomo_bonci_archiconsulting" target="_blank" rel="noopener">Instagram</a>
+        <a href="#contatti">Scrivici</a>
+      </div>
+      <div>
+        <h4>Legale</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Cookie</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span id="year"></span> Archiconsulting &middot; Giacomo Bonci &middot; CF BNCGCM93S09D786L &middot; P.IVA 02373060512</div>
+      <div>Made in Italy</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('topnav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+
+  const stickyCta = document.querySelector('.sticky-cta');
+  const ctaSection = document.getElementById('contatti');
+  const stickyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        stickyCta.style.display = entry.isIntersecting ? 'none' : '';
+      });
+    },
+    { threshold: 0.3 }
+  );
+  stickyObserver.observe(ctaSection);
+</script>
+
+</body>
+</html>
