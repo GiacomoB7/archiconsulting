@@ -2,20 +2,19 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Archiconsulting — Smetti di rincorrere clienti. Inizia a sceglierli.</title>
-<meta name="description" content="Il primo sistema di marketing per architetti italiani. Ti porta lead che il passaparola non ti porterà mai, e ti dà l'autorità per dire di no ai progetti sbagliati. In 6 mesi." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0F0F12" />
+<title>Archiconsulting — Il tuo personal brand, trasformato in clienti. Con l'IA.</title>
+<meta name="description" content="Costruiamo il personal brand dei professionisti e lo trasformiamo in clienti: contenuti scritti dall'IA con la tua voce, strategia settimanale, pubblicità gestita da noi. Affiancamento di 6 mesi." />
 
 <!--
-  Sito pronto per la pubblicazione.
-
-  Tutti i placeholder sono chiusi:
-    - prezzo tool standalone: €39/mese (offerta lancio, da €99)
-    - call: gestita via mail a info@archiconsulting.it
-    - mail: info@archiconsulting.it (in nav, sezioni e footer)
-    - dati fiscali: CF + P.IVA nel footer
-
-  Testimonianze: 6 screenshot WhatsApp con nomi oscurati per GDPR.
+  Landing aggiornata al 02/07/2026.
+  - Servizio principale: Affiancamento Personal Brand AI (+ Consulting.AI e Cervello+Campagne)
+  - NIENTE prezzi sul sito: investimento definito in call
+  - CTA = modulo a step (nicchia, profilo avviato, da quanto, contatti)
+  - Invio modulo: FormSubmit -> info@archiconsulting.it
+    ATTENZIONE: al primo invio dal sito online FormSubmit manda una mail di
+    attivazione a info@archiconsulting.it. Va cliccata una volta sola.
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,8 +51,6 @@
     --text-strong: #B5B5BD;
     --border: rgba(245, 240, 230, 0.08);
     --border-strong: rgba(245, 240, 230, 0.14);
-    --whats-bg: #ECE5DD;
-    --whats-bubble: #FFFFFF;
     --max: 1320px;
     --pad: 40px;
   }
@@ -172,6 +169,12 @@
   }
   .btn-primary .arrow { transition: transform 0.25s; }
   .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+    box-shadow: none;
+  }
   .btn-large {
     padding: 22px 40px;
     font-size: 16px;
@@ -260,13 +263,12 @@
     max-width: 1100px;
   }
   .hero h1 .accent { color: var(--accent); font-style: italic; }
-  .hero h1 .accent-block { color: var(--accent); }
   .hero h1 .line { display: block; }
   .hero .sub {
     font-size: clamp(17px, 1.35vw, 21px);
     color: var(--text-strong);
     margin-bottom: 44px;
-    max-width: 640px;
+    max-width: 660px;
     line-height: 1.55;
     font-weight: 500;
   }
@@ -305,210 +307,10 @@
     font-weight: 600;
   }
 
-  /* ===== INTRO BREVE ===== */
-  #intro {
-    padding: 80px 0 100px;
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-    border-top: 1px solid var(--border);
-  }
-  .intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .intro-headline {
-    font-family: 'Futura', sans-serif;
-    font-weight: 700;
-    font-size: clamp(28px, 3.5vw, 44px);
-    line-height: 1.1;
-    letter-spacing: -1px;
-    margin: 0;
-  }
-  .intro-headline .accent { color: var(--accent); font-style: italic; }
-  .intro-lead {
-    font-size: 16px;
-    color: var(--text-strong);
-    line-height: 1.65;
-    margin-top: 20px;
-  }
-  .intro-pitch {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 4px;
-    padding: 32px 36px;
-  }
-  .intro-pitch p {
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--primary);
-    margin: 0;
-  }
-
-  /* ===== SERVICES (3 card) ===== */
-  #servizi {
-    padding-bottom: 110px;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1.05fr 1fr 1fr;
-    gap: 24px;
-    margin-top: 56px;
-    align-items: stretch;
-  }
-  .service-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 40px 32px 32px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-  }
-  .service-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-    box-shadow: 0 20px 56px rgba(0,0,0,0.3);
-  }
-  .service-card-featured {
-    background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%);
-    border-color: var(--accent);
-    border-width: 2px;
-    box-shadow: 0 0 0 1px rgba(232,184,67,0.2), 0 24px 64px rgba(0,0,0,0.35);
-    transform: translateY(-8px);
-  }
-  .service-card-featured:hover { transform: translateY(-12px); }
-  .service-badge {
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent);
-    color: var(--bg);
-    font-family: 'Futura', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 8px 18px;
-    border-radius: 999px;
-    box-shadow: 0 8px 24px rgba(232,184,67,0.3);
-  }
-  .service-tag {
-    font-family: 'Futura', sans-serif;
-    font-size: 11px;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-  .service-name {
-    font-family: 'Futura', sans-serif;
-    font-weight: 700;
-    font-size: clamp(34px, 3.2vw, 44px);
-    line-height: 1.05;
-    letter-spacing: -1.5px;
-    margin: 0 0 14px;
-    color: var(--primary);
-  }
-  .service-tagline {
-    font-size: 17px;
-    color: var(--text-strong);
-    line-height: 1.45;
-    font-style: italic;
-    margin-bottom: 28px;
-    min-height: 50px;
-  }
-  .service-tagline .accent {
-    color: var(--accent);
-    font-style: italic;
-    font-weight: 600;
-  }
-  .service-features {
-    list-style: none;
-    margin: 0 0 32px;
-    padding: 0;
-    flex-grow: 1;
-  }
-  .service-features li {
-    padding: 10px 0;
-    padding-left: 26px;
-    position: relative;
-    font-size: 14.5px;
-    color: var(--primary);
-    line-height: 1.5;
-    border-bottom: 1px solid var(--border);
-  }
-  .service-features li:last-child { border-bottom: none; }
-  .service-features li::before {
-    content: '\2713';
-    position: absolute;
-    left: 0; top: 11px;
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .service-features li strong {
-    color: var(--primary);
-    font-weight: 700;
-  }
-  .service-price {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 20px 22px;
-    margin-bottom: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .service-card-featured .service-price {
-    background: rgba(232,184,67,0.06);
-    border-color: rgba(232,184,67,0.25);
-  }
-  .service-price-label {
-    font-size: 10px;
-    color: var(--text);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  .service-price-value {
-    font-family: 'Futura', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-  .service-price-value .period {
-    font-size: 14px;
-    color: var(--text);
-    font-weight: 500;
-    letter-spacing: 0;
-  }
-  .service-price-old {
-    font-size: 14px;
-    color: var(--text);
-    text-decoration: line-through;
-  }
-  .service-price-note {
-    font-size: 12px;
-    color: var(--text);
-    line-height: 1.45;
-    margin-top: 4px;
-  }
-  .service-card .btn { width: 100%; justify-content: center; }
-
   /* ===== SECTIONS GENERIC ===== */
   section {
     padding: 130px 0;
     position: relative;
-  }
-  .section-num {
-    display: none !important;
   }
   .section-title {
     font-family: 'Futura', sans-serif;
@@ -529,8 +331,9 @@
   }
 
   /* ===== PAS (problema/soluzione) ===== */
-  #pas {
+  #problema {
     background: var(--bg);
+    border-top: 1px solid var(--border);
   }
   .pas-grid {
     display: grid;
@@ -603,11 +406,344 @@
     font-weight: 700;
   }
 
-  /* ===== TESTIMONIALS ===== */
-  #testimonials {
+  /* ===== SERVIZI (3 card, senza prezzi) ===== */
+  #servizi { background: var(--bg); padding-top: 0; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 56px;
+    align-items: stretch;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.3);
+  }
+  .service-card-featured {
+    background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%);
+    border-color: var(--accent);
+    border-width: 2px;
+    box-shadow: 0 0 0 1px rgba(232,184,67,0.2), 0 24px 64px rgba(0,0,0,0.35);
+    transform: translateY(-8px);
+  }
+  .service-card-featured:hover { transform: translateY(-12px); }
+  .service-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(232,184,67,0.3);
+    white-space: nowrap;
+  }
+  .service-tag {
+    font-family: 'Futura', sans-serif;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .service-name {
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 3vw, 40px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin: 0 0 14px;
+    color: var(--primary);
+  }
+  .service-tagline {
+    font-size: 17px;
+    color: var(--text-strong);
+    line-height: 1.45;
+    font-style: italic;
+    margin-bottom: 28px;
+    min-height: 50px;
+  }
+  .service-tagline .accent {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 600;
+  }
+  .service-features {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+    flex-grow: 1;
+  }
+  .service-features li {
+    padding: 10px 0;
+    padding-left: 26px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--primary);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+  }
+  .service-features li:last-child { border-bottom: none; }
+  .service-features li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0; top: 11px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .service-features li strong {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .service-card .btn { width: 100%; justify-content: center; }
+  .service-secondary-link {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .service-secondary-link a { color: var(--accent); }
+
+  /* ===== METODO (4 pilastri) ===== */
+  #metodo {
     background: var(--bg-2);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .step {
+    padding: 44px 28px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.25s;
+  }
+  .step:last-child { border-right: none; }
+  .step:hover { background: var(--bg-3); }
+  .step-number {
+    font-family: 'Futura', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 3px;
+    margin-bottom: 28px;
+  }
+  .step h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  .step p {
+    font-size: 15px;
+    color: var(--text-strong);
+    line-height: 1.65;
+  }
+  .step .duration {
+    display: inline-block;
+    margin-top: 22px;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--accent-soft);
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  /* ===== RECAP AFFIANCAMENTO (senza prezzi) ===== */
+  .price-card {
+    margin-top: 64px;
+    background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: center;
+    box-shadow: 0 0 0 1px rgba(232,184,67,0.2), 0 24px 64px rgba(0,0,0,0.35);
+    position: relative;
+  }
+  .price-badge {
+    position: absolute;
+    top: -14px;
+    left: 48px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Futura', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(232,184,67,0.3);
+  }
+  .price-card h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: clamp(26px, 2.6vw, 36px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .price-card .price-includes {
+    list-style: none;
+  }
+  .price-card .price-includes li {
+    padding: 9px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 15px;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+  }
+  .price-card .price-includes li:last-child { border-bottom: none; }
+  .price-card .price-includes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .price-box {
+    text-align: center;
+    padding: 36px 28px;
+    background: rgba(232,184,67,0.06);
+    border: 1px solid rgba(232,184,67,0.25);
+    border-radius: 6px;
+  }
+  .price-box .price-label {
+    font-size: 11px;
+    color: var(--text);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .price-box .price-value {
+    font-family: 'Futura', sans-serif;
+    font-size: clamp(40px, 4vw, 54px);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -1.5px;
+    display: block;
+  }
+  .price-box .price-period {
+    font-size: 15px;
+    color: var(--text-strong);
+    display: block;
+    margin: 8px 0 14px;
+  }
+  .price-box .price-note {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+  .price-box .btn { width: 100%; }
+
+  /* ===== COME FUNZIONA ===== */
+  #come-funziona { background: var(--bg); }
+  .onboarding {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .onboarding-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px 32px;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .onboarding-step:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  /* ===== PER CHI ===== */
+  #per-chi {
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .fit-col {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px 36px;
+  }
+  .fit-col.fit-yes { border-left: 3px solid var(--accent); }
+  .fit-col.fit-no { border-left: 3px solid #B33B3B; }
+  .fit-col h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .fit-col ul { list-style: none; }
+  .fit-col li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+  }
+  .fit-col li:last-child { border-bottom: none; }
+  .fit-yes li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .fit-no li::before {
+    content: '✕';
+    position: absolute; left: 0;
+    color: #B33B3B;
+    font-weight: 700;
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  #risultati {
+    background: var(--bg);
   }
   .testi-grid {
     display: grid;
@@ -682,7 +818,9 @@
 
   /* ===== ABOUT ===== */
   #chi-sono {
-    background: var(--bg);
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
   .about-grid {
     display: grid;
@@ -695,7 +833,7 @@
     aspect-ratio: 4/5;
     border-radius: 4px;
     overflow: hidden;
-    background: var(--bg-2);
+    background: var(--bg-3);
   }
   .about-photo img {
     width: 100%;
@@ -734,618 +872,6 @@
     opacity: 0.88;
   }
   .about-content .highlight { color: var(--accent); font-weight: 700; }
-
-  /* ===== WHO IS IT FOR ===== */
-  #per-chi {
-    background: var(--bg-2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .per-chi-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .per-chi-image {
-    aspect-ratio: 3/2;
-    border-radius: 4px;
-    overflow: hidden;
-    background: var(--bg-3);
-    border: 1px solid var(--border);
-  }
-  .per-chi-image img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .per-chi-list {
-    list-style: none;
-    margin-top: 24px;
-    counter-reset: item;
-  }
-  .per-chi-list li {
-    padding: 22px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    font-size: 17px;
-    line-height: 1.5;
-  }
-  .per-chi-list li:last-child { border-bottom: none; }
-  .per-chi-list li::before {
-    content: counter(item, decimal-leading-zero);
-    counter-increment: item;
-    color: var(--accent);
-    font-family: 'Futura', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 2px;
-    flex-shrink: 0;
-    padding-top: 2px;
-  }
-
-  /* ===== AFFIANCAMENTO (steps) ===== */
-  #come-funziona {
-    background: var(--bg);
-  }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--border);
-  }
-  .step {
-    padding: 44px 28px;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    transition: background 0.25s;
-  }
-  .step:last-child { border-right: none; }
-  .step:hover { background: var(--bg-2); }
-  .step-number {
-    font-family: 'Futura', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 3px;
-    margin-bottom: 28px;
-  }
-  .step h3 {
-    font-family: 'Futura', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-  }
-  .step p {
-    font-size: 15px;
-    color: var(--text-strong);
-    line-height: 1.65;
-  }
-  .step .duration {
-    display: inline-block;
-    margin-top: 22px;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    background: var(--accent-soft);
-    border-radius: 999px;
-    font-weight: 600;
-  }
-  .affianc-cta {
-    margin-top: 56px;
-    padding: 32px;
-    background: var(--bg-2);
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .affianc-cta-text {
-    flex: 1;
-    min-width: 280px;
-  }
-  .affianc-cta-text strong {
-    display: block;
-    font-family: 'Futura', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .affianc-cta-text span {
-    color: var(--text-strong);
-    font-size: 15px;
-  }
-
-  /* ===== TOOL ===== */
-  #tool {
-    background: var(--bg-2);
-    border-top: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  #tool::before {
-    content: '';
-    position: absolute;
-    top: 0; right: -25%;
-    width: 70%; height: 100%;
-    background-image: url('images/blueprint-pattern.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.15;
-    pointer-events: none;
-  }
-  #tool .container { position: relative; z-index: 2; }
-
-  .tool-showcase {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 64px;
-    align-items: center;
-    margin-top: 40px;
-    margin-bottom: 60px;
-  }
-
-  /* ===== TOOL PACKAGE — card prodotto ===== */
-  .tool-package {
-    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-2) 100%);
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    padding: 56px 56px 48px;
-    margin-top: 56px;
-    position: relative;
-    overflow: hidden;
-  }
-  .tool-package::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 4px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-  }
-  .tool-package::after {
-    content: '';
-    position: absolute;
-    top: -1px; right: -1px;
-    width: 80px; height: 1px;
-    background: var(--accent);
-  }
-  .tool-package + .tool-package {
-    margin-top: 96px;
-  }
-  .tool-package-header {
-    margin-bottom: 56px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .package-num {
-    font-family: 'Futura', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    background: var(--accent-soft);
-    align-self: flex-start;
-    margin-bottom: 8px;
-  }
-  .package-name {
-    font-family: 'Futura', sans-serif;
-    font-weight: 700;
-    font-size: clamp(48px, 6.5vw, 88px);
-    line-height: 0.95;
-    letter-spacing: -2.5px;
-    color: var(--primary);
-    margin: 0;
-  }
-  .package-tagline {
-    font-size: clamp(18px, 1.6vw, 24px);
-    color: var(--accent);
-    font-weight: 500;
-    line-height: 1.3;
-    font-style: italic;
-    max-width: 760px;
-  }
-  .tool-package-body {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 64px;
-    align-items: center;
-    margin-bottom: 48px;
-  }
-  .tool-package-body-reverse {
-    grid-template-columns: 1.1fr 1fr;
-  }
-  .tool-package-body-reverse .tool-info { order: 0; }
-  .tool-package-body-reverse .phone-mockup { order: 1; }
-  .tool-description {
-    font-size: 17px;
-    color: var(--text-strong);
-    margin-bottom: 28px;
-    line-height: 1.65;
-  }
-  /* Mockup di un report Scraper IG AI */
-  .report-mockup {
-    background: #1A1A1F;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-    max-width: 460px;
-    margin: 0 auto;
-    font-family: 'Futura', 'Jost', sans-serif;
-  }
-  .report-header {
-    background: #25252B;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  .report-dot {
-    width: 11px; height: 11px;
-    border-radius: 50%;
-  }
-  .dot-r { background: #FF5F56; }
-  .dot-y { background: #FFBD2E; }
-  .dot-g { background: #27C93F; }
-  .report-title {
-    color: var(--text);
-    font-size: 12px;
-    margin-left: 12px;
-    letter-spacing: 0.3px;
-    font-family: 'Courier New', monospace;
-  }
-  .report-body {
-    padding: 28px 26px;
-  }
-  .report-section-label {
-    font-size: 10px;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 8px;
-  }
-  .report-niche {
-    font-family: 'Futura', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary);
-    letter-spacing: -0.5px;
-    line-height: 1.1;
-    margin-bottom: 4px;
-  }
-  .report-divider {
-    height: 1px;
-    background: var(--border);
-    margin: 22px 0 18px;
-  }
-  .report-idea {
-    display: grid;
-    grid-template-columns: 28px 1fr 38px;
-    gap: 14px;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .report-idea:last-of-type {
-    border-bottom: none;
-  }
-  .report-idea-faded {
-    opacity: 0.4;
-  }
-  .report-idea-num {
-    font-family: 'Futura', sans-serif;
-    font-size: 11px;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  .report-idea-text {
-    font-size: 13px;
-    color: var(--primary);
-    line-height: 1.35;
-    font-weight: 500;
-  }
-  .report-idea-score {
-    font-family: 'Futura', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--accent);
-    text-align: right;
-    letter-spacing: -0.5px;
-  }
-  .report-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 16px;
-    background: rgba(232, 184, 67, 0.06);
-    border-radius: 4px;
-    border: 1px solid rgba(232, 184, 67, 0.18);
-  }
-  .report-stat {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 2px;
-  }
-  .report-stat-num {
-    font-family: 'Futura', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    letter-spacing: -0.5px;
-  }
-  .report-stat-label {
-    font-size: 9px;
-    color: var(--text);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-
-  /* Mockup di una storia IG generata (Storie IG Auto) */
-  .phone-mockup {
-    aspect-ratio: 9/16;
-    max-width: 320px;
-    margin: 0 auto;
-    background: var(--bg-3);
-    border: 8px solid #2A2A30;
-    border-radius: 36px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-  }
-  .phone-screen {
-    width: 100%; height: 100%;
-    background: linear-gradient(180deg, #2F2F35 0%, #1A1A1F 100%);
-    padding: 42px 26px 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #F2F2F2;
-    font-family: 'Futura', sans-serif;
-    position: relative;
-  }
-  .phone-screen::before {
-    content: '';
-    position: absolute;
-    top: 14px; left: 50%;
-    transform: translateX(-50%);
-    width: 90px; height: 4px;
-    background: #444;
-    border-radius: 4px;
-  }
-  .story-progress {
-    position: absolute;
-    top: 28px;
-    left: 16px; right: 16px;
-    height: 2px;
-    background: rgba(255,255,255,0.25);
-    border-radius: 2px;
-  }
-  .story-progress::after {
-    content: '';
-    display: block;
-    height: 100%;
-    width: 35%;
-    background: white;
-    border-radius: 2px;
-  }
-  .story-title {
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-top: 24px;
-    color: #E8B843;
-    letter-spacing: -0.5px;
-  }
-  .story-body {
-    font-size: 12px;
-    line-height: 1.5;
-    color: #F2F2F2;
-    margin-top: 14px;
-    font-weight: 500;
-  }
-  .story-body .k { color: #E8B843; font-weight: 700; }
-  .story-image-block {
-    margin: 14px 0;
-    height: 110px;
-    background: linear-gradient(135deg, #4a4a55 0%, #2a2a30 100%);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.3);
-    font-size: 10px;
-    letter-spacing: 2px;
-  }
-  .story-bottom {
-    font-size: 11px;
-    color: #F2F2F2;
-    line-height: 1.5;
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-  .story-footer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255,255,255,0.15);
-  }
-  .story-avatar {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #555, #333);
-    flex-shrink: 0;
-  }
-  .story-meta-name {
-    font-size: 11px; font-weight: 700;
-    color: #F2F2F2;
-  }
-  .story-meta-tagline {
-    font-size: 8px; color: #999;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .tool-info h3 {
-    font-family: 'Futura', sans-serif;
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 18px;
-    letter-spacing: -1px;
-  }
-  .tool-tag {
-    display: inline-block;
-    font-size: 11px;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    margin-bottom: 20px;
-  }
-  .tool-info > p {
-    font-size: 16px;
-    color: var(--text-strong);
-    margin-bottom: 28px;
-    line-height: 1.65;
-  }
-  .tool-features {
-    list-style: none;
-  }
-  .tool-features li {
-    padding: 12px 0;
-    font-size: 15px;
-    color: var(--primary);
-    padding-left: 28px;
-    position: relative;
-    border-bottom: 1px solid var(--border);
-  }
-  .tool-features li:last-child { border-bottom: none; }
-  .tool-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0; top: 12px;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 14px;
-  }
-
-  .pricing-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--bg-card);
-  }
-  .pricing-block {
-    padding: 36px 32px;
-  }
-  .pricing-block.included {
-    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
-    border-right: 1px solid var(--border);
-  }
-  .pricing-tag {
-    font-family: 'Futura', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 14px;
-  }
-  .pricing-block.standalone .pricing-tag {
-    color: var(--text);
-  }
-  .pricing-tag-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
-  .pricing-tag-row .pricing-tag {
-    margin-bottom: 0;
-  }
-  .launch-badge {
-    display: inline-block;
-    background: #B33B3B;
-    color: white;
-    font-family: 'Futura', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    border-radius: 999px;
-    animation: badge-pulse 2.5s infinite;
-  }
-  @keyframes badge-pulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179, 59, 59, 0.6); }
-    50% { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(179, 59, 59, 0); }
-  }
-  .old-price {
-    display: block;
-    font-size: 18px;
-    color: var(--text);
-    text-decoration: line-through;
-    font-weight: 500;
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
-  }
-  .pricing-value {
-    font-family: 'Futura', sans-serif;
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -1.5px;
-    margin-bottom: 10px;
-  }
-  .pricing-block.included .pricing-value { color: var(--accent); }
-  .pricing-block.standalone .pricing-value { color: var(--primary); }
-  .pricing-value .period {
-    font-size: 16px;
-    color: var(--text);
-    font-weight: 500;
-    letter-spacing: 0;
-    margin-left: 4px;
-  }
-  .pricing-note {
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.55;
-    margin-bottom: 22px;
-  }
-  .pricing-block .btn {
-    width: 100%;
-    padding: 14px 20px;
-    font-size: 14px;
-  }
 
   /* ===== FAQ ===== */
   #faq {
@@ -1389,44 +915,238 @@
     max-width: 720px;
   }
 
-  /* ===== CTA FINALE ===== */
-  .cta-final {
-    text-align: center;
-    padding: 160px 0;
-    background: var(--bg);
+  /* ===== CANDIDATURA (form) ===== */
+  #candidatura {
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
     position: relative;
     overflow: hidden;
   }
-  .cta-final::before {
+  #candidatura::before {
     content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse at center, var(--accent-soft) 0%, transparent 65%);
     pointer-events: none;
   }
-  .cta-final .container { position: relative; z-index: 2; }
-  .cta-final h2 {
+  #candidatura .container { position: relative; z-index: 2; }
+  .candidatura-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
+  }
+  .candidatura-head .section-title { margin-left: auto; margin-right: auto; }
+  .candidatura-head .section-intro { margin: 0 auto; }
+
+  .form-card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 48px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    position: relative;
+    overflow: hidden;
+  }
+  .form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+  .form-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .form-progress-label {
     font-family: 'Futura', sans-serif;
-    font-size: clamp(38px, 5.5vw, 76px);
+    font-size: 11px;
     font-weight: 700;
-    line-height: 1;
-    margin-bottom: 28px;
-    letter-spacing: -2px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
   }
-  .cta-final h2 .accent { color: var(--accent); font-style: italic; }
-  .cta-final p {
-    font-size: 19px;
+  .form-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--bg-3);
+    border-radius: 3px;
+    margin-left: 20px;
+    overflow: hidden;
+  }
+  .form-progress-bar span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.35s ease;
+  }
+
+  .form-step { display: none; }
+  .form-step.active { display: block; animation: step-in 0.35s ease; }
+  @keyframes step-in {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .form-question {
+    font-family: 'Futura', sans-serif;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .form-hint {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .form-field { margin-bottom: 20px; }
+  .form-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     color: var(--text-strong);
-    margin-bottom: 44px;
-    max-width: 580px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 8px;
   }
-  .cta-final-meta {
-    margin-top: 36px;
+  .form-field input[type="text"],
+  .form-field input[type="email"],
+  .form-field textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px 18px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: var(--text); opacity: 0.7; }
+  .form-field textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
+
+  .choice-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .choice-row.cols-3 { grid-template-columns: 1fr; }
+  .choice {
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .choice:hover { border-color: var(--accent); }
+  .choice.selected {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .form-error-msg {
+    display: none;
+    color: #E07070;
+    font-size: 14px;
+    margin: -8px 0 16px;
+  }
+  .form-error-msg.show { display: block; }
+
+  .form-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .form-back {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: color 0.2s;
+  }
+  .form-back:hover { color: var(--primary); }
+  .form-nav .btn { flex: 1; max-width: 320px; margin-left: auto; }
+
+  .form-privacy {
+    font-size: 12px;
+    color: var(--text);
+    margin-top: 18px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .form-privacy a { color: var(--text-strong); }
+
+  .form-final {
+    display: none;
+    text-align: center;
+    padding: 24px 0 8px;
+  }
+  .form-final.show { display: block; animation: step-in 0.35s ease; }
+  .form-final .final-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .form-final h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .form-final p {
+    color: var(--text-strong);
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .form-final.error .final-icon {
+    border-color: #B33B3B;
+    color: #E07070;
+    background: rgba(179,59,59,0.1);
+  }
+  .form-final a { color: var(--accent); }
+
+  .candidatura-meta {
+    margin-top: 44px;
     display: flex;
     justify-content: center;
     gap: 32px;
@@ -1436,31 +1156,20 @@
     letter-spacing: 1px;
     text-transform: uppercase;
   }
-  .cta-final-meta-item {
+  .candidatura-meta-item {
     display: flex; align-items: center; gap: 8px;
   }
-  .cta-final-meta-item::before {
+  .candidatura-meta-item::before {
     content: '✓';
     color: var(--accent);
     font-weight: 700;
-  }
-  .cta-mail-line {
-    margin-top: 20px;
-    font-size: 13px;
-    color: var(--text);
-    letter-spacing: 0.3px;
-  }
-  .cta-mail-line strong {
-    color: var(--accent);
-    font-weight: 600;
-    user-select: all;
   }
 
   /* ===== STICKY MOBILE CTA ===== */
   .sticky-cta {
     display: none;
     position: fixed;
-    bottom: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     left: 16px; right: 16px;
     z-index: 90;
     background: var(--accent);
@@ -1527,13 +1236,12 @@
   .footer-bottom a { color: var(--text); display: inline; opacity: 1; }
   .footer-bottom a:hover { color: var(--accent); }
 
-  /* ===== REVEAL — fallback safe: visibile di default, animazione opzionale ===== */
+  /* ===== REVEAL ===== */
   .reveal {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
-  /* L'animazione fade-up parte SOLO se il body ha la classe js-reveal-on (aggiunta da JS quando supportato) */
   .js-reveal-on .reveal:not(.visible) {
     opacity: 0;
     transform: translateY(36px);
@@ -1557,45 +1265,57 @@
     .nav-links.open { display: flex; }
     .menu-toggle { display: block; }
     section { padding: 90px 0; }
-    .hero { padding: 110px 0 80px; min-height: auto; }
+    .hero { padding: 110px 0 70px; min-height: auto; }
+    .hero-bg { background-position: center; }
     .hero-trust { gap: 24px; flex-direction: column; }
     .pas-grid { grid-template-columns: 1fr; gap: 40px; }
-    .intro-grid { grid-template-columns: 1fr; gap: 32px; }
-    .intro-pitch { padding: 24px 24px; }
-    .services-grid { grid-template-columns: 1fr; gap: 32px; }
+    .pas-solution { position: static; padding: 32px 26px; }
+    .services-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 44px; }
+    .service-card { padding: 36px 26px 28px; }
     .service-card-featured { transform: none; }
     .service-card-featured:hover { transform: translateY(-3px); }
     .service-tagline { min-height: 0; }
-    .pas-solution { position: static; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .step { border-right: 1px solid var(--border); padding: 32px 22px; }
+    .step:nth-child(2n) { border-right: none; }
+    .price-card { grid-template-columns: 1fr; gap: 32px; padding: 40px 26px; }
+    .price-badge { left: 26px; }
+    .onboarding { grid-template-columns: 1fr; }
+    .fit-grid { grid-template-columns: 1fr; }
     .testi-grid { grid-template-columns: 1fr; gap: 24px; }
     .testi-screen-img { aspect-ratio: auto; max-height: 480px; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .about-photo { max-width: 480px; }
-    .per-chi-grid { grid-template-columns: 1fr; gap: 48px; }
-    .steps { grid-template-columns: 1fr 1fr; }
-    .step { border-right: 1px solid var(--border); }
-    .step:nth-child(2n) { border-right: none; }
-    .tool-showcase { grid-template-columns: 1fr; gap: 40px; }
-    .tool-package { padding: 32px 24px; }
-    .tool-package + .tool-package { margin-top: 56px; }
-    .tool-package-body,
-    .tool-package-body-reverse { grid-template-columns: 1fr; gap: 36px; }
-    .tool-package-header { margin-bottom: 36px; padding-bottom: 28px; }
-    .package-name { font-size: clamp(38px, 9vw, 56px); letter-spacing: -1.5px; }
-    .package-tagline { font-size: 17px; }
-    .pricing-row { grid-template-columns: 1fr; }
-    .pricing-block.included { border-right: none; border-bottom: 1px solid var(--border); }
+    .form-card { padding: 32px 22px; }
+    .choice-row { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .sticky-cta { display: block; }
-    .cta-final { padding: 100px 0 140px; } /* spazio per sticky cta */
+    #candidatura { padding-bottom: 150px; } /* spazio per sticky cta */
   }
   @media (max-width: 540px) {
+    section { padding: 72px 0; }
+    .hero { padding: 104px 0 56px; }
+    .hero h1 { letter-spacing: -1.5px; }
+    .hero .sub { margin-bottom: 32px; }
+    .hero-ctas { flex-direction: column; align-items: stretch; margin-bottom: 40px; }
+    .hero-eyebrow { letter-spacing: 2.5px; font-size: 11px; }
+    /* su schermi piccoli mostro solo la prima testimonianza dell'hero: meno scroll per arrivare al punto */
+    .hero-trust-item:nth-child(n+2) { display: none; }
+    .section-intro { margin-bottom: 44px; }
     .steps { grid-template-columns: 1fr; }
     .step { border-right: none; }
     .footer-grid { grid-template-columns: 1fr; }
-    .hero-ctas { flex-direction: column; align-items: stretch; }
-    .btn { justify-content: center; }
-    .affianc-cta { flex-direction: column; align-items: stretch; text-align: left; }
+    .btn { justify-content: center; width: 100%; }
+    .btn-large { padding: 20px 28px; }
+    .pas-problems li { font-size: 16px; padding: 22px 0; }
+    .form-card { padding: 28px 18px; }
+    .form-nav { flex-direction: column-reverse; align-items: stretch; }
+    .form-nav .btn { max-width: none; }
+    .form-back { text-align: center; }
+    .choice { padding: 16px 16px; }
+    .candidatura-meta { gap: 14px 24px; }
+    .testi-screen figcaption { font-size: 14px; padding: 18px 18px; }
+    .price-box { padding: 28px 20px; }
   }
 </style>
 </head>
@@ -1608,10 +1328,11 @@
     <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">≡</button>
     <ul class="nav-links">
       <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#metodo">Il percorso</a></li>
+      <li><a href="#risultati">Risultati</a></li>
       <li><a href="#chi-sono">Chi sono</a></li>
-      <li><a href="#testimonials">Risultati</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contatti" class="cta-nav">Scrivici</a></li>
+      <li><a href="#candidatura" class="cta-nav">Candidati</a></li>
     </ul>
   </div>
 </nav>
@@ -1621,22 +1342,24 @@
   <div class="hero-bg"></div>
   <div class="container">
     <div class="reveal visible">
-      <span class="hero-eyebrow"><span class="pulse"></span>Marketing per studi di architettura</span>
+      <span class="hero-eyebrow"><span class="pulse"></span>Personal brand + IA per professionisti</span>
     </div>
     <h1 class="reveal visible reveal-d1">
-      <span class="line">Smetti di rincorrere clienti.</span>
-      <span class="line">Inizia a <span class="accent">sceglierli.</span></span>
+      <span class="line">Il tuo personal brand,</span>
+      <span class="line">trasformato in <span class="accent">clienti.</span></span>
     </h1>
     <p class="sub reveal visible reveal-d2">
-      Il primo sistema di marketing per architetti italiani, potenziato dall'AI: ti porta lead che il passaparola non ti porterà mai,
-      ti dà l'autorità per dire di no ai progetti sbagliati e <strong style="color: var(--accent); font-weight: 700;">accelera il tuo lavoro</strong> di mesi. In 6 mesi.
+      Molti professionisti sono bravissimi nel loro lavoro e invisibili online.
+      Costruiamo il tuo personal brand e lo trasformiamo in richieste:
+      contenuti scritti dall'IA con la tua voce, strategia ogni settimana,
+      pubblicità gestita da noi.
     </p>
     <div class="hero-ctas reveal visible reveal-d2">
-      <a href="#contatti" class="btn btn-primary btn-large">
-        Scrivici per la call gratuita
+      <a href="#candidatura" class="btn btn-primary btn-large">
+        Candidati alla call gratuita
         <span class="arrow">→</span>
       </a>
-      <a href="#testimonials" class="link-arrow">Guarda i risultati reali →</a>
+      <a href="#risultati" class="link-arrow">Guarda i risultati reali →</a>
     </div>
     <div class="hero-trust reveal visible reveal-d3">
       <div class="hero-trust-item">
@@ -1655,126 +1378,216 @@
   </div>
 </header>
 
-<!-- ===== INTRO BREVE ===== -->
-<section id="intro">
+<!-- ===== PROBLEMA ===== -->
+<section id="problema">
   <div class="container">
-    <div class="intro-grid reveal">
-      <div class="intro-text">
-        <h2 class="intro-headline">Progetti <span class="accent">incredibili</span>. Comunicazione <span class="accent">invisibile</span>.</h2>
-        <p class="intro-lead">Dipendere dal passaparola è una scommessa. I tuoi competitor mediocri hanno più follower e più richieste, perché si raccontano meglio.</p>
-      </div>
-      <div class="intro-pitch">
-        <p><strong>Archiconsulting</strong> è la prima consulenza marketing dedicata esclusivamente agli architetti italiani. Lavoriamo insieme in <strong style="color: var(--accent);">videocall settimanale</strong>: ti mostriamo la strada (strategia + contenuti) e gestiamo le ads. <strong style="color: var(--primary);">I contenuti li crei tu</strong>, perché sui tuoi progetti nessuno parla meglio di te. Due tool AI ti accelerano il lavoro.</p>
+    <div class="reveal">
+      <h2 class="section-title">Bravo nel tuo lavoro. <span class="accent">Invisibile</span> online.</h2>
+      <p class="section-intro">Se ti riconosci in almeno due di questi punti, il tuo personal brand oggi non sta lavorando per te.</p>
+    </div>
+    <div class="pas-grid reveal reveal-d1">
+      <ul class="pas-problems">
+        <li>Pubblichi quando ti ricordi, e non cambia niente: qualche like dei colleghi, zero richieste.</li>
+        <li>Competitor meno bravi di te hanno più clienti, perché si raccontano meglio.</li>
+        <li>Dipendi dal passaparola: quando gira lavori, quando si ferma sei scoperto.</li>
+        <li>Hai delegato a un'agenzia generalista: contenuti carini, voce non tua, risultati zero.</li>
+        <li>Il tempo per i contenuti non ce l'hai. Il lavoro vero viene sempre prima.</li>
+      </ul>
+      <div class="pas-solution">
+        <h3>Il problema non è quanto pubblichi.<br><span class="accent">È che non hai un sistema.</span></h3>
+        <p>Il passaparola non è una strategia: è una conseguenza. E un profilo curato, da solo, non converte.</p>
+        <p>Un personal brand che porta clienti si regge su tre pezzi che lavorano insieme. Se ne manca uno, il funnel è rotto:</p>
+        <ul class="check-list">
+          <li>Contenuti nella tua voce, pubblicati con costanza</li>
+          <li>Storie che trasformano chi ti segue in richieste</li>
+          <li>Pubblicità che ti mette davanti alle persone giuste</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== I SERVIZI ===== -->
+<!-- ===== SERVIZI ===== -->
 <section id="servizi">
   <div class="container">
     <div class="reveal">
       <h2 class="section-title">Tre modi di <span class="accent">lavorare insieme.</span></h2>
-      <p class="section-intro">Un percorso completo, oppure due tool da usare in autonomia. Scegli quello che ti serve adesso.</p>
+      <p class="section-intro">Il percorso completo al nostro fianco, oppure il tuo Cervello AI con il supporto che ti serve. L'investimento lo definiamo in call, in base al punto di partenza.</p>
     </div>
 
     <div class="services-grid reveal reveal-d1">
 
       <!-- SERVIZIO 1 — AFFIANCAMENTO (FEATURED) -->
       <article class="service-card service-card-featured">
-        <div class="service-badge">Consigliato</div>
-        <div class="service-tag">Percorso · 6 mesi</div>
+        <div class="service-badge">Il percorso completo</div>
+        <div class="service-tag">Affiancamento · 6 mesi</div>
         <h3 class="service-name">Affiancamento</h3>
-        <p class="service-tagline">Il percorso completo. 1-1 con Giacomo, tutti i tool inclusi.</p>
+        <p class="service-tagline">1-1 con Giacomo e il team. <span class="accent">Tutto il sistema</span>, tutto incluso.</p>
         <ul class="service-features">
-          <li><strong>Videocall settimanale</strong> di strategia e revisione</li>
-          <li>Direzione contenuti: <strong>i contenuti li crei tu</strong>, ti mostriamo la strada</li>
-          <li>Gestione completa delle <strong>campagne ads</strong></li>
-          <li>Tool AI inclusi: <strong>Consulting.AI + Story Maker</strong></li>
-          <li>Setup brand e calibratura della voce</li>
+          <li><strong>Cervello AI</strong> installato sul tuo PC: scrive i contenuti con la tua voce</li>
+          <li><strong>Call settimanale</strong> di strategia 1-1</li>
+          <li>Gestione completa delle <strong>campagne pubblicitarie</strong></li>
+          <li>Aggiornamenti continui del sistema</li>
+          <li>Setup del brand e calibratura della voce</li>
         </ul>
-        <div class="service-price">
-          <span class="service-price-label">Costo</span>
-          <span class="service-price-value">Su misura</span>
-          <span class="service-price-note">Definito in call, in base alle esigenze del tuo studio</span>
-        </div>
-        <a href="#contatti" class="btn btn-primary">Prenota call gratuita <span class="arrow">&rarr;</span></a>
+        <a href="#candidatura" class="btn btn-primary">Candidati alla call <span class="arrow">&rarr;</span></a>
       </article>
 
       <!-- SERVIZIO 2 — CONSULTING.AI -->
       <article class="service-card">
-        <div class="service-tag">Tool · In autonomia</div>
+        <div class="service-tag">Abbonamento annuale</div>
         <h3 class="service-name">Consulting.AI</h3>
-        <p class="service-tagline">Il consulente AI per Instagram. <span class="accent">Cosa pubblicare</span>, scritto per la tua nicchia.</p>
+        <p class="service-tagline">Il consulente virtuale <span class="accent">sempre con te</span>.</p>
         <ul class="service-features">
-          <li><strong>10 idee pronte</strong> con punteggio algoritmico, distribuite sui 4 livelli di vendita</li>
-          <li>Caption <strong>complete da copiare</strong>: hook, struttura, CTA, hashtag</li>
-          <li>Calendario editoriale settimanale (7 post + orari)</li>
-          <li>8 storie/giorno gi&agrave; pronte (mattina, pranzo, sera)</li>
-          <li>9 segnali algoritmici calcolati su 350+ post reali della tua nicchia</li>
-          <li>Niente collegamento Instagram &mdash; <strong>zero rischio ban</strong></li>
+          <li>Ti guida su <strong>post e storie</strong>: cosa pubblicare e come, per la tua nicchia</li>
+          <li>Ti <strong>insegna la pubblicit&agrave;</strong>, passo passo</li>
+          <li>Ti prepara a <strong>gestire le call</strong> con i potenziali clienti</li>
+          <li>Analisi costruite su contenuti reali della tua nicchia</li>
+          <li>Nessun collegamento a Instagram: zero rischi per il profilo</li>
         </ul>
-        <div class="service-price">
-          <span class="service-price-label">Canone</span>
-          <span class="service-price-value">&euro;399<span class="period">/anno</span></span>
-          <span class="service-price-note">+ IVA. 14 giorni di rimborso. Setup in 2 minuti.</span>
-        </div>
-        <a href="https://ai.archiconsulting.it/" target="_blank" rel="noopener" class="btn btn-secondary">Provalo ora <span class="arrow">&rarr;</span></a>
+        <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
+        <p class="service-secondary-link">Vuoi vederlo prima? <a href="https://ai.archiconsulting.it/" target="_blank" rel="noopener">Dai un'occhiata &rarr;</a></p>
       </article>
 
-      <!-- SERVIZIO 3 — STORY MAKER IG -->
+      <!-- SERVIZIO 3 — CERVELLO + CAMPAGNE -->
       <article class="service-card">
-        <div class="service-tag">Tool · Setup gestito</div>
-        <h3 class="service-name">Story Maker IG</h3>
-        <p class="service-tagline"><span class="accent">28 storie a settimana</span> generate dall'AI sulla tua voce.</p>
+        <div class="service-tag">Pacchetto annuale</div>
+        <h3 class="service-name">Cervello + Campagne</h3>
+        <p class="service-tagline">Il tuo Cervello AI, <span class="accent">e le campagne le gestiamo noi</span>.</p>
         <ul class="service-features">
-          <li><strong>28 storie/settimana</strong> rigenerate ogni lunedì</li>
-          <li>Scritte nella tua voce reale, immagini AI concettuali</li>
-          <li>Pronte da pubblicare, le scegli e pubblichi tu</li>
-          <li>Setup brand completo in 24h, gestito da noi</li>
-          <li>Annulla quando vuoi</li>
+          <li>Il tuo <strong>Cervello AI personale</strong>: impara chi sei e scrive come te</li>
+          <li><strong>Gestione delle campagne</strong> pubblicitarie da parte nostra</li>
+          <li>Contenuti nella tua voce + distribuzione professionale</li>
+          <li>Setup guidato, senza competenze tecniche</li>
+          <li>Per chi vuole partire in autonomia, con la pubblicit&agrave; in mani esperte</li>
         </ul>
-        <div class="service-price">
-          <span class="service-price-label">Canone</span>
-          <span class="service-price-value">&euro;49<span class="period">/mese</span></span>
-          <span class="service-price-note">+ IVA. Setup brand gestito da noi.</span>
-        </div>
-        <a href="https://content-maker-ig.giacomobonci.com/" target="_blank" rel="noopener" class="btn btn-secondary">Voglio attivarlo <span class="arrow">&rarr;</span></a>
+        <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
       </article>
 
     </div>
   </div>
 </section>
 
-<!-- ===== CHI SONO ===== -->
-<section id="chi-sono">
+<!-- ===== METODO / IL PERCORSO ===== -->
+<section id="metodo">
   <div class="container">
-    <div class="about-grid">
-      <div class="about-photo reveal">
-        <img src="images/giacomo-portrait.jpg" alt="Giacomo Bonci, fondatore di Archiconsulting" />
+    <div class="reveal">
+      <h2 class="section-title">Dentro l'affiancamento: <span class="accent">i 4 pilastri.</span></h2>
+      <p class="section-intro">Il percorso principale, quello che copre tutto il sistema: 6 mesi, io e il mio team al tuo fianco. Ecco su cosa si regge:</p>
+    </div>
+
+    <div class="steps reveal reveal-d1">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>Il tuo Cervello AI</h3>
+        <p>Montiamo sul tuo PC un sistema che impara chi sei: la tua storia, i tuoi servizi, il tuo modo di parlare. Da lì scrive i contenuti replicando la tua voce. Non testi da assistente: testi tuoi.</p>
+        <span class="duration">Setup guidato con noi</span>
       </div>
-      <div class="about-content reveal reveal-d1">
-        <div class="section-num">03 &mdash; Chi sono</div>
-        <h2>Giacomo Bonci.<br>Lavoro <span class="highlight">solo</span> con architetti.</h2>
-        <p>Da anni affianco studi di architettura italiani. Ho visto sempre la stessa scena: <span class="highlight">progetti incredibili, comunicazione invisibile</span>. Architetti capaci di firmare opere da copertina, ma senza il tempo (o la voglia) di raccontarle.</p>
-        <p>Ho fondato <span class="highlight">Archiconsulting</span> per risolvere proprio questo: un sistema che genera ogni giorno i tuoi contenuti, calibrati sulla tua voce e sui tuoi progetti reali. Niente agenzie generaliste che ti propongono le stesse idee di un dentista.</p>
-        <p>Solo architetti. Solo il tuo mondo.</p>
-        <p style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text);">
-          <a href="https://instagram.com/giacomo_bonci_archiconsulting" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px;">@giacomo_bonci_archiconsulting</a>
-          &nbsp;&middot;&nbsp;
-          <a href="mailto:info@archiconsulting.it" style="color: var(--text-strong); text-decoration: none;">info@archiconsulting.it</a>
-        </p>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>Aggiornamenti continui</h3>
+        <p>Instagram cambia ogni due mesi, e un sistema fermo invecchia. Il Cervello te lo teniamo aggiornato noi: nuovi format, nuove regole del gioco, nuove funzioni.</p>
+        <span class="duration">Sempre incluso</span>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Call settimanale</h3>
+        <p>Ogni settimana lavoriamo sulla parte da imprenditore: strategia, offerta, priorità, come gestire le richieste che arrivano. È qui che si smette di improvvisare.</p>
+        <span class="duration">Ogni settimana, 1-1</span>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h3>Pubblicità gestita</h3>
+        <p>Le campagne le gestiamo noi: account, pubblico, budget. È la distribuzione che trasforma i contenuti in richieste, e non la lasciamo al caso.</p>
+        <span class="duration">Gestione completa</span>
+      </div>
+    </div>
+
+    <div class="price-card reveal reveal-d2">
+      <div class="price-badge">Affiancamento · 6 mesi</div>
+      <div>
+        <h3>Tutto incluso, niente sorprese in corso d'opera.</h3>
+        <ul class="price-includes">
+          <li>Cervello AI installato e configurato sul tuo PC</li>
+          <li>Aggiornamenti continui del sistema per tutto il percorso</li>
+          <li>Call settimanale di strategia 1-1</li>
+          <li>Gestione completa delle campagne pubblicitarie</li>
+          <li>Setup del brand e calibratura della tua voce</li>
+        </ul>
+      </div>
+      <div class="price-box">
+        <span class="price-label">Investimento</span>
+        <span class="price-value" style="font-size: clamp(28px, 3vw, 38px); line-height: 1.15;">Definito in call</span>
+        <span class="price-period">in base al punto di partenza del tuo studio</span>
+        <p class="price-note">Percorso semestrale rinnovabile, rateizzazione da concordare. Il budget pubblicitario è a parte: lo decidi tu.</p>
+        <a href="#candidatura" class="btn btn-primary">Candidati alla call <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== TESTIMONIALS (RISULTATI) ===== -->
-<section id="testimonials">
+<!-- ===== COME FUNZIONA ===== -->
+<section id="come-funziona">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Come si parte, <span class="accent">in concreto.</span></h2>
+    </div>
+    <div class="onboarding reveal reveal-d1">
+      <div class="onboarding-step">
+        <div class="step-number">Passo 1</div>
+        <h3 style="font-family:'Futura',sans-serif; font-size:22px; font-weight:700; margin-bottom:14px; letter-spacing:-0.5px;">Call conoscitiva</h3>
+        <p style="font-size:15px; color:var(--text-strong); line-height:1.65;">15 minuti. Capiamo la tua nicchia, da dove parti e se possiamo aiutarti davvero. Se non fai per noi, te lo diciamo. Gratuita, senza vendita forzata.</p>
+      </div>
+      <div class="onboarding-step">
+        <div class="step-number">Passo 2</div>
+        <h3 style="font-family:'Futura',sans-serif; font-size:22px; font-weight:700; margin-bottom:14px; letter-spacing:-0.5px;">Setup della prima settimana</h3>
+        <p style="font-size:15px; color:var(--text-strong); line-height:1.65;">Installiamo insieme il Cervello sul tuo PC, ci carichi i tuoi materiali, impostiamo profilo e campagne. Bastano 30 minuti guidati: se qualcosa si inceppa, lo sistemiamo noi.</p>
+      </div>
+      <div class="onboarding-step">
+        <div class="step-number">Passo 3</div>
+        <h3 style="font-family:'Futura',sans-serif; font-size:22px; font-weight:700; margin-bottom:14px; letter-spacing:-0.5px;">A regime</h3>
+        <p style="font-size:15px; color:var(--text-strong); line-height:1.65;">Contenuti ogni settimana nella tua voce, call di strategia, pubblicità attiva. Da lì il personal brand inizia a lavorare per te.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PER CHI È ===== -->
+<section id="per-chi">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Per chi è. <span class="accent">E per chi no.</span></h2>
+      <p class="section-intro">Prendiamo massimo 3 nuovi percorsi al mese: la call serve a capire se sei tra questi.</p>
+    </div>
+    <div class="fit-grid reveal reveal-d1">
+      <div class="fit-col fit-yes">
+        <h3>Fa per te se…</h3>
+        <ul>
+          <li>Vendi un servizio: professionista, consulente, libero professionista, titolare di studio o d'impresa</li>
+          <li>Sei disposto a metterci la faccia: il personal brand è la tua faccia</li>
+          <li>Hai un budget anche per la pubblicità, non solo per la consulenza</li>
+          <li>Vuoi richieste di clienti, non applausi dei colleghi</li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no">
+        <h3>Non fa per te se…</h3>
+        <ul>
+          <li>Cerchi follower e like: noi lavoriamo per le richieste</li>
+          <li>Pensi che l'IA faccia tutto da sola mentre tu non tocchi niente</li>
+          <li>Non vuoi usare uno strumento sul tuo computer, nemmeno guidato</li>
+          <li>Ti aspetti risultati garantiti in 30 giorni: chi te li promette, mente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RISULTATI ===== -->
+<section id="risultati">
   <div class="container">
     <div class="reveal">
       <h2 class="section-title">Cosa cambia davvero <span class="accent">quando funziona.</span></h2>
-      <p class="section-intro">Non promesse, non case history inventate. Messaggi reali ricevuti dagli studi che hanno completato il percorso.</p>
+      <p class="section-intro">Non promesse, non case history inventate. Messaggi reali ricevuti dai professionisti che abbiamo affiancato.</p>
     </div>
 
     <div class="testi-grid reveal reveal-d1">
@@ -1805,17 +1618,17 @@
       <figure class="testi-screen">
         <div class="testi-amount">Affiancamento</div>
         <div class="testi-screen-img">
-          <img src="images/feedback-affiancamento.jpg" alt="Screenshot WhatsApp: testimonianza qualitativa sull'affiancamento" loading="lazy" />
+          <img src="images/feedback-affiancamento.jpg" alt="Screenshot WhatsApp: testimonianza sull'affiancamento" loading="lazy" />
         </div>
-        <figcaption>L'autorit&agrave; per <strong>dire di no</strong> ai progetti che non portano valore. Per un architetto, non ha prezzo.</figcaption>
+        <figcaption>L'autorit&agrave; per <strong>dire di no</strong> ai lavori che non portano valore. Non ha prezzo.</figcaption>
       </figure>
 
       <figure class="testi-screen">
         <div class="testi-amount">Nuova richiesta</div>
         <div class="testi-screen-img">
-          <img src="images/feedback-fattibilita.jpg" alt="Screenshot WhatsApp: studio di fattibilit&agrave; ristrutturazione" loading="lazy" />
+          <img src="images/feedback-fattibilita.jpg" alt="Screenshot WhatsApp: nuova richiesta di lavoro" loading="lazy" />
         </div>
-        <figcaption>Lavori che entrano <strong>ogni settimana</strong>. Da pipeline vuota a calendario sopralluoghi pieno.</figcaption>
+        <figcaption>Richieste che entrano <strong>ogni settimana</strong>. Da pipeline vuota ad agenda piena.</figcaption>
       </figure>
 
       <figure class="testi-screen">
@@ -1823,13 +1636,35 @@
         <div class="testi-screen-img">
           <img src="images/feedback-storia.jpg" alt="Screenshot WhatsApp: cliente arrivato da una storia Instagram" loading="lazy" />
         </div>
-        <figcaption>Una singola storia &rarr; un cliente reale. <strong>Ogni post pubblicato lavora per te</strong>.</figcaption>
+        <figcaption>Una singola storia &rarr; un cliente reale. <strong>Ogni contenuto pubblicato lavora per te</strong>.</figcaption>
       </figure>
     </div>
 
     <div class="testi-disclaimer reveal reveal-d2">
-      Screenshot autentici di WhatsApp ricevuti dai nostri studi clienti.<br>
-      I nomi sono stati oscurati per rispetto della privacy (GDPR).
+      Screenshot autentici di WhatsApp ricevuti dai nostri clienti.<br>
+      I nomi sono stati oscurati per rispetto della privacy (GDPR). I risultati dipendono dal punto di partenza: nessun guadagno &egrave; garantito.
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHI SONO ===== -->
+<section id="chi-sono">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="images/giacomo-portrait.jpg" alt="Giacomo Bonci, fondatore di Archiconsulting" />
+      </div>
+      <div class="about-content reveal reveal-d1">
+        <h2>Giacomo Bonci.<br>Prima l'ho fatto <span class="highlight">per me</span>.</h2>
+        <p>Sono architetto. Il marketing l'ho imparato per necessit&agrave;: far crescere il mio studio senza dipendere dal passaparola. Ha funzionato, e i colleghi hanno iniziato a chiedermi come.</p>
+        <p>Da l&igrave; &egrave; nata <span class="highlight">Archiconsulting</span>: pi&ugrave; di 30 studi e professionisti affiancati con lo stesso sistema — contenuti nella loro voce, storie che fanno agire, pubblicit&agrave; gestita. Oggi, con il mio team, quel sistema lo abbiamo reso pi&ugrave; veloce grazie all'IA: un Cervello che impara chi sei e scrive come te.</p>
+        <p>Non sono un guru con la Lamborghini a noleggio. Sono uno che questo lavoro lo fa ogni giorno, prima di tutto su se stesso.</p>
+        <p style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text);">
+          <a href="https://instagram.com/giacomo_bonci_marketing" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px;">@giacomo_bonci_marketing</a>
+          &nbsp;&middot;&nbsp;
+          <a href="mailto:info@archiconsulting.it" style="color: var(--text-strong); text-decoration: none;">info@archiconsulting.it</a>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -1838,70 +1673,173 @@
 <section id="faq">
   <div class="container">
     <div class="reveal">
-      <div class="section-num">07 &mdash; Domande frequenti</div>
       <h2 class="section-title">Le obiezioni <span class="accent">tipiche.</span> Affrontate.</h2>
     </div>
     <div class="faq-list reveal reveal-d1">
       <details>
-        <summary>Cosa fa Giacomo nell'affiancamento? Crea voi i contenuti?</summary>
-        <p>No, e qui &egrave; importante essere chiari. <strong style="color: var(--accent);">I contenuti li crei tu</strong>, perch&eacute; sui tuoi progetti nessuno parla meglio di te. Il nostro lavoro &egrave; mostrarti la strada: ogni settimana facciamo una <strong style="color: var(--accent);">videocall di strategia</strong>, definiamo insieme cosa pubblicare, revisioniamo i contenuti, e gestiamo le campagne ads. Tu metti la voce, le decisioni e i progetti. I tool AI inclusi (Consulting.AI + Story Maker) ti accelerano la creazione: senza non avresti il metodo, con loro pubblichi con consistenza.</p>
+        <summary>I contenuti li scrive l'IA? Non si vedr&agrave; che sono finti?</summary>
+        <p>Si vedrebbe, se fosse la solita IA generica. Il Cervello &egrave; un'altra cosa: prima impara chi sei — la tua storia, i tuoi clienti, il tuo modo di parlare — e poi scrive <strong style="color: var(--accent);">replicando la tua voce</strong>. Tu leggi, approvi, e ci metti la faccia. La differenza con un testo da assistente si sente alla prima riga.</p>
       </details>
       <details>
-        <summary>Qual &egrave; la differenza tra affiancamento e i singoli tool?</summary>
-        <p>L'<strong style="color: var(--accent);">affiancamento</strong> &egrave; un percorso completo di 6 mesi 1-1 con Giacomo: strategia + direzione contenuti + ads, in videocall settimanale. Tutti i tool sono inclusi. I <strong style="color: var(--accent);">singoli tool</strong> (Consulting.AI e Story Maker IG) li usi in autonomia: li compri, li configuri e li gestisci da solo. Buoni se sei gi&agrave; autonomo e vuoi solo lo strumento.</p>
+        <summary>Non sono pratico col computer. &Egrave; un problema?</summary>
+        <p>No. Il setup lo facciamo <strong style="color: var(--accent);">insieme, guidato</strong>: bastano 30 minuti. E se qualcosa si inceppa, il sistema si corregge chiedendoglielo — o lo sistemiamo noi. L'unico requisito vero &egrave; un PC e la disponibilit&agrave; a usarlo.</p>
       </details>
       <details>
-        <summary>Quanto costa l'affiancamento?</summary>
-        <p>Il costo &egrave; <strong style="color: var(--accent);">su misura</strong>: dipende dal punto di partenza del tuo studio e dal problema specifico da risolvere. Per questo definiamo l'investimento insieme nella call iniziale, dopo aver capito davvero cosa ti serve. Quello che &egrave; certo: percorso di 6 mesi, tool inclusi, niente sorprese in corso d'opera.</p>
+        <summary>Quanto tempo mi richiede?</summary>
+        <p>Siamo onesti: il marketing richiede dedizione, chi ti dice il contrario ti vende aria. Ma il grosso del lavoro manuale — scrivere, impostare, distribuire — lo copre il sistema. A te restano la call settimanale, l'approvazione dei contenuti e, se fai video, la tua faccia davanti alla camera.</p>
       </details>
       <details>
-        <summary>I contenuti sembrano fatti dall'AI?</summary>
-        <p>I contenuti sono fatti da te, con il supporto AI dei nostri tool. La voce &egrave; la tua, le decisioni sono tue. L'AI ti accelera la fase di ideazione e prima stesura, ma sei tu che pubblichi. La differenza si sente al primo post.</p>
+        <summary>Quanto costa?</summary>
+        <p>Dipende dal punto di partenza del tuo studio e dal percorso giusto per te: affiancamento completo, Consulting.AI o Cervello + Campagne non sono la stessa cosa. Per questo l'investimento lo definiamo <strong style="color: var(--accent);">insieme nella call</strong>, dopo aver capito cosa ti serve davvero. Quello che &egrave; certo: condizioni chiare prima di iniziare e niente sorprese in corso d'opera.</p>
       </details>
       <details>
-        <summary>L'AI fa tutto al posto mio?</summary>
-        <p>No, e mai prometteremo questo. Il marketing &egrave; un lavoro che richiede dedizione e cura — chi ti dice il contrario ti sta vendendo aria. <strong style="color: var(--accent);">L'AI non sostituisce il tempo che dedichi al marketing, lo accelera</strong>: ti permette di partire da contenuti gi&agrave; strutturati, di scegliere gli angoli che funzionano nella tua nicchia, di pubblicare con consistenza. Tu metti la voce, le decisioni e i progetti reali. L'AI ti fa fare in 30 minuti quello che da solo ti richiederebbe 3 ore.</p>
-      </details>
-      <details>
-        <summary>Qual &egrave; la differenza tra voi e un'agenzia social generalista?</summary>
-        <p>Le agenzie generaliste lavorano con dentisti, ristoranti, parrucchieri. Noi facciamo solo studi di architettura. Conosciamo i tuoi clienti, le tue obiezioni, il tuo cantiere. Non perdiamo tempo a "capire il settore".</p>
+        <summary>Che differenza c'&egrave; tra affiancamento, Consulting.AI e Cervello + Campagne?</summary>
+        <p>L'<strong style="color: var(--accent);">affiancamento</strong> &egrave; il percorso completo di 6 mesi: Cervello AI + call settimanale 1-1 + campagne gestite da noi. <strong style="color: var(--accent);">Consulting.AI</strong> &egrave; il consulente virtuale in abbonamento: ti guida su post, storie, pubblicit&agrave; e call, ma il lavoro operativo resta tuo. <strong style="color: var(--accent);">Cervello + Campagne</strong> &egrave; la via di mezzo: il tuo Cervello AI personale per i contenuti, e le campagne le gestiamo noi. In call capiamo qual &egrave; quello giusto per il tuo momento.</p>
       </details>
       <details>
         <summary>Dopo quanto vedo risultati?</summary>
-        <p>Su Instagram i risultati si vedono tra 2-6 mesi di pubblicazione costante. Per questo l'affiancamento &egrave; semestrale: in 6 mesi i nostri studi clienti hanno firmato in media oltre 30.000&euro; di nuovi progetti. Chi promette risultati prima ti sta mentendo.</p>
+        <p>Con pubblicazione costante e pubblicit&agrave; attiva, i primi segnali arrivano tra 2 e 6 mesi. Per questo il percorso &egrave; semestrale: &egrave; il tempo minimo per costruire qualcosa che regge. Chi ti promette risultati in 30 giorni ti sta mentendo.</p>
+      </details>
+      <details>
+        <summary>Che differenza c'&egrave; con un'agenzia social?</summary>
+        <p>L'agenzia pubblica al posto tuo, con una voce che non &egrave; la tua, e quando smetti di pagare resta il nulla. Noi costruiamo un <strong style="color: var(--accent);">sistema tuo</strong>: il Cervello &egrave; sul tuo PC, la voce &egrave; la tua, la strategia la impari in call. L'obiettivo non &egrave; tenerti dipendente, &egrave; renderti autonomo.</p>
       </details>
       <details>
         <summary>Posso disdire quando voglio?</summary>
-        <p>I singoli tool hanno un canone mensile e puoi disdire al prossimo rinnovo, niente vincoli. Sull'affiancamento &egrave; un patto semestrale: se firmi per 6 mesi, sono 6 mesi. &Egrave; la durata che serve per portare risultati, e la dichiariamo in trasparenza.</p>
+        <p>L'affiancamento &egrave; un patto semestrale e lo dichiariamo subito: 6 mesi sono il minimo per portare risultati veri. Consulting.AI e Cervello + Campagne sono abbonamenti annuali: alla scadenza decidi tu se rinnovare, senza vincoli automatici.</p>
       </details>
       <details>
-        <summary>I contenuti sono solo storie o anche post feed?</summary>
-        <p>Per ora il sistema genera solo storie Instagram. Stiamo lavorando ai post feed e ai reel: se ti servono, parliamone in call e ti dico onestamente quando saranno pronti.</p>
+        <summary>Perch&eacute; devo &ldquo;candidarmi&rdquo;? Non vendete e basta?</summary>
+        <p>Perch&eacute; prendiamo <strong style="color: var(--accent);">massimo 3 nuovi percorsi al mese</strong>: l'affiancamento &egrave; un lavoro 1-1 e non si scala all'infinito. Le domande del modulo ci servono per arrivare in call preparati — e per dirti subito, onestamente, se non facciamo al caso tuo.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ===== CTA FINALE ===== -->
-<section class="cta-final" id="contatti">
+<!-- ===== CANDIDATURA (FORM) ===== -->
+<section id="candidatura">
   <div class="container">
-    <div class="reveal">
-      <div class="section-num" style="justify-content: center;">08 &mdash; Iniziamo</div>
-      <h2>Tra 6 mesi puoi essere <span class="accent">un altro architetto.</span></h2>
-      <p>Quello che le persone cercano, non quello che insegue. Scrivici una mail: ti rispondiamo entro 24 ore e fissiamo insieme la call gratuita di 15 minuti.</p>
-      <a href="mailto:info@archiconsulting.it?subject=Call%20conoscitiva%20%E2%80%94%20Archiconsulting&body=Ciao%2C%0A%0Asono%20un%20architetto%2Fa%20e%20vorrei%20capire%20come%20potreste%20aiutare%20il%20mio%20studio.%0A%0AParliamone%20in%20call%3F%0A%0AGrazie%2C" class="btn btn-primary btn-large">Scrivici a info@archiconsulting.it <span class="arrow">&rarr;</span></a>
-      <p class="cta-mail-line">Tasto non funziona? Copia <strong>info@archiconsulting.it</strong> nel tuo client mail.</p>
-      <div class="cta-final-meta">
-        <div class="cta-final-meta-item">Risposta in 24h</div>
-        <div class="cta-final-meta-item">Call 15 min</div>
-        <div class="cta-final-meta-item">No vendita forzata</div>
+    <div class="candidatura-head reveal">
+      <h2 class="section-title">Candidati alla <span class="accent">call gratuita.</span></h2>
+      <p class="section-intro" style="margin-bottom: 0;">Tre domande, un minuto del tuo tempo. Ci servono per arrivare in call preparati. Ti rispondiamo entro 24 ore.</p>
+    </div>
+
+    <form class="form-card reveal reveal-d1" id="candidaturaForm" novalidate>
+      <div class="form-progress" id="formProgress">
+        <span class="form-progress-label" id="progressLabel">Passo 1 di 4</span>
+        <div class="form-progress-bar"><span id="progressFill" style="width: 25%;"></span></div>
       </div>
+
+      <!-- honeypot anti-spam -->
+      <input type="text" name="_honey" id="honeyField" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <!-- STEP 1: nicchia -->
+      <div class="form-step active" data-step="1">
+        <p class="form-question">In che nicchia lavori?</p>
+        <p class="form-hint">Il tuo mestiere e chi sono i tuoi clienti. Es.: nutrizionista per sportivi, avvocato del lavoro, architetto d'interni…</p>
+        <div class="form-field">
+          <label for="nicchia">La tua nicchia</label>
+          <input type="text" id="nicchia" name="nicchia" placeholder="Es. consulente finanziario per famiglie" autocomplete="off" />
+        </div>
+        <p class="form-error-msg" id="err-1">Scrivi la tua nicchia per continuare.</p>
+        <div class="form-nav">
+          <span></span>
+          <button type="button" class="btn btn-primary" onclick="nextStep(1)">Continua <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- STEP 2: profilo avviato -->
+      <div class="form-step" data-step="2">
+        <p class="form-question">Hai gi&agrave; un profilo avviato?</p>
+        <p class="form-hint">Un profilo (Instagram o altro) dove pubblichi per il tuo lavoro, anche senza costanza.</p>
+        <div class="choice-row" id="avviatoRow">
+          <button type="button" class="choice" data-value="Sì" onclick="pickAvviato(this)">S&igrave;</button>
+          <button type="button" class="choice" data-value="No" onclick="pickAvviato(this)">No</button>
+        </div>
+        <div id="daQuantoBlock" style="display:none;">
+          <p class="form-question" style="font-size: 18px; margin-top: 8px;">Da quanto lo porti avanti?</p>
+          <div class="choice-row cols-3" id="daQuantoRow">
+            <button type="button" class="choice" data-value="Meno di 6 mesi" onclick="pickDaQuanto(this)">Meno di 6 mesi</button>
+            <button type="button" class="choice" data-value="Da 6 mesi a 2 anni" onclick="pickDaQuanto(this)">Da 6 mesi a 2 anni</button>
+            <button type="button" class="choice" data-value="Più di 2 anni" onclick="pickDaQuanto(this)">Pi&ugrave; di 2 anni</button>
+          </div>
+        </div>
+        <p class="form-error-msg" id="err-2">Rispondi per continuare (e se hai risposto S&igrave;, dicci anche da quanto).</p>
+        <div class="form-nav">
+          <button type="button" class="form-back" onclick="prevStep(2)">← Indietro</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continua <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- STEP 3: servizio di interesse -->
+      <div class="form-step" data-step="3">
+        <p class="form-question">Cosa ti interessa di pi&ugrave;?</p>
+        <p class="form-hint">Se non lo sai ancora, nessun problema: te lo consigliamo noi in call.</p>
+        <div class="choice-row cols-3" id="servizioRow">
+          <button type="button" class="choice" data-value="Affiancamento" onclick="pickServizio(this)">Affiancamento (percorso completo)</button>
+          <button type="button" class="choice" data-value="Consulting.AI" onclick="pickServizio(this)">Consulting.AI (consulente virtuale)</button>
+          <button type="button" class="choice" data-value="Cervello + Campagne" onclick="pickServizio(this)">Cervello + Campagne</button>
+          <button type="button" class="choice" data-value="Non so ancora" onclick="pickServizio(this)">Non so ancora, consigliatemi</button>
+        </div>
+        <p class="form-error-msg" id="err-3">Scegli un'opzione per continuare (anche &ldquo;non so ancora&rdquo; va bene).</p>
+        <div class="form-nav">
+          <button type="button" class="form-back" onclick="prevStep(3)">← Indietro</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(3)">Continua <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- STEP 4: contatti + altre info -->
+      <div class="form-step" data-step="4">
+        <p class="form-question">Ultimo passo: dove ti rispondiamo?</p>
+        <p class="form-hint">Ti scriviamo entro 24 ore per fissare la call di 15 minuti.</p>
+        <div class="form-field">
+          <label for="nome">Nome e cognome</label>
+          <input type="text" id="nome" name="nome" placeholder="Il tuo nome" autocomplete="name" />
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nome@esempio.it" autocomplete="email" />
+        </div>
+        <div class="form-field">
+          <label for="instagram">Profilo Instagram <span style="text-transform:none; letter-spacing:0; color:var(--text);">(facoltativo)</span></label>
+          <input type="text" id="instagram" name="instagram" placeholder="@iltuoprofilo" autocomplete="off" />
+        </div>
+        <div class="form-field">
+          <label for="messaggio">Qualcosa che dovremmo sapere? <span style="text-transform:none; letter-spacing:0; color:var(--text);">(facoltativo)</span></label>
+          <textarea id="messaggio" name="messaggio" placeholder="Obiettivi, situazione attuale, dubbi…"></textarea>
+        </div>
+        <p class="form-error-msg" id="err-4">Nome e una email valida servono per risponderti.</p>
+        <div class="form-nav">
+          <button type="button" class="form-back" onclick="prevStep(4)">← Indietro</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Invia la candidatura <span class="arrow">→</span></button>
+        </div>
+        <p class="form-privacy">Inviando accetti la nostra <a href="privacy.html" target="_blank">Privacy Policy</a>. Niente spam, niente liste: ti scriviamo solo per la call.</p>
+      </div>
+
+      <!-- ESITO -->
+      <div class="form-final" id="formSuccess">
+        <div class="final-icon">✓</div>
+        <h3>Candidatura ricevuta.</h3>
+        <p>Ti rispondiamo entro 24 ore da <strong>info@archiconsulting.it</strong> per fissare la call di 15 minuti. Controlla anche lo spam, non si sa mai.</p>
+      </div>
+      <div class="form-final error" id="formError">
+        <div class="final-icon">!</div>
+        <h3>Non &egrave; partito.</h3>
+        <p>Capita. Scrivici direttamente a <a href="mailto:info@archiconsulting.it?subject=Candidatura%20call%20gratuita">info@archiconsulting.it</a> con nicchia e situazione del profilo: ti rispondiamo lo stesso entro 24 ore.</p>
+      </div>
+    </form>
+
+    <div class="candidatura-meta reveal reveal-d2">
+      <div class="candidatura-meta-item">Risposta in 24h</div>
+      <div class="candidatura-meta-item">Call di 15 minuti</div>
+      <div class="candidatura-meta-item">No vendita forzata</div>
+      <div class="candidatura-meta-item">Max 3 percorsi al mese</div>
     </div>
   </div>
 </section>
 
 <!-- ===== STICKY MOBILE CTA ===== -->
-<a href="#contatti" class="sticky-cta">Scrivici per la call gratuita &rarr;</a>
+<a href="#candidatura" class="sticky-cta">Candidati alla call gratuita &rarr;</a>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -1909,21 +1847,22 @@
     <div class="footer-grid">
       <div>
         <a href="#top" class="logo" style="display:inline-block; margin-bottom: 8px;">ARCHICONSULTING<span class="dot">.</span></a>
-        <p class="brand-tagline">Marketing Instagram per studi di architettura italiani. Sistema di generazione automatica contenuti + affiancamento semestrale dedicato.</p>
+        <p class="brand-tagline">Costruiamo il tuo personal brand e lo trasformiamo in clienti. Acceleriamo con l'IA. Affiancamento 1-1 per professionisti che vendono.</p>
       </div>
       <div>
         <h4>Sito</h4>
-        <a href="#testimonials">Risultati</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#metodo">Il percorso</a>
+        <a href="#risultati">Risultati</a>
         <a href="#chi-sono">Chi sono</a>
-        <a href="#come-funziona">Affiancamento</a>
-        <a href="#tool">Tool</a>
         <a href="#faq">FAQ</a>
+        <a href="#candidatura">Candidatura</a>
       </div>
       <div>
         <h4>Contatti</h4>
         <a href="mailto:info@archiconsulting.it">info@archiconsulting.it</a>
-        <a href="https://instagram.com/giacomo_bonci_archiconsulting" target="_blank" rel="noopener">Instagram</a>
-        <a href="#contatti">Scrivici</a>
+        <a href="https://instagram.com/giacomo_bonci_marketing" target="_blank" rel="noopener">Instagram</a>
+        <a href="#candidatura">Candidati</a>
       </div>
       <div>
         <h4>Legale</h4>
@@ -1954,13 +1893,13 @@
     });
   });
 
+  /* ===== REVEAL ===== */
   function showAllReveals() {
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
     document.body.classList.remove('js-reveal-on');
   }
   if ('IntersectionObserver' in window) {
     try {
-      // Attivo l'opacity:0 iniziale solo ora che so che JS funziona
       document.body.classList.add('js-reveal-on');
       const observer = new IntersectionObserver(
         (entries) => {
@@ -1978,20 +1917,137 @@
       showAllReveals();
     }
   }
-  // Failsafe: dopo 1.5s, qualunque cosa accada, tutto visibile
   setTimeout(showAllReveals, 1500);
 
+  /* ===== STICKY CTA (nascosto quando il form è in vista) ===== */
   const stickyCta = document.querySelector('.sticky-cta');
-  const ctaSection = document.getElementById('contatti');
+  const ctaSection = document.getElementById('candidatura');
   const stickyObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
         stickyCta.style.display = entry.isIntersecting ? 'none' : '';
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.15 }
   );
   stickyObserver.observe(ctaSection);
+
+  /* ===== FORM MULTI-STEP ===== */
+  const TOTAL_STEPS = 4;
+  const formState = { avviato: null, daQuanto: null, servizio: null };
+
+  function showStep(n) {
+    document.querySelectorAll('.form-step').forEach(s => {
+      s.classList.toggle('active', s.dataset.step === String(n));
+    });
+    document.getElementById('progressLabel').textContent = 'Passo ' + n + ' di ' + TOTAL_STEPS;
+    document.getElementById('progressFill').style.width = Math.round(n / TOTAL_STEPS * 100) + '%';
+    hideErrors();
+  }
+  function hideErrors() {
+    document.querySelectorAll('.form-error-msg').forEach(e => e.classList.remove('show'));
+  }
+  function showError(step) {
+    document.getElementById('err-' + step).classList.add('show');
+  }
+
+  function nextStep(from) {
+    hideErrors();
+    if (from === 1) {
+      if (!document.getElementById('nicchia').value.trim()) { showError(1); return; }
+      showStep(2);
+    } else if (from === 2) {
+      if (!formState.avviato) { showError(2); return; }
+      if (formState.avviato === 'Sì' && !formState.daQuanto) { showError(2); return; }
+      showStep(3);
+    } else if (from === 3) {
+      if (!formState.servizio) { showError(3); return; }
+      showStep(4);
+    }
+  }
+  function prevStep(from) {
+    showStep(from - 1);
+  }
+
+  function pickAvviato(btn) {
+    formState.avviato = btn.dataset.value;
+    document.querySelectorAll('#avviatoRow .choice').forEach(b => b.classList.toggle('selected', b === btn));
+    const blk = document.getElementById('daQuantoBlock');
+    if (formState.avviato === 'Sì') {
+      blk.style.display = '';
+    } else {
+      blk.style.display = 'none';
+      formState.daQuanto = null;
+      document.querySelectorAll('#daQuantoRow .choice').forEach(b => b.classList.remove('selected'));
+    }
+    hideErrors();
+  }
+  function pickDaQuanto(btn) {
+    formState.daQuanto = btn.dataset.value;
+    document.querySelectorAll('#daQuantoRow .choice').forEach(b => b.classList.toggle('selected', b === btn));
+    hideErrors();
+  }
+  function pickServizio(btn) {
+    formState.servizio = btn.dataset.value;
+    document.querySelectorAll('#servizioRow .choice').forEach(b => b.classList.toggle('selected', b === btn));
+    hideErrors();
+  }
+
+  document.getElementById('candidaturaForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    hideErrors();
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    if (!nome || !emailOk) { showError(4); return; }
+
+    // honeypot: se compilato, è un bot → fingiamo successo
+    if (document.getElementById('honeyField').value) {
+      finishForm(true);
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = 'Invio in corso…';
+
+    const payload = {
+      _subject: 'Nuova candidatura dal sito — ' + nome,
+      _template: 'table',
+      _captcha: 'false',
+      nome: nome,
+      email: email,
+      nicchia: document.getElementById('nicchia').value.trim(),
+      'profilo avviato': formState.avviato || '',
+      'da quanto': formState.daQuanto || '(profilo non avviato)',
+      'servizio di interesse': formState.servizio || '—',
+      instagram: document.getElementById('instagram').value.trim() || '—',
+      messaggio: document.getElementById('messaggio').value.trim() || '—'
+    };
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/info@archiconsulting.it', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(() => ({}));
+      finishForm(res.ok && String(data.success) !== 'false');
+    } catch (err) {
+      finishForm(false);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = 'Invia la candidatura <span class="arrow">→</span>';
+    }
+  });
+
+  function finishForm(ok) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('formProgress').style.display = 'none';
+    document.getElementById(ok ? 'formSuccess' : 'formError').classList.add('show');
+    document.getElementById('candidaturaForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 </script>
 
 </body>
