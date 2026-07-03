@@ -30,9 +30,44 @@
   .legal table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; color: #B5B5BD; }
   .legal th, .legal td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(245,240,230,0.08); vertical-align: top; }
   .legal th { color: #E8B843; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ===== WOW UPGRADE legale 03/07/2026 (coerente con index) ===== */
+  html { scroll-behavior: smooth; }
+  body { padding-top: 130px; }
+  ::selection { background: #E8B843; color: #0F0F12; }
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 99; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  #scrollProgress { position: fixed; top: 0; left: 0; height: 2px; width: 0;
+    background: linear-gradient(90deg, #8A6A2F, #E8B843); z-index: 200;
+    box-shadow: 0 0 12px rgba(232,184,67,0.55); }
+  .legal-topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,15,18,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(245,240,230,0.08);
+    padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .legal-topbar .logo { font-family: 'Futura','Jost',sans-serif; font-weight: 700; letter-spacing: 4px;
+    font-size: 14px; color: #F5F0E6; text-decoration: none; }
+  .legal-topbar .logo .dot { color: #E8B843; }
+  .legal-topbar .back { color: #E8B843; text-decoration: none; font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+  .legal-topbar .back:hover { opacity: 0.8; }
+  .legal-back { display: none; }
+  .legal h1 { font-size: clamp(38px, 5vw, 56px); letter-spacing: -1.5px; }
+  .legal h1::after { content: ''; display: block; width: 72px; height: 4px; margin-top: 18px;
+    background: linear-gradient(90deg, #E8B843, rgba(232,184,67,0.25)); border-radius: 2px; }
+  .legal p, .legal ul, .legal ol { font-size: 16px; }
+  .legal h2 { margin-top: 48px; }
+  .legal th { background: rgba(232,184,67,0.07); }
+  a:focus-visible, button:focus-visible { outline: 2px solid #E8B843; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } body::after { display: none; } }
+  @media (max-width: 600px) { body { padding-top: 106px; } .legal-topbar { padding: 13px 16px; } .legal-topbar .logo { letter-spacing: 2.5px; font-size: 12px; } }
 </style>
 </head>
 <body>
+<div class="legal-topbar"><a href="/" class="logo">ARCHICONSULTING<span class="dot">.</span></a><a href="/" class="back">&larr; Torna al sito</a></div>
+<div id="scrollProgress"></div>
+
 <div class="legal">
 <a href="/" class="legal-back">← Torna al sito</a>
 
@@ -127,5 +162,7 @@ Email: <a href="mailto:info@archiconsulting.it">info@archiconsulting.it</a>
 <p style="font-size: 13px; color: #8A8A93;">Documento redatto sulla base del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003 e successive modifiche. Per chiarimenti: <a href="mailto:info@archiconsulting.it">info@archiconsulting.it</a>.</p>
 
 </div>
+
+<script>(function(){var b=document.getElementById('scrollProgress');window.addEventListener('scroll',function(){var h=document.documentElement;b.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});})();</script>
 </body>
 </html>
