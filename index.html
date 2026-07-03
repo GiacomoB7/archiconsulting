@@ -1317,6 +1317,114 @@
     .testi-screen figcaption { font-size: 14px; padding: 18px 18px; }
     .price-box { padding: 28px 20px; }
   }
+
+  /* ===================================================================
+     WOW UPGRADE 03/07/2026 — signature: il Cervello vivo nell'hero.
+     Il resto: rifiniture quiete (progress, spotlight card, reveal, grana).
+     =================================================================== */
+
+  /* Barra di avanzamento lettura (oro, sotto la nav) */
+  #scrollProgress {
+    position: fixed; top: 0; left: 0;
+    height: 2px; width: 0;
+    background: linear-gradient(90deg, #8A6A2F, var(--accent));
+    z-index: 200;
+    box-shadow: 0 0 12px rgba(232,184,67,0.55);
+  }
+
+  /* Grana sottile su tutta la pagina (materia, non piatto digitale) */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+
+  /* Canvas "Cervello" nell'hero */
+  #brainCanvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 1.6s ease 0.3s;
+  }
+  body.preload #brainCanvas { opacity: 0; transition: none; }
+  .hero-bg { opacity: 0.22; }
+  .hero .container { z-index: 3; }
+
+  /* Apertura orchestrata: le righe del titolo salgono da una maschera */
+  .hero-h1 .line { display: block; overflow: hidden; }
+  .hero-h1 .line-inner { display: block; }
+  .hero-h1 .line-inner {
+    transform: translateY(0);
+    transition: transform 0.95s cubic-bezier(0.2, 0.65, 0.15, 1);
+  }
+  .hero-h1 .line:nth-child(1) .line-inner { transition-delay: 0.12s; }
+  .hero-h1 .line:nth-child(2) .line-inner { transition-delay: 0.28s; }
+  body.preload .hero-h1 .line-inner { transform: translateY(112%); transition: none; }
+
+  /* La parola-chiave si sottolinea da sola, come un tratto a mano */
+  .hero h1 .accent {
+    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.35)) no-repeat left 88%;
+    background-size: 100% 0.09em;
+    transition: background-size 0.8s ease 1.35s;
+  }
+  body.preload .hero h1 .accent { background-size: 0% 0.09em; transition: none; }
+
+  /* Reveal più materico: sale E mette a fuoco */
+  .js-reveal-on .reveal:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(7px);
+  }
+  .reveal { transition: opacity 0.9s ease, transform 0.9s ease, filter 0.9s ease; }
+
+  /* Card servizi: faro dorato che segue il mouse + bordo che si accende */
+  .service-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s;
+    background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 0%),
+                rgba(232,184,67,0.10), transparent 42%);
+  }
+  .service-card:hover::before { opacity: 1; }
+
+  /* Bottone primario: lampo di luce al passaggio */
+  .btn-primary { position: relative; overflow: hidden; }
+  .btn-primary::after {
+    content: '';
+    position: absolute; top: 0; bottom: 0;
+    left: -80%; width: 50%;
+    background: linear-gradient(105deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .btn-primary:hover::after { left: 130%; }
+
+  /* Step del metodo: il numero si accende in sequenza visiva */
+  .step:hover .step-number { text-shadow: 0 0 18px rgba(232,184,67,0.8); }
+
+  /* Focus visibile da tastiera */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    #brainCanvas { display: none; }
+    body::after { display: none; }
+    .js-reveal-on .reveal:not(.visible) { opacity: 1; transform: none; filter: none; }
+    body.preload .hero-h1 .line-inner { transform: none; }
+    body.preload .hero h1 .accent { background-size: 100% 0.09em; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 </style>
 </head>
 <body>
@@ -1340,13 +1448,14 @@
 <!-- ===== HERO ===== -->
 <header class="hero" id="top">
   <div class="hero-bg"></div>
+  <canvas id="brainCanvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="reveal visible">
       <span class="hero-eyebrow"><span class="pulse"></span>Personal brand + IA per professionisti</span>
     </div>
-    <h1 class="reveal visible reveal-d1">
-      <span class="line">Il tuo personal brand,</span>
-      <span class="line">trasformato in <span class="accent">clienti.</span></span>
+    <h1 class="reveal visible reveal-d1 hero-h1">
+      <span class="line"><span class="line-inner">Il tuo personal brand,</span></span>
+      <span class="line"><span class="line-inner">trasformato in <span class="accent">clienti.</span></span></span>
     </h1>
     <p class="sub reveal visible reveal-d2">
       Molti professionisti sono bravissimi nel loro lavoro e invisibili online.
@@ -2063,6 +2172,144 @@
     document.getElementById(ok ? 'formSuccess' : 'formError').classList.add('show');
     document.getElementById('candidaturaForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+</script>
+
+<script>
+/* ===== WOW UPGRADE 03/07/2026 ===== */
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // apertura orchestrata: stato nascosto solo per un attimo prima del primo paint,
+  // poi la transizione porta tutto allo stato finale (che è il default: fail-safe)
+  document.body.classList.add('loaded');
+  if (!reduced) {
+    document.body.classList.add('preload');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { document.body.classList.remove('preload'); });
+    });
+    // rete di sicurezza: comunque visibile entro mezzo secondo
+    setTimeout(function () { document.body.classList.remove('preload'); }, 500);
+  }
+
+  // barra di avanzamento
+  var bar = document.createElement('div');
+  bar.id = 'scrollProgress';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement;
+    var p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (p * 100) + '%';
+  }, { passive: true });
+
+  // faro dorato sulle card servizi
+  document.querySelectorAll('.service-card').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // ===== il Cervello: rete dorata viva nell'hero =====
+  var canvas = document.getElementById('brainCanvas');
+  if (!canvas || reduced) return;
+  var ctx = canvas.getContext('2d');
+  var hero = document.querySelector('.hero');
+  var W, H, nodes = [], running = true;
+  var mouse = { x: -9999, y: -9999 };
+  var GOLD = '232,184,67';
+
+  function resize() {
+    var r = hero.getBoundingClientRect();
+    W = canvas.width = r.width;
+    H = canvas.height = r.height;
+    var count = W < 700 ? 34 : 72;
+    nodes = [];
+    for (var i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
+        r: 1 + Math.random() * 1.8
+      });
+    }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  hero.addEventListener('mousemove', function (e) {
+    var r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+  });
+  hero.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+
+  // impulso: ogni tanto una scintilla percorre un filo (il Cervello che scrive)
+  var pulse = null;
+  function newPulse() {
+    var a = nodes[Math.floor(Math.random() * nodes.length)];
+    var best = null, bd = 1e9;
+    nodes.forEach(function (b) {
+      if (b === a) return;
+      var d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+      if (d < bd) { bd = d; best = b; }
+    });
+    if (best) pulse = { a: a, b: best, t: 0 };
+  }
+  setInterval(newPulse, 2600);
+
+  var LINK = 150;
+  function frame() {
+    if (!running) return;
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      // deriva lenta + leggera attrazione verso il mouse
+      var dxm = mouse.x - n.x, dym = mouse.y - n.y;
+      var dm = Math.sqrt(dxm * dxm + dym * dym);
+      if (dm < 220) { n.vx += dxm / dm * 0.012; n.vy += dym / dm * 0.012; }
+      n.vx *= 0.985; n.vy *= 0.985;
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+
+      for (var j = i + 1; j < nodes.length; j++) {
+        var m = nodes[j];
+        var dx = n.x - m.x, dy = n.y - m.y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < LINK) {
+          ctx.strokeStyle = 'rgba(' + GOLD + ',' + (0.13 * (1 - d / LINK)) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = 'rgba(' + GOLD + ',0.5)';
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+    }
+    // scintilla in viaggio
+    if (pulse) {
+      pulse.t += 0.02;
+      if (pulse.t >= 1) { pulse = null; }
+      else {
+        var px = pulse.a.x + (pulse.b.x - pulse.a.x) * pulse.t;
+        var py = pulse.a.y + (pulse.b.y - pulse.a.y) * pulse.t;
+        var g = ctx.createRadialGradient(px, py, 0, px, py, 14);
+        g.addColorStop(0, 'rgba(' + GOLD + ',0.9)');
+        g.addColorStop(1, 'rgba(' + GOLD + ',0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(px, py, 14, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // il canvas gira solo quando l'hero è in vista
+  new IntersectionObserver(function (entries) {
+    var vis = entries[0].isIntersecting;
+    if (vis && !running) { running = true; frame(); }
+    else if (!vis) { running = false; }
+  }).observe(hero);
+
+  frame();
+})();
 </script>
 
 </body>
