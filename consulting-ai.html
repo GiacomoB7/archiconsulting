@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0F0F12" />
+<title>Consulting.AI — il consulente sempre con te — Archiconsulting</title>
+<meta name="description" content="Consulting.AI è il consulente virtuale in abbonamento annuale: ti guida su post e storie, ti insegna la pubblicità e ti prepara alle call coi clienti. Zero collegamenti al tuo profilo Instagram." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'Futura'; src: url('fonts/Futura-Medium.ttf') format('truetype'); font-weight: 400 500; font-display: swap; }
+  @font-face { font-family: 'Futura'; src: url('fonts/Futura-Bold.ttf') format('truetype'); font-weight: 600 800; font-display: swap; }
+  :root {
+    --bg:#0F0F12; --bg-2:#16161A; --bg-3:#1F1F25; --bg-card:#1A1A1F;
+    --primary:#F5F0E6; --accent:#E8B843; --accent-hover:#f0c659;
+    --text:#8A8A93; --text-strong:#B5B5BD;
+    --border:rgba(245,240,230,0.08); --border-strong:rgba(245,240,230,0.14);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Futura','Jost',sans-serif; background:var(--bg); color:var(--primary);
+    line-height:1.55; font-weight:500; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:var(--accent); color:var(--bg); }
+  body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:99; opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E"); }
+  .container { max-width:1100px; margin:0 auto; padding:0 32px; }
+  a { color:inherit; }
+  #scrollProgress { position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(90deg,#8A6A2F,var(--accent)); z-index:200;
+    box-shadow:0 0 12px rgba(232,184,67,0.55); }
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:16px 0;
+    background:rgba(15,15,18,0.88); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border); }
+  nav .container { display:flex; justify-content:space-between; align-items:center; }
+  .logo { font-weight:700; font-size:15px; letter-spacing:4px; color:var(--primary); text-decoration:none; }
+  .logo .dot { color:var(--accent); }
+  .cta-nav { background:var(--accent); color:var(--bg); padding:11px 22px; border-radius:999px;
+    font-weight:700; font-size:13px; letter-spacing:0.5px; text-decoration:none; }
+  .cta-nav:hover { background:var(--accent-hover); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:18px 34px;
+    border-radius:999px; font-weight:700; font-size:15px; letter-spacing:0.5px; text-decoration:none;
+    transition:all .25s; border:none; cursor:pointer; font-family:inherit; line-height:1;
+    background:var(--accent); color:var(--bg); position:relative; overflow:hidden; }
+  .btn:hover { background:var(--accent-hover); transform:translateY(-2px);
+    box-shadow:0 12px 32px rgba(232,184,67,0.3); }
+  .btn::after { content:''; position:absolute; top:0; bottom:0; left:-80%; width:50%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,0.35),transparent);
+    transform:skewX(-20deg); transition:left .6s ease; }
+  .btn:hover::after { left:130%; }
+  header { padding:150px 0 70px; position:relative; }
+  header::before { content:''; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(900px 560px at 24% 30%, rgba(232,184,67,0.09), transparent 62%); }
+  .eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--accent); font-size:12px;
+    font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:28px;
+    padding:10px 18px; border:1px solid var(--accent); border-radius:999px; background:rgba(232,184,67,0.12); }
+  h1 { font-weight:700; font-size:clamp(38px,6vw,76px); line-height:1.02; letter-spacing:-2px;
+    margin-bottom:24px; max-width:900px; }
+  h1 .accent { color:var(--accent); font-style:italic; }
+  .sub { font-size:clamp(16px,1.3vw,20px); color:var(--text-strong); margin-bottom:38px;
+    max-width:640px; line-height:1.6; }
+  .hero-meta { display:flex; gap:26px; flex-wrap:wrap; margin-top:34px; }
+  .hero-meta span { font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
+    color:var(--text-strong); }
+  .hero-meta span::before { content:'\2713  '; color:var(--accent); font-weight:700; }
+  section { padding:90px 0; }
+  .band { background:var(--bg-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  h2 { font-weight:700; font-size:clamp(30px,3.6vw,48px); line-height:1.08; letter-spacing:-1.2px; margin-bottom:20px; }
+  h2 .accent { color:var(--accent); font-style:italic; }
+  .intro { font-size:17px; color:var(--text-strong); max-width:640px; margin-bottom:48px; line-height:1.65; }
+  .pains { list-style:none; max-width:760px; }
+  .pains li { padding:20px 0; border-bottom:1px solid var(--border); display:flex; gap:16px;
+    font-size:17px; line-height:1.5; }
+  .pains li::before { content:'\2715'; color:#B33B3B; font-weight:700; flex-shrink:0; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .grid4 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .tile { background:var(--bg-3); border:1px solid var(--border); border-radius:20px; padding:34px 26px;
+    transition:transform .25s, border-color .25s; }
+  .tile:hover { transform:translateY(-4px); border-color:rgba(232,184,67,0.5); }
+  .tile .n { font-size:12px; font-weight:700; color:var(--accent); letter-spacing:3px;
+    text-transform:uppercase; margin-bottom:18px; }
+  .tile h3 { font-size:21px; font-weight:700; letter-spacing:-0.5px; margin-bottom:12px; line-height:1.2; }
+  .tile p { font-size:15px; color:var(--text-strong); line-height:1.65; }
+  .include { list-style:none; max-width:720px; }
+  .include li { padding:12px 0 12px 30px; position:relative; font-size:16px;
+    border-bottom:1px solid var(--border); }
+  .include li::before { content:'\2713'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  .include li strong { color:var(--primary); }
+  details { border-bottom:1px solid var(--border); padding:22px 0; }
+  summary { cursor:pointer; font-weight:700; font-size:17px; list-style:none; display:flex;
+    justify-content:space-between; gap:16px; }
+  summary::after { content:'+'; color:var(--accent); font-size:22px; font-weight:400; }
+  details[open] summary::after { content:'\2212'; }
+  details p { margin-top:14px; color:var(--text-strong); font-size:15px; line-height:1.7; max-width:700px; }
+  .cta-final { text-align:center; }
+  .cta-final h2 { margin-bottom:14px; }
+  .cta-final .intro { margin:0 auto 34px; }
+  .cta-meta { display:flex; gap:22px; flex-wrap:wrap; justify-content:center; margin-top:30px; }
+  .cta-meta span { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; color:var(--text-strong); }
+  .cta-meta span::before { content:'\2713  '; color:var(--accent); font-weight:700; }
+  .cta-direct { margin-top:26px; font-size:15px; color:var(--text-strong); }
+  .cta-direct a { color:var(--accent); font-weight:600; text-decoration:none;
+    border-bottom:1px solid var(--accent); padding-bottom:2px; }
+  footer { padding:44px 0; border-top:1px solid var(--border); text-align:center;
+    color:var(--text); font-size:13px; }
+  footer a { color:var(--text-strong); text-decoration:none; }
+  footer a:hover { color:var(--accent); }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+  @media (max-width:860px) {
+    .grid3, .grid4 { grid-template-columns:1fr; }
+    header { padding:130px 0 56px; }
+    section { padding:64px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    body::after { display:none; }
+    * { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div id="scrollProgress"></div>
+<nav>
+  <div class="container">
+    <a href="/" class="logo">ARCHICONSULTING<span class="dot">.</span></a>
+    <a href="/?servizio=Consulting.AI#candidatura" class="cta-nav">Candidati</a>
+  </div>
+</nav>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Consulting.AI &middot; abbonamento annuale</span>
+    <h1>Un consulente <span class="accent">sempre con te.</span></h1>
+    <p class="sub">Ogni volta che devi decidere cosa pubblicare, come impostare la pubblicit&agrave; o come gestire una call con un potenziale cliente: chiedi, e hai una guida costruita sulla tua nicchia.</p>
+    <a href="/?servizio=Consulting.AI#candidatura" class="btn">Prenota la call gratuita — 15 minuti <span>&rarr;</span></a>
+    <div class="hero-meta"><span>Sempre disponibile, tutto l'anno</span><span>Analisi sulla tua nicchia</span><span>Zero rischi per il profilo</span></div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="container">
+    <h2>Fai tutto da solo, <span class="accent">a intuito.</span></h2>
+    <p class="intro">Il problema non &egrave; l'impegno: &egrave; che nessuno ti dice cosa funziona.</p>
+    <ul class="pains"><li>Decidi cosa pubblicare cinque minuti prima di pubblicarlo.</li><li>Le storie escono improvvisate, e non vendono.</li><li>La pubblicit&agrave; la accendi &laquo;per provare&raquo; e brucia budget senza criterio.</li><li>In call coi potenziali clienti improvvisi, e i preventivi restano fermi.</li></ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Come funziona, <span class="accent">in concreto.</span></h2>
+    <p class="intro">Non lavora al posto tuo: ti dice dove stai sbagliando e cosa fare, ogni volta che ti serve.</p>
+    <div class="grid3"><div class="tile"><div class="n">1 &middot; Ti guida sui contenuti</div><h3>Post e storie, per la tua nicchia</h3><p>Cosa pubblicare e come, con analisi costruite su contenuti reali della tua nicchia. Basta foglio bianco: ogni giorno sai cosa fare e perch&eacute;.</p></div><div class="tile"><div class="n">2 &middot; Ti insegna la pubblicit&agrave;</div><h3>Passo passo, senza deleghe al buio</h3><p>Come impostare le campagne, che budget mettere, quando spegnere. Impari a gestirla tu, con una guida che non ti lascia a met&agrave;.</p></div><div class="tile"><div class="n">3 &middot; Ti prepara alle call</div><h3>Dai DM al preventivo firmato</h3><p>Come rispondere alle richieste, come condurre la call, come presentare il prezzo. La parte dove si vince o si perde il cliente.</p></div></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <h2>Cosa <span class="accent">include.</span></h2>
+    <ul class="include"><li>Accesso a <strong>Consulting.AI</strong> per un anno intero</li><li>Guida su <strong>post e storie</strong> costruita sulla tua nicchia</li><li>Percorso di <strong>pubblicit&agrave;</strong> passo passo</li><li>Preparazione alle <strong>call coi potenziali clienti</strong></li><li><strong>Nessun collegamento a Instagram</strong>: zero rischi per il profilo</li></ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Domande <span class="accent">frequenti.</span></h2>
+    <details><summary>&Egrave; l'ennesimo tool di intelligenza artificiale?</summary><p>No: &egrave; un consulente, non un generatore. La differenza &egrave; il metodo che ha dentro — lo stesso con cui abbiamo affiancato pi&ugrave; di 50 studi e professionisti — e le analisi costruite sulla tua nicchia reale.</p></details><details><summary>Posso vederlo prima di decidere?</summary><p>S&igrave;: c'&egrave; una versione da provare su ai.archiconsulting.it. E nella call gratuita ti mostro come lo useresti sul tuo caso specifico.</p></details><details><summary>Che differenza c'&egrave; con l'affiancamento?</summary><p>Con Consulting.AI il lavoro operativo resta tuo: lui ti guida. Nell'affiancamento ci siamo anche noi: Cervello sul tuo PC, call settimanale 1-1 e campagne gestite. In call capiamo qual &egrave; il tuo momento.</p></details>
+  </div>
+</section>
+
+<section class="band cta-final">
+  <div class="container">
+    <h2>Smetti di decidere <span class="accent">a intuito.</span></h2>
+    <p class="intro">15 minuti gratuiti: ti mostro come Consulting.AI lavorerebbe sulla tua nicchia.</p>
+    <a href="/?servizio=Consulting.AI#candidatura" class="btn">Prenota la call gratuita — 15 minuti <span>&rarr;</span></a>
+    <div class="cta-meta">
+      <span>Risposta in 24h</span><span>Call di 15 minuti</span><span>No vendita forzata</span>
+    </div>
+    <p class="cta-direct">Preferisci due parole prima?
+      <a href="https://www.instagram.com/giacomo_bonci_marketing/" target="_blank" rel="noopener">Scrivimi in direct su Instagram &rarr;</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Archiconsulting &middot; Giacomo Bonci &middot; <a href="/">Torna al sito</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="cookie.html">Cookie</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var b = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement;
+    b.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

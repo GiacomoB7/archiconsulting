@@ -1659,6 +1659,7 @@
           <li>Setup del brand e calibratura della voce</li>
         </ul>
         <a href="#candidatura" class="btn btn-primary">Candidati alla call <span class="arrow">&rarr;</span></a>
+        <p class="service-secondary-link">Vuoi capire come funziona? <a href="affiancamento.html">La pagina completa &rarr;</a></p>
       </article>
 
       <!-- SERVIZIO 2 — CONSULENZA (call singola) -->
@@ -1673,6 +1674,7 @@
           <li>Senza percorso: una call sola, quando ti serve</li>
         </ul>
         <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
+        <p class="service-secondary-link">Vuoi capire come funziona? <a href="consulenza.html">La pagina completa &rarr;</a></p>
       </article>
 
       <!-- SERVIZIO 3 — CONSULTING.AI -->
@@ -1688,7 +1690,7 @@
           <li>Nessun collegamento a Instagram: zero rischi per il profilo</li>
         </ul>
         <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
-        <p class="service-secondary-link">Vuoi vederlo prima? <a href="https://ai.archiconsulting.it/" target="_blank" rel="noopener">Dai un'occhiata &rarr;</a></p>
+        <p class="service-secondary-link">Vuoi capire come funziona? <a href="consulting-ai.html">La pagina completa &rarr;</a></p>
       </article>
 
       <!-- SERVIZIO 4 — GESTIONE CAMPAGNE -->
@@ -1704,6 +1706,7 @@
           <li>Per chi vuole la pubblicit&agrave; in mani esperte, senza pensarci</li>
         </ul>
         <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
+        <p class="service-secondary-link">Vuoi capire come funziona? <a href="gestione-campagne.html">La pagina completa &rarr;</a></p>
       </article>
 
     </div>
@@ -2320,6 +2323,15 @@
     document.getElementById(ok ? 'formSuccess' : 'formError').classList.add('show');
     document.getElementById('candidaturaForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+
+  /* preselezione servizio dalle landing dedicate (?servizio=Nome) */
+  try {
+    const qsServizio = new URLSearchParams(location.search).get('servizio');
+    if (qsServizio) {
+      const qb = document.querySelector('#servizioRow .choice[data-value="' + qsServizio + '"]');
+      if (qb) pickServizio(qb);
+    }
+  } catch (e) {}
 </script>
 
 <script>
