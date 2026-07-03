@@ -410,7 +410,7 @@
   #servizi { background: var(--bg); padding-top: 0; }
   .services-grid {
     display: grid;
-    grid-template-columns: 1.05fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-top: 56px;
     align-items: stretch;
@@ -1411,14 +1411,14 @@
 <section id="servizi">
   <div class="container">
     <div class="reveal">
-      <h2 class="section-title">Tre modi di <span class="accent">lavorare insieme.</span></h2>
-      <p class="section-intro">Il percorso completo al nostro fianco, il consulente virtuale, o la pubblicit&agrave; gestita da noi. L'investimento lo definiamo in call, in base al punto di partenza.</p>
+      <h2 class="section-title">Quattro modi di <span class="accent">lavorare insieme.</span></h2>
+      <p class="section-intro">Il percorso completo al nostro fianco, la call singola, il consulente virtuale, o la pubblicit&agrave; gestita da noi. L'investimento lo definiamo in call, in base al punto di partenza.</p>
     </div>
 
     <div class="services-grid reveal reveal-d1">
 
       <!-- SERVIZIO 1 — AFFIANCAMENTO (FEATURED) -->
-      <article class="service-card service-card-featured">
+      <article class="service-card service-card-featured" id="affiancamento">
         <div class="service-badge">Il percorso completo</div>
         <div class="service-tag">Affiancamento · 6 mesi</div>
         <h3 class="service-name">Affiancamento</h3>
@@ -1433,8 +1433,22 @@
         <a href="#candidatura" class="btn btn-primary">Candidati alla call <span class="arrow">&rarr;</span></a>
       </article>
 
-      <!-- SERVIZIO 2 — CONSULTING.AI -->
-      <article class="service-card">
+      <!-- SERVIZIO 2 — CONSULENZA (call singola) -->
+      <article class="service-card" id="consulenza">
+        <div class="service-tag">Call singola</div>
+        <h3 class="service-name">Consulenza</h3>
+        <p class="service-tagline">Una call, un problema specifico, <span class="accent">una soluzione</span>.</p>
+        <ul class="service-features">
+          <li>Un <strong>problema specifico</strong>: preventivi, profilo, contenuti o pubblicit&agrave;</li>
+          <li>Lo analizziamo insieme e <strong>sistemiamo quello che ti blocca</strong></li>
+          <li>Esci con un <strong>metodo da applicare subito</strong></li>
+          <li>Senza percorso: una call sola, quando ti serve</li>
+        </ul>
+        <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
+      </article>
+
+      <!-- SERVIZIO 3 — CONSULTING.AI -->
+      <article class="service-card" id="consulting-ai">
         <div class="service-tag">Abbonamento annuale</div>
         <h3 class="service-name">Consulting.AI</h3>
         <p class="service-tagline">Il consulente virtuale <span class="accent">sempre con te</span>.</p>
@@ -1449,8 +1463,8 @@
         <p class="service-secondary-link">Vuoi vederlo prima? <a href="https://ai.archiconsulting.it/" target="_blank" rel="noopener">Dai un'occhiata &rarr;</a></p>
       </article>
 
-      <!-- SERVIZIO 3 — GESTIONE CAMPAGNE -->
-      <article class="service-card">
+      <!-- SERVIZIO 4 — GESTIONE CAMPAGNE -->
+      <article class="service-card" id="gestione-campagne">
         <div class="service-tag">Pacchetto annuale</div>
         <h3 class="service-name">Gestione Campagne</h3>
         <p class="service-tagline">La tua pubblicit&agrave; <span class="accent">la gestiamo noi</span>, tutto l'anno.</p>
@@ -1693,8 +1707,8 @@
         <p>Dipende dal punto di partenza della tua attivit&agrave; e dal percorso giusto per te: affiancamento completo, Consulting.AI o Gestione Campagne non sono la stessa cosa. Per questo l'investimento lo definiamo <strong style="color: var(--accent);">insieme nella call</strong>, dopo aver capito cosa ti serve davvero. Quello che &egrave; certo: condizioni chiare prima di iniziare e niente sorprese in corso d'opera.</p>
       </details>
       <details>
-        <summary>Che differenza c'&egrave; tra affiancamento, Consulting.AI e Gestione Campagne?</summary>
-        <p>L'<strong style="color: var(--accent);">affiancamento</strong> &egrave; il percorso completo di 6 mesi: Cervello AI + call settimanale 1-1 + campagne gestite da noi. <strong style="color: var(--accent);">Consulting.AI</strong> &egrave; il consulente virtuale in abbonamento: ti guida su post, storie, pubblicit&agrave; e call, ma il lavoro operativo resta tuo. <strong style="color: var(--accent);">Gestione Campagne</strong> &egrave; per chi vuole delegare la pubblicit&agrave;: le campagne le gestiamo noi — account, pubblico, budget — e i contenuti restano tuoi. In call capiamo qual &egrave; quello giusto per il tuo momento.</p>
+        <summary>Che differenza c'&egrave; tra i quattro servizi?</summary>
+        <p>L'<strong style="color: var(--accent);">affiancamento</strong> &egrave; il percorso completo di 6 mesi: Cervello AI + call settimanale 1-1 + campagne gestite da noi. La <strong style="color: var(--accent);">consulenza</strong> &egrave; una call singola su un problema specifico: entri col problema, esci con un metodo da applicare subito. <strong style="color: var(--accent);">Consulting.AI</strong> &egrave; il consulente virtuale in abbonamento: ti guida su post, storie, pubblicit&agrave; e call, ma il lavoro operativo resta tuo. <strong style="color: var(--accent);">Gestione Campagne</strong> &egrave; per chi vuole delegare la pubblicit&agrave;: le campagne le gestiamo noi — account, pubblico, budget — e i contenuti restano tuoi. In call capiamo qual &egrave; quello giusto per il tuo momento.</p>
       </details>
       <details>
         <summary>Dopo quanto vedo risultati?</summary>
@@ -1777,6 +1791,7 @@
         <p class="form-hint">Se non lo sai ancora, nessun problema: te lo consigliamo noi in call.</p>
         <div class="choice-row cols-3" id="servizioRow">
           <button type="button" class="choice" data-value="Affiancamento" onclick="pickServizio(this)">Affiancamento (percorso completo)</button>
+          <button type="button" class="choice" data-value="Consulenza" onclick="pickServizio(this)">Consulenza (call singola)</button>
           <button type="button" class="choice" data-value="Consulting.AI" onclick="pickServizio(this)">Consulting.AI (consulente virtuale)</button>
           <button type="button" class="choice" data-value="Gestione Campagne" onclick="pickServizio(this)">Gestione Campagne (pubblicit&agrave; gestita)</button>
           <button type="button" class="choice" data-value="Non so ancora" onclick="pickServizio(this)">Non so ancora, consigliatemi</button>
