@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#F3F2EF" />
+<meta name="theme-color" content="#141416" />
 <title>Archiconsulting — Il tuo personal brand, trasformato in clienti. Con l'IA.</title>
 <meta name="description" content="Costruiamo il personal brand dei professionisti e lo trasformiamo in clienti: contenuti scritti dall'IA con la tua voce, strategia settimanale, pubblicità gestita da noi. Affiancamento di 6 mesi." />
 
@@ -39,20 +39,20 @@
   }
 
   :root {
-    --bg: #F3F2EF;          /* grigio neutro caldo */
-    --bg-2: #ECEAE4;        /* bande */
-    --bg-3: #E4E2DB;        /* tile */
-    --bg-card: #FFFFFF;     /* card */
-    --ink: #1B1B1E;         /* scuro (bande a contrasto, testo su giallo) */
-    --primary: #1B1B1E;     /* testo principale = inchiostro */
+    --bg: #141416;          /* sfondo scuro (scelta di Giacomo 05/07) */
+    --bg-2: #1B1B1F;        /* bande */
+    --bg-3: #232328;        /* tile */
+    --bg-card: #1C1C21;     /* card */
+    --ink: #0E0E11;         /* bande più scure + testo su giallo */
+    --primary: #F2F1ED;     /* testo principale chiaro */
     --accent: #E8B843;      /* giallo brand — NON cambiare */
-    --accent-hover: #DFAC2E;
-    --accent-soft: rgba(232, 184, 67, 0.16);
-    --accent-ink: #8F6E15;  /* giallo "leggibile" per testi piccoli su fondo chiaro */
-    --text: #75746F;
-    --text-strong: #4A4945;
-    --border: rgba(27, 27, 30, 0.10);
-    --border-strong: rgba(27, 27, 30, 0.18);
+    --accent-hover: #F0C659;
+    --accent-soft: rgba(232, 184, 67, 0.14);
+    --accent-ink: #E8B843;  /* su fondo scuro il giallo è già leggibile */
+    --text: #8E8E96;
+    --text-strong: #C2C2C9;
+    --border: rgba(242, 241, 237, 0.09);
+    --border-strong: rgba(242, 241, 237, 0.16);
     --max: 1320px;
     --pad: 40px;
   }
@@ -89,7 +89,7 @@
     border-bottom: 1px solid transparent;
   }
   nav.scrolled {
-    background: rgba(243, 242, 239, 0.9);
+    background: rgba(20, 20, 23, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 14px 0;
@@ -188,7 +188,7 @@
   }
   .btn-secondary:hover {
     border-color: var(--primary);
-    background: rgba(27, 27, 30, 0.04);
+    background: rgba(242, 241, 237, 0.05);
   }
   .link-arrow {
     color: var(--accent-ink);
@@ -349,12 +349,12 @@
     margin-bottom: 28px;
     max-width: 920px;
   }
-  /* Firma visiva: evidenziatore giallo dietro le parole chiave */
+  /* Firma visiva su scuro: parola-chiave in oro corsivo + tratto sotto */
   .section-title .accent {
-    color: inherit;
+    color: var(--accent);
     font-style: italic;
-    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.45)) no-repeat left 76%;
-    background-size: 100% 0.36em;
+    background: linear-gradient(90deg, rgba(232,184,67,0.75), rgba(232,184,67,0.2)) no-repeat left 92%;
+    background-size: 100% 0.08em;
     padding: 0 0.06em;
   }
   .section-intro {
@@ -415,11 +415,7 @@
     line-height: 1.15;
     letter-spacing: -0.5px;
   }
-  .pas-solution h3 .accent {
-    color: inherit;
-    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.45)) no-repeat left 76%;
-    background-size: 100% 0.36em;
-  }
+  .pas-solution h3 .accent { color: var(--accent); }
   .pas-solution p {
     font-size: 16px;
     color: var(--text-strong);
@@ -471,13 +467,13 @@
   .service-card:hover {
     transform: translateY(-6px) scale(1.02);
     border-color: var(--accent);
-    box-shadow: 0 26px 56px rgba(27,27,30,0.14);
+    box-shadow: 0 26px 56px rgba(0,0,0,0.45);
   }
   .service-card-featured {
     background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%);
     border-color: var(--accent-ink);
     border-width: 2px;
-    box-shadow: 0 0 0 1px rgba(232,184,67,0.28), 0 24px 56px rgba(27,27,30,0.10);
+    box-shadow: 0 0 0 1px rgba(232,184,67,0.22), 0 24px 56px rgba(0,0,0,0.4);
     transform: translateY(-8px);
   }
   .service-card-featured:hover { transform: translateY(-12px) scale(1.015); }
@@ -651,7 +647,7 @@
     grid-template-columns: 1.3fr 1fr;
     gap: 48px;
     align-items: center;
-    box-shadow: 0 0 0 1px rgba(232,184,67,0.28), 0 24px 56px rgba(27,27,30,0.10);
+    box-shadow: 0 0 0 1px rgba(232,184,67,0.22), 0 24px 56px rgba(0,0,0,0.4);
     position: relative;
   }
   .price-badge {
@@ -826,7 +822,7 @@
   .testi-screen:hover {
     border-color: var(--accent-ink);
     transform: translateY(-4px);
-    box-shadow: 0 20px 44px rgba(27,27,30,0.12);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.4);
   }
   .testi-amount {
     position: absolute;
@@ -841,7 +837,7 @@
     padding: 7px 14px;
     border-radius: 999px;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 14px rgba(27,27,30,0.18);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
   }
   .testi-screen-img {
     aspect-ratio: 4 / 5;
@@ -1008,7 +1004,7 @@
     border: 1px solid var(--border-strong);
     border-radius: 10px;
     padding: 48px;
-    box-shadow: 0 24px 64px rgba(27,27,30,0.10);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.45);
     position: relative;
     overflow: hidden;
   }
@@ -1133,7 +1129,7 @@
 
   .form-error-msg {
     display: none;
-    color: #B3362A;
+    color: #E07070;
     font-size: 14px;
     margin: -8px 0 16px;
   }
@@ -1203,7 +1199,7 @@
   }
   .form-final.error .final-icon {
     border-color: #B33B3B;
-    color: #B3362A;
+    color: #E07070;
     background: rgba(179,59,59,0.1);
   }
   .form-final a { color: var(--accent-ink); }
@@ -1243,7 +1239,7 @@
     font-weight: 700;
     font-size: 15px;
     text-align: center;
-    box-shadow: 0 12px 32px rgba(27,27,30,0.20), 0 0 0 1px rgba(27,27,30,0.06);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(232,184,67,0.3);
     letter-spacing: 0.5px;
     transition: transform 0.2s;
   }
@@ -1394,7 +1390,7 @@
     position: fixed; inset: 0;
     pointer-events: none;
     z-index: 99;
-    opacity: 0.035;
+    opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
   }
 
@@ -1411,14 +1407,15 @@
   .hero-h1 .line:nth-child(2) .line-inner { transition-delay: 0.28s; }
   body.preload .hero-h1 .line-inner { transform: translateY(112%); transition: none; }
 
-  /* La parola-chiave si evidenzia da sola, come un tratto di pennarello */
+  /* La parola-chiave in oro si sottolinea da sola, come un tratto a mano */
   .hero h1 .accent {
-    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.45)) no-repeat left 76%;
-    background-size: 100% 0.36em;
+    color: var(--accent);
+    background: linear-gradient(90deg, rgba(232,184,67,0.8), rgba(232,184,67,0.25)) no-repeat left 90%;
+    background-size: 100% 0.09em;
     padding: 0 0.06em;
     transition: background-size 0.8s ease 1.35s;
   }
-  body.preload .hero h1 .accent { background-size: 0% 0.36em; transition: none; }
+  body.preload .hero h1 .accent { background-size: 0% 0.09em; transition: none; }
 
   /* Reveal più materico: sale E mette a fuoco */
   .js-reveal-on .reveal:not(.visible) {
