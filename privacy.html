@@ -13,43 +13,43 @@
   @font-face { font-family: 'Futura'; src: url('fonts/Futura-Medium.ttf') format('truetype'); font-weight: 400 500; font-display: swap; }
   @font-face { font-family: 'Futura'; src: url('fonts/Futura-Bold.ttf') format('truetype'); font-weight: 600 800; font-display: swap; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Futura', 'Jost', sans-serif; background: #0F0F12; color: #F5F0E6; line-height: 1.7; padding: 40px 20px 100px; }
+  body { font-family: 'Futura', 'Jost', sans-serif; background: #F3F2EF; color: #1B1B1E; line-height: 1.7; padding: 40px 20px 100px; }
   .legal { max-width: 760px; margin: 0 auto; }
-  .legal-back { display: inline-block; margin-bottom: 40px; color: #E8B843; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+  .legal-back { display: inline-block; margin-bottom: 40px; color: #8F6E15; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
   .legal-back:hover { opacity: 0.8; }
   .legal h1 { font-family: 'Futura', sans-serif; font-weight: 700; font-size: 42px; line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px; }
-  .legal-sub { color: #8A8A93; font-size: 15px; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(245,240,230,0.1); }
-  .legal h2 { font-family: 'Futura', sans-serif; font-weight: 700; font-size: 24px; margin: 40px 0 16px; color: #E8B843; letter-spacing: -0.3px; }
+  .legal-sub { color: #75746F; font-size: 15px; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(27,27,30,0.12); }
+  .legal h2 { font-family: 'Futura', sans-serif; font-weight: 700; font-size: 24px; margin: 40px 0 16px; color: #8F6E15; letter-spacing: -0.3px; }
   .legal h3 { font-family: 'Futura', sans-serif; font-weight: 600; font-size: 18px; margin: 28px 0 12px; }
-  .legal p { margin-bottom: 16px; color: #B5B5BD; font-size: 15px; }
-  .legal ul, .legal ol { margin: 0 0 18px 24px; color: #B5B5BD; font-size: 15px; }
+  .legal p { margin-bottom: 16px; color: #4A4945; font-size: 15px; }
+  .legal ul, .legal ol { margin: 0 0 18px 24px; color: #4A4945; font-size: 15px; }
   .legal li { margin-bottom: 8px; }
-  .legal a { color: #E8B843; }
-  .legal strong { color: #F5F0E6; font-weight: 600; }
-  .legal hr { border: none; border-top: 1px solid rgba(245,240,230,0.1); margin: 40px 0; }
-  .legal table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; color: #B5B5BD; }
-  .legal th, .legal td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(245,240,230,0.08); vertical-align: top; }
-  .legal th { color: #E8B843; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .legal a { color: #8F6E15; }
+  .legal strong { color: #1B1B1E; font-weight: 600; }
+  .legal hr { border: none; border-top: 1px solid rgba(27,27,30,0.12); margin: 40px 0; }
+  .legal table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; color: #4A4945; }
+  .legal th, .legal td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(27,27,30,0.10); vertical-align: top; }
+  .legal th { color: #8F6E15; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
 
   /* ===== WOW UPGRADE legale 03/07/2026 (coerente con index) ===== */
   html { scroll-behavior: smooth; }
   body { padding-top: 130px; }
-  ::selection { background: #E8B843; color: #0F0F12; }
+  ::selection { background: #E8B843; color: #1B1B1E; }
   body::after {
-    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 99; opacity: 0.05;
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 99; opacity: 0.035;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
   }
   #scrollProgress { position: fixed; top: 0; left: 0; height: 2px; width: 0;
-    background: linear-gradient(90deg, #8A6A2F, #E8B843); z-index: 200;
+    background: linear-gradient(90deg, #C1932B, #E8B843); z-index: 200;
     box-shadow: 0 0 12px rgba(232,184,67,0.55); }
   .legal-topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(15,15,18,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(245,240,230,0.08);
+    background: rgba(243,242,239,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(27,27,30,0.10);
     padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
   .legal-topbar .logo { font-family: 'Futura','Jost',sans-serif; font-weight: 700; letter-spacing: 4px;
-    font-size: 14px; color: #F5F0E6; text-decoration: none; }
+    font-size: 14px; color: #1B1B1E; text-decoration: none; }
   .legal-topbar .logo .dot { color: #E8B843; }
-  .legal-topbar .back { color: #E8B843; text-decoration: none; font-size: 12px;
+  .legal-topbar .back { color: #8F6E15; text-decoration: none; font-size: 12px;
     letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
   .legal-topbar .back:hover { opacity: 0.8; }
   .legal-back { display: none; }
@@ -59,7 +59,7 @@
   .legal p, .legal ul, .legal ol { font-size: 16px; }
   .legal h2 { margin-top: 48px; }
   .legal th { background: rgba(232,184,67,0.07); }
-  a:focus-visible, button:focus-visible { outline: 2px solid #E8B843; outline-offset: 3px; border-radius: 4px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #8F6E15; outline-offset: 3px; border-radius: 4px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } body::after { display: none; } }
   @media (max-width: 600px) { body { padding-top: 106px; } .legal-topbar { padding: 13px 16px; } .legal-topbar .logo { letter-spacing: 2.5px; font-size: 12px; } }
 </style>
@@ -159,7 +159,7 @@ Email: <a href="mailto:info@archiconsulting.it">info@archiconsulting.it</a>
 
 <hr>
 
-<p style="font-size: 13px; color: #8A8A93;">Documento redatto sulla base del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003 e successive modifiche. Per chiarimenti: <a href="mailto:info@archiconsulting.it">info@archiconsulting.it</a>.</p>
+<p style="font-size: 13px; color: #75746F;">Documento redatto sulla base del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003 e successive modifiche. Per chiarimenti: <a href="mailto:info@archiconsulting.it">info@archiconsulting.it</a>.</p>
 
 </div>
 

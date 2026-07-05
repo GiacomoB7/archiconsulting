@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#0F0F12" />
+<meta name="theme-color" content="#F3F2EF" />
 <title>Archiconsulting — Il tuo personal brand, trasformato in clienti. Con l'IA.</title>
 <meta name="description" content="Costruiamo il personal brand dei professionisti e lo trasformiamo in clienti: contenuti scritti dall'IA con la tua voce, strategia settimanale, pubblicità gestita da noi. Affiancamento di 6 mesi." />
 
@@ -39,18 +39,20 @@
   }
 
   :root {
-    --bg: #0F0F12;
-    --bg-2: #16161A;
-    --bg-3: #1F1F25;
-    --bg-card: #1A1A1F;
-    --primary: #F5F0E6;
-    --accent: #E8B843;
-    --accent-hover: #f0c659;
-    --accent-soft: rgba(232, 184, 67, 0.12);
-    --text: #8A8A93;
-    --text-strong: #B5B5BD;
-    --border: rgba(245, 240, 230, 0.08);
-    --border-strong: rgba(245, 240, 230, 0.14);
+    --bg: #F3F2EF;          /* grigio neutro caldo */
+    --bg-2: #ECEAE4;        /* bande */
+    --bg-3: #E4E2DB;        /* tile */
+    --bg-card: #FFFFFF;     /* card */
+    --ink: #1B1B1E;         /* scuro (bande a contrasto, testo su giallo) */
+    --primary: #1B1B1E;     /* testo principale = inchiostro */
+    --accent: #E8B843;      /* giallo brand — NON cambiare */
+    --accent-hover: #DFAC2E;
+    --accent-soft: rgba(232, 184, 67, 0.16);
+    --accent-ink: #8F6E15;  /* giallo "leggibile" per testi piccoli su fondo chiaro */
+    --text: #75746F;
+    --text-strong: #4A4945;
+    --border: rgba(27, 27, 30, 0.10);
+    --border-strong: rgba(27, 27, 30, 0.18);
     --max: 1320px;
     --pad: 40px;
   }
@@ -68,7 +70,7 @@
     overflow-x: hidden;
   }
 
-  ::selection { background: var(--accent); color: var(--bg); }
+  ::selection { background: var(--accent); color: var(--ink); }
 
   .container {
     max-width: var(--max);
@@ -87,7 +89,7 @@
     border-bottom: 1px solid transparent;
   }
   nav.scrolled {
-    background: rgba(15, 15, 18, 0.88);
+    background: rgba(243, 242, 239, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 14px 0;
@@ -124,7 +126,7 @@
   .nav-links a:hover { color: var(--primary); }
   .nav-links a.cta-nav {
     background: var(--accent);
-    color: var(--bg);
+    color: var(--ink);
     padding: 11px 22px;
     border-radius: 999px;
     font-weight: 700;
@@ -160,7 +162,7 @@
   }
   .btn-primary {
     background: var(--accent);
-    color: var(--bg);
+    color: var(--ink);
   }
   .btn-primary:hover {
     background: var(--accent-hover);
@@ -186,10 +188,10 @@
   }
   .btn-secondary:hover {
     border-color: var(--primary);
-    background: rgba(245, 240, 230, 0.04);
+    background: rgba(27, 27, 30, 0.04);
   }
   .link-arrow {
-    color: var(--accent);
+    color: var(--accent-ink);
     text-decoration: none;
     font-weight: 600;
     font-size: 15px;
@@ -224,7 +226,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: var(--accent);
+    color: var(--accent-ink);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 4px;
@@ -254,7 +256,7 @@
     margin-bottom: 28px;
     max-width: 1100px;
   }
-  .hero h1 .accent { color: var(--accent); font-style: italic; }
+  .hero h1 .accent { color: inherit; font-style: italic; }
   .hero h1 .line { display: block; }
   .hero .sub {
     font-size: clamp(17px, 1.35vw, 21px);
@@ -270,6 +272,40 @@
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 56px;
+  }
+  /* nicchie: si vede subito per chi è */
+  .hero-niches {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    max-width: 860px;
+    margin: -24px 0 48px;
+  }
+  .niches-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin-right: 6px;
+  }
+  .niche-chip {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-strong);
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    padding: 7px 14px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .niche-chip-all {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+    white-space: normal;
   }
   .hero-trust {
     display: flex;
@@ -313,7 +349,14 @@
     margin-bottom: 28px;
     max-width: 920px;
   }
-  .section-title .accent { color: var(--accent); font-style: italic; }
+  /* Firma visiva: evidenziatore giallo dietro le parole chiave */
+  .section-title .accent {
+    color: inherit;
+    font-style: italic;
+    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.45)) no-repeat left 76%;
+    background-size: 100% 0.36em;
+    padding: 0 0.06em;
+  }
   .section-intro {
     font-size: 18px;
     color: var(--text-strong);
@@ -372,7 +415,11 @@
     line-height: 1.15;
     letter-spacing: -0.5px;
   }
-  .pas-solution h3 .accent { color: var(--accent); }
+  .pas-solution h3 .accent {
+    color: inherit;
+    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.45)) no-repeat left 76%;
+    background-size: 100% 0.36em;
+  }
   .pas-solution p {
     font-size: 16px;
     color: var(--text-strong);
@@ -394,7 +441,7 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 700;
   }
 
@@ -415,28 +462,32 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.2, 0.65, 0.3, 1), border-color 0.35s, box-shadow 0.35s;
   }
+  /* tutta la card è un link: al passaggio "ti tira dentro" */
   .service-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px) scale(1.02);
     border-color: var(--accent);
-    box-shadow: 0 20px 56px rgba(0,0,0,0.3);
+    box-shadow: 0 26px 56px rgba(27,27,30,0.14);
   }
   .service-card-featured {
     background: linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     border-width: 2px;
-    box-shadow: 0 0 0 1px rgba(232,184,67,0.2), 0 24px 64px rgba(0,0,0,0.35);
+    box-shadow: 0 0 0 1px rgba(232,184,67,0.28), 0 24px 56px rgba(27,27,30,0.10);
     transform: translateY(-8px);
   }
-  .service-card-featured:hover { transform: translateY(-12px); }
+  .service-card-featured:hover { transform: translateY(-12px) scale(1.015); }
   .service-badge {
     position: absolute;
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--accent);
-    color: var(--bg);
+    color: var(--ink);
     font-family: 'Futura', sans-serif;
     font-weight: 700;
     font-size: 11px;
@@ -450,7 +501,7 @@
   .service-tag {
     font-family: 'Futura', sans-serif;
     font-size: 11px;
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -474,7 +525,7 @@
     min-height: 50px;
   }
   .service-tagline .accent {
-    color: var(--accent);
+    color: var(--accent-ink);
     font-style: italic;
     font-weight: 600;
   }
@@ -498,22 +549,42 @@
     content: '\2713';
     position: absolute;
     left: 0; top: 11px;
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 700;
   }
   .service-features li strong {
     color: var(--primary);
     font-weight: 700;
   }
-  .service-card .btn { width: 100%; justify-content: center; }
-  .service-secondary-link {
-    display: block;
-    text-align: center;
-    margin-top: 14px;
-    font-size: 13px;
-    color: var(--text);
+  /* freccia d'ingresso: l'unico invito, niente scritte */
+  .service-go {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 8px;
   }
-  .service-secondary-link a { color: var(--accent); }
+  .service-go .go-circle {
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    color: var(--accent-ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    transition: transform 0.35s cubic-bezier(0.2, 0.65, 0.3, 1), background 0.3s, color 0.3s;
+  }
+  .service-card-featured .go-circle {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--ink);
+  }
+  .service-card:hover .go-circle {
+    background: var(--accent);
+    color: var(--ink);
+    transform: translateX(10px);
+  }
 
   /* ===== METODO (4 pilastri) ===== */
   #metodo {
@@ -539,7 +610,7 @@
     font-family: 'Futura', sans-serif;
     font-size: 13px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--accent-ink);
     letter-spacing: 3px;
     margin-bottom: 28px;
   }
@@ -560,7 +631,7 @@
     display: inline-block;
     margin-top: 22px;
     font-size: 11px;
-    color: var(--accent);
+    color: var(--accent-ink);
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 4px 10px;
@@ -580,7 +651,7 @@
     grid-template-columns: 1.3fr 1fr;
     gap: 48px;
     align-items: center;
-    box-shadow: 0 0 0 1px rgba(232,184,67,0.2), 0 24px 64px rgba(0,0,0,0.35);
+    box-shadow: 0 0 0 1px rgba(232,184,67,0.28), 0 24px 56px rgba(27,27,30,0.10);
     position: relative;
   }
   .price-badge {
@@ -588,7 +659,7 @@
     top: -14px;
     left: 48px;
     background: var(--accent);
-    color: var(--bg);
+    color: var(--ink);
     font-family: 'Futura', sans-serif;
     font-weight: 700;
     font-size: 11px;
@@ -622,7 +693,7 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 700;
   }
   .price-box {
@@ -645,7 +716,7 @@
     font-family: 'Futura', sans-serif;
     font-size: clamp(40px, 4vw, 54px);
     font-weight: 700;
-    color: var(--accent);
+    color: var(--accent-ink);
     line-height: 1;
     letter-spacing: -1.5px;
     display: block;
@@ -680,7 +751,7 @@
   }
   .onboarding-step:hover {
     transform: translateY(-4px);
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
   }
 
   /* ===== PER CHI ===== */
@@ -723,7 +794,7 @@
   .fit-yes li::before {
     content: '✓';
     position: absolute; left: 0;
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 700;
   }
   .fit-no li::before {
@@ -753,9 +824,9 @@
     position: relative;
   }
   .testi-screen:hover {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     transform: translateY(-4px);
-    box-shadow: 0 20px 56px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 44px rgba(27,27,30,0.12);
   }
   .testi-amount {
     position: absolute;
@@ -763,14 +834,14 @@
     right: 16px;
     z-index: 2;
     background: var(--accent);
-    color: var(--bg);
+    color: var(--ink);
     font-family: 'Futura', sans-serif;
     font-weight: 700;
     font-size: 12px;
     padding: 7px 14px;
     border-radius: 999px;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 14px rgba(27,27,30,0.18);
   }
   .testi-screen-img {
     aspect-ratio: 4 / 5;
@@ -793,7 +864,7 @@
     flex-grow: 1;
   }
   .testi-screen figcaption strong {
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 700;
   }
   .testi-disclaimer {
@@ -863,7 +934,7 @@
     color: var(--primary);
     opacity: 0.88;
   }
-  .about-content .highlight { color: var(--accent); font-weight: 700; }
+  .about-content .highlight { color: var(--accent-ink); font-weight: 700; }
 
   /* ===== FAQ ===== */
   #faq {
@@ -893,7 +964,7 @@
   details summary::after {
     content: '+';
     font-size: 30px;
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 300;
     transition: transform 0.3s;
     flex-shrink: 0;
@@ -937,7 +1008,7 @@
     border: 1px solid var(--border-strong);
     border-radius: 10px;
     padding: 48px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    box-shadow: 0 24px 64px rgba(27,27,30,0.10);
     position: relative;
     overflow: hidden;
   }
@@ -960,7 +1031,7 @@
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-ink);
   }
   .form-progress-bar {
     flex: 1;
@@ -1012,7 +1083,7 @@
   .form-field input[type="email"],
   .form-field textarea {
     width: 100%;
-    background: var(--bg);
+    background: var(--bg-card);
     border: 1px solid var(--border-strong);
     border-radius: 6px;
     color: var(--primary);
@@ -1025,7 +1096,7 @@
   }
   .form-field input:focus,
   .form-field textarea:focus {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     box-shadow: 0 0 0 3px var(--accent-soft);
   }
   .form-field input::placeholder,
@@ -1040,7 +1111,7 @@
   }
   .choice-row.cols-3 { grid-template-columns: 1fr; }
   .choice {
-    background: var(--bg);
+    background: var(--bg-card);
     border: 1px solid var(--border-strong);
     border-radius: 6px;
     color: var(--primary);
@@ -1052,17 +1123,17 @@
     text-align: center;
     transition: all 0.2s;
   }
-  .choice:hover { border-color: var(--accent); }
+  .choice:hover { border-color: var(--accent-ink); }
   .choice.selected {
-    border-color: var(--accent);
+    border-color: var(--accent-ink);
     background: var(--accent-soft);
-    color: var(--accent);
+    color: var(--accent-ink);
     box-shadow: 0 0 0 1px var(--accent);
   }
 
   .form-error-msg {
     display: none;
-    color: #E07070;
+    color: #B3362A;
     font-size: 14px;
     margin: -8px 0 16px;
   }
@@ -1109,7 +1180,7 @@
     border-radius: 50%;
     background: var(--accent-soft);
     border: 2px solid var(--accent);
-    color: var(--accent);
+    color: var(--accent-ink);
     font-size: 28px;
     display: flex;
     align-items: center;
@@ -1132,10 +1203,10 @@
   }
   .form-final.error .final-icon {
     border-color: #B33B3B;
-    color: #E07070;
+    color: #B3362A;
     background: rgba(179,59,59,0.1);
   }
-  .form-final a { color: var(--accent); }
+  .form-final a { color: var(--accent-ink); }
 
   .candidatura-meta {
     margin-top: 44px;
@@ -1153,7 +1224,7 @@
   }
   .candidatura-meta-item::before {
     content: '✓';
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 700;
   }
 
@@ -1165,25 +1236,26 @@
     left: 16px; right: 16px;
     z-index: 90;
     background: var(--accent);
-    color: var(--bg);
+    color: var(--ink);
     padding: 16px 24px;
     border-radius: 999px;
     text-decoration: none;
     font-weight: 700;
     font-size: 15px;
     text-align: center;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(232, 184, 67, 0.3);
+    box-shadow: 0 12px 32px rgba(27,27,30,0.20), 0 0 0 1px rgba(27,27,30,0.06);
     letter-spacing: 0.5px;
     transition: transform 0.2s;
   }
   .sticky-cta:hover { transform: translateY(-2px); }
 
-  /* ===== FOOTER ===== */
+  /* ===== FOOTER (scuro, chiude la pagina) ===== */
   footer {
     padding: 80px 0 40px;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
+    background: var(--ink);
+    border-top: none;
   }
+  footer .logo { color: #F3F2EF; }
   .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1193,14 +1265,14 @@
   footer h4 {
     font-family: 'Futura', sans-serif;
     font-size: 12px;
-    color: var(--text);
+    color: rgba(243, 242, 239, 0.45);
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 20px;
     font-weight: 700;
   }
   footer p, footer a {
-    color: var(--primary);
+    color: #F3F2EF;
     opacity: 0.78;
     font-size: 15px;
     text-decoration: none;
@@ -1208,25 +1280,25 @@
     display: block;
     transition: opacity 0.2s, color 0.2s;
   }
-  footer a:hover { opacity: 1; color: var(--accent); }
+  footer a:hover { opacity: 1; color: var(--accent-ink); }
   footer .brand-tagline {
     margin-top: 16px;
     max-width: 360px;
-    color: var(--text);
+    color: rgba(243, 242, 239, 0.55);
     line-height: 1.7;
   }
   .footer-bottom {
     padding-top: 32px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(243, 242, 239, 0.12);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    color: var(--text);
+    color: rgba(243, 242, 239, 0.45);
     font-size: 13px;
   }
-  .footer-bottom a { color: var(--text); display: inline; opacity: 1; }
-  .footer-bottom a:hover { color: var(--accent); }
+  .footer-bottom a { color: rgba(243, 242, 239, 0.6); display: inline; opacity: 1; }
+  .footer-bottom a:hover { color: var(--accent-ink); }
 
   /* ===== REVEAL ===== */
   .reveal {
@@ -1302,8 +1374,9 @@
   }
 
   /* ===================================================================
-     WOW UPGRADE 03/07/2026 — signature: il Cervello vivo nell'hero.
-     Il resto: rifiniture quiete (progress, spotlight card, reveal, grana).
+     RESTYLING 05/07/2026 — palette chiara (grigio neutro caldo + giallo
+     brand), signature: evidenziatore giallo sulle parole chiave.
+     Rifiniture quiete: progress, spotlight card, reveal, grana.
      =================================================================== */
 
   /* Barra di avanzamento lettura (oro, sotto la nav) */
@@ -1321,20 +1394,10 @@
     position: fixed; inset: 0;
     pointer-events: none;
     z-index: 99;
-    opacity: 0.05;
+    opacity: 0.035;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
   }
 
-  /* Canvas "Cervello" nell'hero */
-  #brainCanvas {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    z-index: 1;
-    opacity: 1;
-    transition: opacity 1.6s ease 0.3s;
-  }
-  body.preload #brainCanvas { opacity: 0; transition: none; }
-  .hero-bg { opacity: 0.22; }
   .hero .container { z-index: 3; }
 
   /* Apertura orchestrata: le righe del titolo salgono da una maschera */
@@ -1348,13 +1411,14 @@
   .hero-h1 .line:nth-child(2) .line-inner { transition-delay: 0.28s; }
   body.preload .hero-h1 .line-inner { transform: translateY(112%); transition: none; }
 
-  /* La parola-chiave si sottolinea da sola, come un tratto a mano */
+  /* La parola-chiave si evidenzia da sola, come un tratto di pennarello */
   .hero h1 .accent {
-    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.35)) no-repeat left 88%;
-    background-size: 100% 0.09em;
+    background: linear-gradient(90deg, rgba(232,184,67,0.85), rgba(232,184,67,0.45)) no-repeat left 76%;
+    background-size: 100% 0.36em;
+    padding: 0 0.06em;
     transition: background-size 0.8s ease 1.35s;
   }
-  body.preload .hero h1 .accent { background-size: 0% 0.09em; transition: none; }
+  body.preload .hero h1 .accent { background-size: 0% 0.36em; transition: none; }
 
   /* Reveal più materico: sale E mette a fuoco */
   .js-reveal-on .reveal:not(.visible) {
@@ -1389,8 +1453,6 @@
   }
   .btn-primary:hover::after { left: 130%; }
 
-  /* Step del metodo: il numero si accende in sequenza visiva */
-  .step:hover .step-number { text-shadow: 0 0 18px rgba(232,184,67,0.8); }
 
   /* Focus visibile da tastiera */
   a:focus-visible, button:focus-visible {
@@ -1412,15 +1474,15 @@
     font-size: 15px;
     color: var(--text-strong);
   }
-  .cta-direct a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+  .cta-direct a { color: var(--accent-ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
   .cta-direct a:hover { opacity: 0.75; }
 
-  /* ===== STATS BAND (numeri giganti — pattern hero-numero, +18% nei test 2026) ===== */
+  /* ===== STATS BAND (numeri giganti — banda scura a contrasto) ===== */
   .stats-band {
     padding: 56px 0;
-    background: var(--bg-2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    background: var(--ink);
+    border-top: none;
+    border-bottom: none;
   }
   .stats-grid {
     display: grid;
@@ -1442,7 +1504,7 @@
   .stat-l {
     display: block;
     font-size: 13px;
-    color: var(--text-strong);
+    color: rgba(243, 242, 239, 0.62);
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 600;
@@ -1453,12 +1515,12 @@
     .stats-grid { grid-template-columns: 1fr; gap: 32px; }
   }
 
-  /* ===== MARQUEE dorato ===== */
+  /* ===== MARQUEE giallo brand ===== */
   .marquee {
     overflow: hidden;
     padding: 20px 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
+    border-bottom: none;
+    background: var(--accent);
   }
   .marquee-track {
     display: flex;
@@ -1473,10 +1535,10 @@
     font-size: 14px;
     letter-spacing: 3.5px;
     text-transform: uppercase;
-    color: var(--primary);
+    color: var(--ink);
     white-space: nowrap;
   }
-  .marquee-track i { color: var(--accent); font-style: normal; font-size: 13px; }
+  .marquee-track i { color: rgba(27, 27, 30, 0.5); font-style: normal; font-size: 13px; }
   @keyframes marquee { to { transform: translateX(-50%); } }
 
   /* ===== METODO in stile bento ===== */
@@ -1508,7 +1570,6 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .marquee-track { animation: none; }
-    #brainCanvas { display: none; }
     body::after { display: none; }
     .js-reveal-on .reveal:not(.visible) { opacity: 1; transform: none; filter: none; }
     body.preload .hero-h1 .line-inner { transform: none; }
@@ -1533,7 +1594,6 @@
 <!-- ===== HERO ===== -->
 <header class="hero" id="top">
   <div class="hero-bg"></div>
-  <canvas id="brainCanvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="reveal visible">
       <span class="hero-eyebrow"><span class="pulse"></span>Personal brand + IA per professionisti</span>
@@ -1545,8 +1605,8 @@
     <p class="sub reveal visible reveal-d2">
       Molti professionisti sono bravissimi nel loro lavoro e invisibili online.
       Costruiamo il tuo personal brand e lo trasformiamo in richieste:
-      contenuti scritti dall'IA con la tua voce, strategia ogni settimana,
-      pubblicità gestita da noi.
+      strategia ogni settimana, pubblicità gestita da noi,
+      contenuti nella tua voce.
     </p>
     <div class="hero-ctas reveal visible reveal-d2">
       <a href="#candidatura" class="btn btn-primary btn-large">
@@ -1554,6 +1614,21 @@
         <span class="arrow">→</span>
       </a>
       <a href="#risultati" class="link-arrow">Guarda i risultati reali →</a>
+    </div>
+    <div class="hero-niches reveal visible reveal-d2" aria-label="Per chi è">
+      <span class="niches-label">Per chi &egrave;:</span>
+      <span class="niche-chip">Architetti</span>
+      <span class="niche-chip">Interior designer</span>
+      <span class="niche-chip">Geometri</span>
+      <span class="niche-chip">Ingegneri</span>
+      <span class="niche-chip">Avvocati</span>
+      <span class="niche-chip">Commercialisti</span>
+      <span class="niche-chip">Consulenti finanziari</span>
+      <span class="niche-chip">Nutrizionisti</span>
+      <span class="niche-chip">Fisioterapisti</span>
+      <span class="niche-chip">Dentisti</span>
+      <span class="niche-chip">Fotografi</span>
+      <span class="niche-chip niche-chip-all">…e ogni professionista che vende un servizio</span>
     </div>
     <div class="hero-trust reveal visible reveal-d3">
       <div class="hero-trust-item">
@@ -1597,12 +1672,12 @@
     <span>Pubblicità gestita da noi</span><i>✦</i>
     <span>Storie che fanno agire</span><i>✦</i>
     <span>Richieste in direct, non like</span><i>✦</i>
-    <span>Il Cervello scrive come te</span><i>✦</i>
+    <span>Strategia ogni settimana, 1-1</span><i>✦</i>
     <span>Contenuti nella tua voce</span><i>✦</i>
     <span>Pubblicità gestita da noi</span><i>✦</i>
     <span>Storie che fanno agire</span><i>✦</i>
     <span>Richieste in direct, non like</span><i>✦</i>
-    <span>Il Cervello scrive come te</span><i>✦</i>
+    <span>Strategia ogni settimana, 1-1</span><i>✦</i>
   </div>
 </div>
 
@@ -1645,25 +1720,24 @@
 
     <div class="services-grid reveal reveal-d1">
 
-      <!-- SERVIZIO 1 — AFFIANCAMENTO (FEATURED) -->
-      <article class="service-card service-card-featured" id="affiancamento">
+      <!-- SERVIZIO 1 — AFFIANCAMENTO (FEATURED) — tutta la card apre la pagina -->
+      <a class="service-card service-card-featured" id="affiancamento" href="affiancamento.html" aria-label="Affiancamento: apri la pagina del servizio">
         <div class="service-badge">Il percorso completo</div>
         <div class="service-tag">Affiancamento · 6 mesi</div>
         <h3 class="service-name">Affiancamento</h3>
         <p class="service-tagline">1-1 con Giacomo e il team. <span class="accent">Tutto il sistema</span>, tutto incluso.</p>
         <ul class="service-features">
-          <li><strong>Cervello AI</strong> installato sul tuo PC: scrive i contenuti con la tua voce</li>
-          <li><strong>Call settimanale</strong> di strategia 1-1</li>
+          <li><strong>Io e il mio team al tuo fianco</strong> per 6 mesi, 1-1</li>
+          <li><strong>Call settimanale</strong> di strategia</li>
           <li>Gestione completa delle <strong>campagne pubblicitarie</strong></li>
-          <li>Aggiornamenti continui del sistema</li>
-          <li>Setup del brand e calibratura della voce</li>
+          <li>Setup del brand e <strong>calibratura della tua voce</strong></li>
+          <li>Inclusi i nostri tool per creare i contenuti</li>
         </ul>
-        <a href="#candidatura" class="btn btn-primary">Candidati alla call <span class="arrow">&rarr;</span></a>
-        <p class="service-secondary-link">Vuoi capire come funziona? <a href="affiancamento.html">La pagina completa &rarr;</a></p>
-      </article>
+        <span class="service-go" aria-hidden="true"><span class="go-circle">&rarr;</span></span>
+      </a>
 
       <!-- SERVIZIO 2 — CONSULENZA (call singola) -->
-      <article class="service-card" id="consulenza">
+      <a class="service-card" id="consulenza" href="consulenza.html" aria-label="Consulenza: apri la pagina del servizio">
         <div class="service-tag">Call singola</div>
         <h3 class="service-name">Consulenza</h3>
         <p class="service-tagline">Una call, un problema specifico, <span class="accent">una soluzione</span>.</p>
@@ -1673,12 +1747,11 @@
           <li>Esci con un <strong>metodo da applicare subito</strong></li>
           <li>Senza percorso: una call sola, quando ti serve</li>
         </ul>
-        <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
-        <p class="service-secondary-link">Vuoi capire come funziona? <a href="consulenza.html">La pagina completa &rarr;</a></p>
-      </article>
+        <span class="service-go" aria-hidden="true"><span class="go-circle">&rarr;</span></span>
+      </a>
 
       <!-- SERVIZIO 3 — CONSULTING.AI -->
-      <article class="service-card" id="consulting-ai">
+      <a class="service-card" id="consulting-ai" href="consulting-ai.html" aria-label="Consulting.AI: apri la pagina del servizio">
         <div class="service-tag">Abbonamento annuale</div>
         <h3 class="service-name">Consulting.AI</h3>
         <p class="service-tagline">Il consulente virtuale <span class="accent">sempre con te</span>.</p>
@@ -1689,12 +1762,11 @@
           <li>Analisi costruite su contenuti reali della tua nicchia</li>
           <li>Nessun collegamento a Instagram: zero rischi per il profilo</li>
         </ul>
-        <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
-        <p class="service-secondary-link">Vuoi capire come funziona? <a href="consulting-ai.html">La pagina completa &rarr;</a></p>
-      </article>
+        <span class="service-go" aria-hidden="true"><span class="go-circle">&rarr;</span></span>
+      </a>
 
       <!-- SERVIZIO 4 — GESTIONE CAMPAGNE -->
-      <article class="service-card" id="gestione-campagne">
+      <a class="service-card" id="gestione-campagne" href="gestione-campagne.html" aria-label="Gestione Campagne: apri la pagina del servizio">
         <div class="service-tag">Pacchetto annuale</div>
         <h3 class="service-name">Gestione Campagne</h3>
         <p class="service-tagline">La tua pubblicit&agrave; <span class="accent">la gestiamo noi</span>, tutto l'anno.</p>
@@ -1705,9 +1777,8 @@
           <li>Risultati chiari: sai <strong>cosa ti sta portando</strong>, ogni mese</li>
           <li>Per chi vuole la pubblicit&agrave; in mani esperte, senza pensarci</li>
         </ul>
-        <a href="#candidatura" class="btn btn-secondary">Mi interessa <span class="arrow">&rarr;</span></a>
-        <p class="service-secondary-link">Vuoi capire come funziona? <a href="gestione-campagne.html">La pagina completa &rarr;</a></p>
-      </article>
+        <span class="service-go" aria-hidden="true"><span class="go-circle">&rarr;</span></span>
+      </a>
 
     </div>
   </div>
@@ -1724,27 +1795,27 @@
     <div class="steps reveal reveal-d1">
       <div class="step">
         <div class="step-number">01</div>
-        <h3>Il tuo Cervello AI</h3>
-        <p>Montiamo sul tuo PC un sistema che impara chi sei: la tua storia, i tuoi servizi, il tuo modo di parlare. Da lì scrive i contenuti replicando la tua voce. Non testi da assistente: testi tuoi.</p>
-        <span class="duration">Setup guidato con noi</span>
-      </div>
-      <div class="step">
-        <div class="step-number">02</div>
-        <h3>Aggiornamenti continui</h3>
-        <p>Instagram cambia ogni due mesi, e un sistema fermo invecchia. Il Cervello te lo teniamo aggiornato noi: nuovi format, nuove regole del gioco, nuove funzioni.</p>
-        <span class="duration">Sempre incluso</span>
-      </div>
-      <div class="step">
-        <div class="step-number">03</div>
         <h3>Call settimanale</h3>
-        <p>Ogni settimana lavoriamo sulla parte da imprenditore: strategia, offerta, priorità, come gestire le richieste che arrivano. È qui che si smette di improvvisare.</p>
+        <p>Ogni settimana lavoriamo insieme sulla parte da imprenditore: strategia, offerta, priorità, come gestire le richieste che arrivano. È qui che si smette di improvvisare.</p>
         <span class="duration">Ogni settimana, 1-1</span>
       </div>
       <div class="step">
-        <div class="step-number">04</div>
+        <div class="step-number">02</div>
         <h3>Pubblicità gestita</h3>
         <p>Le campagne le gestiamo noi: account, pubblico, budget. È la distribuzione che trasforma i contenuti in richieste, e non la lasciamo al caso.</p>
         <span class="duration">Gestione completa</span>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Brand e voce</h3>
+        <p>Setup del brand e calibratura della tua voce: come ti presenti, cosa ti rende diverso da chi costa meno, come lo dici. Prima si sistema il messaggio, poi si spinge.</p>
+        <span class="duration">Dal primo giorno</span>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h3>Contenuti senza pensieri</h3>
+        <p>Per i contenuti ci appoggiamo anche ai nostri tool interni: escono nella tua voce, tu leggi, approvi e ci metti la faccia. Il grosso del lavoro manuale non ricade su di te.</p>
+        <span class="duration">Inclusi nel percorso</span>
       </div>
     </div>
 
@@ -1753,11 +1824,11 @@
       <div>
         <h3>Tutto incluso, niente sorprese in corso d'opera.</h3>
         <ul class="price-includes">
-          <li>Cervello AI installato e configurato sul tuo PC</li>
-          <li>Aggiornamenti continui del sistema per tutto il percorso</li>
-          <li>Call settimanale di strategia 1-1</li>
+          <li>Io e il mio team al tuo fianco, 1-1, per 6 mesi</li>
+          <li>Call settimanale di strategia</li>
           <li>Gestione completa delle campagne pubblicitarie</li>
           <li>Setup del brand e calibratura della tua voce</li>
+          <li>Inclusi i nostri tool per creare i contenuti</li>
         </ul>
       </div>
       <div class="price-box">
@@ -1813,7 +1884,7 @@
       <div class="onboarding-step">
         <div class="step-number">Passo 2</div>
         <h3 style="font-family:'Futura',sans-serif; font-size:22px; font-weight:700; margin-bottom:14px; letter-spacing:-0.5px;">Setup della prima settimana</h3>
-        <p style="font-size:15px; color:var(--text-strong); line-height:1.65;">Installiamo insieme il Cervello sul tuo PC, ci carichi i tuoi materiali, impostiamo profilo e campagne. Bastano 30 minuti guidati: se qualcosa si inceppa, lo sistemiamo noi.</p>
+        <p style="font-size:15px; color:var(--text-strong); line-height:1.65;">Impostiamo insieme brand, profilo e campagne, e prepariamo gli strumenti per i contenuti. Bastano 30 minuti guidati: se qualcosa si inceppa, lo sistemiamo noi.</p>
       </div>
       <div class="onboarding-step">
         <div class="step-number">Passo 3</div>
@@ -1932,7 +2003,7 @@
         <p>Da l&igrave; &egrave; nata <span class="highlight">Archiconsulting</span>: pi&ugrave; di 50 studi e professionisti affiancati con lo stesso sistema — contenuti nella loro voce, storie che fanno agire, pubblicit&agrave; gestita. Oggi, con il mio team, quel sistema lo abbiamo reso pi&ugrave; veloce grazie all'IA: un Cervello che impara chi sei e scrive come te.</p>
         <p>Non sono un guru con la Lamborghini a noleggio. Sono uno che questo lavoro lo fa ogni giorno, prima di tutto su se stesso.</p>
         <p style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text);">
-          <a href="https://instagram.com/giacomo_bonci_marketing" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px;">@giacomo_bonci_marketing</a>
+          <a href="https://instagram.com/giacomo_bonci_marketing" target="_blank" rel="noopener" style="color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px;">@giacomo_bonci_marketing</a>
           &nbsp;&middot;&nbsp;
           <a href="mailto:info@archiconsulting.it" style="color: var(--text-strong); text-decoration: none;">info@archiconsulting.it</a>
         </p>
@@ -1950,11 +2021,11 @@
     <div class="faq-list reveal reveal-d1">
       <details>
         <summary>I contenuti li scrive l'IA? Non si vedr&agrave; che sono finti?</summary>
-        <p>Si vedrebbe, se fosse la solita IA generica. Il Cervello &egrave; un'altra cosa: prima impara chi sei — la tua storia, i tuoi clienti, il tuo modo di parlare — e poi scrive <strong style="color: var(--accent);">replicando la tua voce</strong>. Tu leggi, approvi, e ci metti la faccia. La differenza con un testo da assistente si sente alla prima riga.</p>
+        <p>Si vedrebbe, se fosse la solita IA generica. Il Cervello &egrave; un'altra cosa: prima impara chi sei — la tua storia, i tuoi clienti, il tuo modo di parlare — e poi scrive <strong style="color: var(--accent-ink);">replicando la tua voce</strong>. Tu leggi, approvi, e ci metti la faccia. La differenza con un testo da assistente si sente alla prima riga.</p>
       </details>
       <details>
         <summary>Non sono pratico col computer. &Egrave; un problema?</summary>
-        <p>No. Il setup lo facciamo <strong style="color: var(--accent);">insieme, guidato</strong>: bastano 30 minuti. E se qualcosa si inceppa, il sistema si corregge chiedendoglielo — o lo sistemiamo noi. L'unico requisito vero &egrave; un PC e la disponibilit&agrave; a usarlo.</p>
+        <p>No. Il setup lo facciamo <strong style="color: var(--accent-ink);">insieme, guidato</strong>: bastano 30 minuti. E se qualcosa si inceppa, il sistema si corregge chiedendoglielo — o lo sistemiamo noi. L'unico requisito vero &egrave; un PC e la disponibilit&agrave; a usarlo.</p>
       </details>
       <details>
         <summary>Quanto tempo mi richiede?</summary>
@@ -1962,11 +2033,11 @@
       </details>
       <details>
         <summary>Quanto costa?</summary>
-        <p>Dipende dal punto di partenza della tua attivit&agrave; e dal percorso giusto per te: affiancamento completo, Consulting.AI o Gestione Campagne non sono la stessa cosa. Per questo l'investimento lo definiamo <strong style="color: var(--accent);">insieme nella call</strong>, dopo aver capito cosa ti serve davvero. Quello che &egrave; certo: condizioni chiare prima di iniziare e niente sorprese in corso d'opera.</p>
+        <p>Dipende dal punto di partenza della tua attivit&agrave; e dal percorso giusto per te: affiancamento completo, Consulting.AI o Gestione Campagne non sono la stessa cosa. Per questo l'investimento lo definiamo <strong style="color: var(--accent-ink);">insieme nella call</strong>, dopo aver capito cosa ti serve davvero. Quello che &egrave; certo: condizioni chiare prima di iniziare e niente sorprese in corso d'opera.</p>
       </details>
       <details>
         <summary>Che differenza c'&egrave; tra i quattro servizi?</summary>
-        <p>L'<strong style="color: var(--accent);">affiancamento</strong> &egrave; il percorso completo di 6 mesi: Cervello AI + call settimanale 1-1 + campagne gestite da noi. La <strong style="color: var(--accent);">consulenza</strong> &egrave; una call singola su un problema specifico: entri col problema, esci con un metodo da applicare subito. <strong style="color: var(--accent);">Consulting.AI</strong> &egrave; il consulente virtuale in abbonamento: ti guida su post, storie, pubblicit&agrave; e call, ma il lavoro operativo resta tuo. <strong style="color: var(--accent);">Gestione Campagne</strong> &egrave; per chi vuole delegare la pubblicit&agrave;: le campagne le gestiamo noi — account, pubblico, budget — e i contenuti restano tuoi. In call capiamo qual &egrave; quello giusto per il tuo momento.</p>
+        <p>L'<strong style="color: var(--accent-ink);">affiancamento</strong> &egrave; il percorso completo di 6 mesi: io e il mio team al tuo fianco, call settimanale 1-1 + campagne gestite da noi (inclusi i nostri tool per i contenuti). La <strong style="color: var(--accent-ink);">consulenza</strong> &egrave; una call singola su un problema specifico: entri col problema, esci con un metodo da applicare subito. <strong style="color: var(--accent-ink);">Consulting.AI</strong> &egrave; il consulente virtuale in abbonamento: ti guida su post, storie, pubblicit&agrave; e call, ma il lavoro operativo resta tuo. <strong style="color: var(--accent-ink);">Gestione Campagne</strong> &egrave; per chi vuole delegare la pubblicit&agrave;: le campagne le gestiamo noi — account, pubblico, budget — e i contenuti restano tuoi. In call capiamo qual &egrave; quello giusto per il tuo momento.</p>
       </details>
       <details>
         <summary>Dopo quanto vedo risultati?</summary>
@@ -1974,7 +2045,7 @@
       </details>
       <details>
         <summary>Che differenza c'&egrave; con un'agenzia social?</summary>
-        <p>L'agenzia pubblica al posto tuo, con una voce che non &egrave; la tua, e quando smetti di pagare resta il nulla. Noi costruiamo un <strong style="color: var(--accent);">sistema tuo</strong>: il Cervello &egrave; sul tuo PC, la voce &egrave; la tua, la strategia la impari in call. L'obiettivo non &egrave; tenerti dipendente, &egrave; renderti autonomo.</p>
+        <p>L'agenzia pubblica al posto tuo, con una voce che non &egrave; la tua, e quando smetti di pagare resta il nulla. Noi costruiamo un <strong style="color: var(--accent-ink);">sistema tuo</strong>: il Cervello &egrave; sul tuo PC, la voce &egrave; la tua, la strategia la impari in call. L'obiettivo non &egrave; tenerti dipendente, &egrave; renderti autonomo.</p>
       </details>
       <details>
         <summary>Posso disdire quando voglio?</summary>
@@ -1982,7 +2053,7 @@
       </details>
       <details>
         <summary>Perch&eacute; devo &ldquo;candidarmi&rdquo;? Non vendete e basta?</summary>
-        <p>Perch&eacute; prendiamo <strong style="color: var(--accent);">massimo 3 nuovi percorsi al mese</strong>: l'affiancamento &egrave; un lavoro 1-1 e non si scala all'infinito. Le domande del modulo ci servono per arrivare in call preparati — e per dirti subito, onestamente, se non facciamo al caso tuo.</p>
+        <p>Perch&eacute; prendiamo <strong style="color: var(--accent-ink);">massimo 3 nuovi percorsi al mese</strong>: l'affiancamento &egrave; un lavoro 1-1 e non si scala all'infinito. Le domande del modulo ci servono per arrivare in call preparati — e per dirti subito, onestamente, se non facciamo al caso tuo.</p>
       </details>
     </div>
   </div>
@@ -2400,105 +2471,6 @@
     }, { passive: true });
   }
 
-  // ===== il Cervello: rete dorata viva nell'hero =====
-  var canvas = document.getElementById('brainCanvas');
-  if (!canvas || reduced) return;
-  var ctx = canvas.getContext('2d');
-  var hero = document.querySelector('.hero');
-  var W, H, nodes = [], running = true;
-  var mouse = { x: -9999, y: -9999 };
-  var GOLD = '232,184,67';
-
-  function resize() {
-    var r = hero.getBoundingClientRect();
-    W = canvas.width = r.width;
-    H = canvas.height = r.height;
-    var count = W < 700 ? 42 : 92;
-    nodes = [];
-    for (var i = 0; i < count; i++) {
-      nodes.push({
-        x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
-        r: 1 + Math.random() * 1.8
-      });
-    }
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  hero.addEventListener('mousemove', function (e) {
-    var r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
-  });
-  hero.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
-
-  // impulso: ogni tanto una scintilla percorre un filo (il Cervello che scrive)
-  var pulse = null;
-  function newPulse() {
-    var a = nodes[Math.floor(Math.random() * nodes.length)];
-    var best = null, bd = 1e9;
-    nodes.forEach(function (b) {
-      if (b === a) return;
-      var d = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
-      if (d < bd) { bd = d; best = b; }
-    });
-    if (best) pulse = { a: a, b: best, t: 0 };
-  }
-  setInterval(newPulse, 2600);
-
-  var LINK = 150;
-  function frame() {
-    if (!running) return;
-    ctx.clearRect(0, 0, W, H);
-    for (var i = 0; i < nodes.length; i++) {
-      var n = nodes[i];
-      // deriva lenta + leggera attrazione verso il mouse
-      var dxm = mouse.x - n.x, dym = mouse.y - n.y;
-      var dm = Math.sqrt(dxm * dxm + dym * dym);
-      if (dm < 220) { n.vx += dxm / dm * 0.012; n.vy += dym / dm * 0.012; }
-      n.vx *= 0.985; n.vy *= 0.985;
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0 || n.x > W) n.vx *= -1;
-      if (n.y < 0 || n.y > H) n.vy *= -1;
-
-      for (var j = i + 1; j < nodes.length; j++) {
-        var m = nodes[j];
-        var dx = n.x - m.x, dy = n.y - m.y;
-        var d = Math.sqrt(dx * dx + dy * dy);
-        if (d < LINK) {
-          ctx.strokeStyle = 'rgba(' + GOLD + ',' + (0.17 * (1 - d / LINK)) + ')';
-          ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y); ctx.stroke();
-        }
-      }
-      ctx.fillStyle = 'rgba(' + GOLD + ',0.5)';
-      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
-    }
-    // scintilla in viaggio
-    if (pulse) {
-      pulse.t += 0.02;
-      if (pulse.t >= 1) { pulse = null; }
-      else {
-        var px = pulse.a.x + (pulse.b.x - pulse.a.x) * pulse.t;
-        var py = pulse.a.y + (pulse.b.y - pulse.a.y) * pulse.t;
-        var g = ctx.createRadialGradient(px, py, 0, px, py, 14);
-        g.addColorStop(0, 'rgba(' + GOLD + ',0.9)');
-        g.addColorStop(1, 'rgba(' + GOLD + ',0)');
-        ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(px, py, 14, 0, Math.PI * 2); ctx.fill();
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // il canvas gira solo quando l'hero è in vista
-  new IntersectionObserver(function (entries) {
-    var vis = entries[0].isIntersecting;
-    if (vis && !running) { running = true; frame(); }
-    else if (!vis) { running = false; }
-  }).observe(hero);
-
-  frame();
 })();
 </script>
 
