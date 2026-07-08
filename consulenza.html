@@ -151,29 +151,59 @@
     * { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
   }
 </style>
-<!-- Meta Pixel -->
+<!-- Meta Pixel (attivato solo con consenso) -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1757630538557229');
-fbq('track', 'PageView');
-document.addEventListener('click', function (e) {
-  var a = e.target && e.target.closest ? e.target.closest('a') : null;
-  if (!a) return;
-  var href = a.getAttribute('href') || '';
-  if (href.indexOf('mailto:') === 0 || href.indexOf('#candidatura') !== -1 || href.indexOf('wa.me') !== -1) {
-    fbq('track', 'Contact');
+(function(){
+  var KEY='ac_consenso_marketing';
+  function avviaPixel(){
+    if(window.fbq)return;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1757630538557229');
+    fbq('track','PageView');
   }
-});
+  function scelta(v){
+    try{localStorage.setItem(KEY,v);}catch(e){}
+    var b=document.getElementById('ac-cookie-banner');
+    if(b&&b.parentNode)b.parentNode.removeChild(b);
+    if(v==='si')avviaPixel();
+  }
+  function mostraBanner(){
+    if(document.getElementById('ac-cookie-banner'))return;
+    var d=document.createElement('div');
+    d.id='ac-cookie-banner';
+    d.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#14110E;color:#EDE6D8;padding:14px 18px;font-size:14px;line-height:1.4;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;box-shadow:0 -2px 14px rgba(0,0,0,.35)';
+    d.innerHTML='<span style="max-width:560px">Questo sito usa il Pixel Meta (cookie di marketing) solo per misurare le campagne pubblicitarie. <a href="cookie.html" style="color:#C8A45B;text-decoration:underline">Cookie policy</a></span>'
+      +'<span style="display:flex;gap:10px">'
+      +'<button id="ac-ck-si" style="background:#C8A45B;color:#14110E;border:0;padding:9px 22px;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer">Accetta</button>'
+      +'<button id="ac-ck-no" style="background:transparent;color:#EDE6D8;border:1px solid #8A7F6E;padding:9px 22px;border-radius:6px;font-size:14px;cursor:pointer">Rifiuta</button>'
+      +'</span>';
+    document.body.appendChild(d);
+    document.getElementById('ac-ck-si').onclick=function(){scelta('si');};
+    document.getElementById('ac-ck-no').onclick=function(){scelta('no');};
+  }
+  var v=null; try{v=localStorage.getItem(KEY);}catch(e){}
+  if(v==='si'){avviaPixel();}
+  else if(v!=='no'){
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',mostraBanner);}
+    else{mostraBanner();}
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+    if(!a||!window.fbq)return;
+    var href=a.getAttribute('href')||'';
+    if(href.indexOf('mailto:')===0||href.indexOf('#candidatura')!==-1||href.indexOf('wa.me')!==-1){
+      fbq('track','Contact');
+    }
+  });
+})();
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1757630538557229&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 </head>
 <body>

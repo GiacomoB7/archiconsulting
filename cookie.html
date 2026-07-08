@@ -60,29 +60,59 @@
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } body::after { display: none; } }
   @media (max-width: 600px) { body { padding-top: 106px; } .legal-topbar { padding: 13px 16px; } .legal-topbar .logo { letter-spacing: 2.5px; font-size: 12px; } }
 </style>
-<!-- Meta Pixel -->
+<!-- Meta Pixel (attivato solo con consenso) -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1757630538557229');
-fbq('track', 'PageView');
-document.addEventListener('click', function (e) {
-  var a = e.target && e.target.closest ? e.target.closest('a') : null;
-  if (!a) return;
-  var href = a.getAttribute('href') || '';
-  if (href.indexOf('mailto:') === 0 || href.indexOf('#candidatura') !== -1 || href.indexOf('wa.me') !== -1) {
-    fbq('track', 'Contact');
+(function(){
+  var KEY='ac_consenso_marketing';
+  function avviaPixel(){
+    if(window.fbq)return;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1757630538557229');
+    fbq('track','PageView');
   }
-});
+  function scelta(v){
+    try{localStorage.setItem(KEY,v);}catch(e){}
+    var b=document.getElementById('ac-cookie-banner');
+    if(b&&b.parentNode)b.parentNode.removeChild(b);
+    if(v==='si')avviaPixel();
+  }
+  function mostraBanner(){
+    if(document.getElementById('ac-cookie-banner'))return;
+    var d=document.createElement('div');
+    d.id='ac-cookie-banner';
+    d.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#14110E;color:#EDE6D8;padding:14px 18px;font-size:14px;line-height:1.4;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;box-shadow:0 -2px 14px rgba(0,0,0,.35)';
+    d.innerHTML='<span style="max-width:560px">Questo sito usa il Pixel Meta (cookie di marketing) solo per misurare le campagne pubblicitarie. <a href="cookie.html" style="color:#C8A45B;text-decoration:underline">Cookie policy</a></span>'
+      +'<span style="display:flex;gap:10px">'
+      +'<button id="ac-ck-si" style="background:#C8A45B;color:#14110E;border:0;padding:9px 22px;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer">Accetta</button>'
+      +'<button id="ac-ck-no" style="background:transparent;color:#EDE6D8;border:1px solid #8A7F6E;padding:9px 22px;border-radius:6px;font-size:14px;cursor:pointer">Rifiuta</button>'
+      +'</span>';
+    document.body.appendChild(d);
+    document.getElementById('ac-ck-si').onclick=function(){scelta('si');};
+    document.getElementById('ac-ck-no').onclick=function(){scelta('no');};
+  }
+  var v=null; try{v=localStorage.getItem(KEY);}catch(e){}
+  if(v==='si'){avviaPixel();}
+  else if(v!=='no'){
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',mostraBanner);}
+    else{mostraBanner();}
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+    if(!a||!window.fbq)return;
+    var href=a.getAttribute('href')||'';
+    if(href.indexOf('mailto:')===0||href.indexOf('#candidatura')!==-1||href.indexOf('wa.me')!==-1){
+      fbq('track','Contact');
+    }
+  });
+})();
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1757630538557229&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 </head>
 <body>
@@ -93,27 +123,28 @@ src="https://www.facebook.com/tr?id=1757630538557229&ev=PageView&noscript=1"/></
 <a href="/" class="legal-back">← Torna al sito</a>
 
 <h1>Cookie Policy</h1>
-<p class="legal-sub">Informativa sull'uso dei cookie del sito archiconsulting.it. Ultimo aggiornamento: 2 maggio 2026.</p>
+<p class="legal-sub">Informativa sull'uso dei cookie del sito archiconsulting.it. Ultimo aggiornamento: 8 luglio 2026.</p>
 
 <h2>Cosa sono i cookie</h2>
 <p>I cookie sono piccoli file di testo che i siti web salvano sul tuo dispositivo durante la navigazione. Servono per far funzionare correttamente i siti, ricordare le tue preferenze o raccogliere statistiche.</p>
 
 <h2>Quali cookie usa archiconsulting.it</h2>
-<p>Il sito utilizza <strong>esclusivamente cookie tecnici essenziali</strong>, necessari al funzionamento del sito. Non utilizziamo cookie di profilazione, di marketing o di terze parti per analytics.</p>
+<p>Il sito utilizza <strong>cookie tecnici essenziali</strong> (sempre attivi, necessari al funzionamento) e, <strong>solo se acconsenti tramite il banner</strong>, il <strong>Pixel Meta</strong>: un cookie di marketing che ci serve a misurare l'efficacia delle campagne pubblicitarie (visite alle pagine e click sui bottoni di contatto). Le statistiche di visita generali sono raccolte con GoatCounter, che non usa cookie e non identifica le persone.</p>
 
 <table>
 <thead><tr><th>Cookie</th><th>Tipo</th><th>Scopo</th><th>Durata</th></tr></thead>
 <tbody>
 <tr><td>_GH_session (eventuale)</td><td>Tecnico</td><td>Gestione hosting GitHub Pages</td><td>Sessione</td></tr>
-<tr><td>localStorage</td><td>Tecnico</td><td>Salvare preferenze visualizzazione (es. menu mobile aperto)</td><td>Persistente</td></tr>
+<tr><td>localStorage</td><td>Tecnico</td><td>Salvare preferenze visualizzazione e la tua scelta sul consenso cookie</td><td>Persistente</td></tr>
+<tr><td>_fbp (Meta Pixel)</td><td>Marketing</td><td>Misurare l'efficacia delle campagne pubblicitarie Meta (attivo solo dopo il tuo consenso)</td><td>90 giorni</td></tr>
 </tbody>
 </table>
 
 <p>I cookie tecnici sono esenti dall'obbligo di consenso preventivo, ai sensi dell'art. 122 del Codice Privacy e del provvedimento del Garante del 10 giugno 2021.</p>
 
 <h2>Cookie di terze parti</h2>
-<p>Attualmente il sito <strong>non utilizza</strong> cookie di terze parti per analytics, pubblicità o profilazione (es. Google Analytics, Facebook Pixel, ecc.).</p>
-<p>Se in futuro verranno integrati strumenti di terze parti, questa policy verrà aggiornata e ti sarà chiesto il consenso preventivo tramite cookie banner.</p>
+<p>Dall'8 luglio 2026 il sito utilizza il <strong>Pixel Meta</strong> (Meta Platforms Ireland Ltd), attivato <strong>solo dopo il tuo consenso</strong> tramite il banner. Serve a misurare l'efficacia delle inserzioni pubblicitarie su Facebook e Instagram: registra le visite alle pagine e i click sui bottoni di contatto. Puoi rifiutare dal banner o revocare la scelta cancellando i dati di navigazione del sito; il sito funziona allo stesso modo. Informazioni sul trattamento dei dati da parte di Meta: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">privacy policy di Meta</a>.</p>
+<p>Non utilizziamo altri strumenti di terze parti con cookie (es. Google Analytics). Le statistiche generali di visita sono raccolte con GoatCounter, senza cookie.</p>
 
 <h2>Come gestire i cookie nel tuo browser</h2>
 <p>Puoi sempre disabilitare o cancellare i cookie tramite le impostazioni del tuo browser. Tieni presente che disabilitare i cookie tecnici può compromettere il corretto funzionamento del sito.</p>
