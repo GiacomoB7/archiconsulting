@@ -60,6 +60,30 @@
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } body::after { display: none; } }
   @media (max-width: 600px) { body { padding-top: 106px; } .legal-topbar { padding: 13px 16px; } .legal-topbar .logo { letter-spacing: 2.5px; font-size: 12px; } }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1757630538557229');
+fbq('track', 'PageView');
+document.addEventListener('click', function (e) {
+  var a = e.target && e.target.closest ? e.target.closest('a') : null;
+  if (!a) return;
+  var href = a.getAttribute('href') || '';
+  if (href.indexOf('mailto:') === 0 || href.indexOf('#candidatura') !== -1 || href.indexOf('wa.me') !== -1) {
+    fbq('track', 'Contact');
+  }
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1757630538557229&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 <div class="legal-topbar"><a href="/" class="logo">ARCHICONSULTING<span class="dot">.</span></a><a href="/" class="back">&larr; Torna al sito</a></div>
